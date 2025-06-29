@@ -7,7 +7,7 @@ namespace TownOfUs.Modifiers.Crewmate;
 
 public sealed class OracleConfessModifier(PlayerControl oracle, int faction) : BaseModifier
 {
-    public override string ModifierName => "Confess";
+    public override string ModifierName => "坦白";
     public override bool HideOnUi => true;
     public PlayerControl Oracle { get; } = oracle;
     public ModdedRoleTeams RevealedFaction { get; set; }

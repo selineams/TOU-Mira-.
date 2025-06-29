@@ -14,9 +14,9 @@ namespace TownOfUs.Modifiers.Game.Crewmate;
 
 public sealed class OperativeModifier : TouGameModifier, IWikiDiscoverable
 {
-    public override string ModifierName => "Operative";
+    public override string ModifierName => "监控员";
     public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.Operative;
-    public override string GetDescription() => $"Utilize the Cameras from anywhere";
+    public override string GetDescription() => $"可以在任意位置使用摄像头";
     public override ModifierFaction FactionType => ModifierFaction.CrewmateUtility;
 
     public override void OnActivate()
@@ -44,9 +44,7 @@ public sealed class OperativeModifier : TouGameModifier, IWikiDiscoverable
 	}
     public string GetAdvancedDescription()
     {
-        return
-            $"Use cameras at anytime with a limited battery charge."
-               + MiscUtils.AppendOptionsText(GetType());
+        return $"可随时使用摄像头，但有电量限制。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     public List<CustomButtonWikiDescription> Abilities { get; } = [];

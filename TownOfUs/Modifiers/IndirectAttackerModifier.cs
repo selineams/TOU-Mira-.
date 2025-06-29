@@ -4,7 +4,7 @@ namespace TownOfUs.Modifiers;
 
 public sealed class IndirectAttackerModifier(bool ignoreShield) : BaseModifier
 {
-    public override string ModifierName => "Indirect Attacker";
+    public override string ModifierName => "间接攻击者";
     public override bool HideOnUi => true;
     public bool IgnoreShield => ignoreShield;
 

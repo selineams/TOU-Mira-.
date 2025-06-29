@@ -7,8 +7,8 @@ namespace TownOfUs.Options.Roles.Crewmate;
 
 public sealed class MysticOptions : AbstractOptionGroup<MysticRole>
 {
-    public override string GroupName => "Mystic";
+    public override string GroupName => "灵媒";
 
-    [ModdedNumberOption("Dead Body Arrow Duration", 0f, 1f, 0.05f, MiraNumberSuffixes.Seconds, "0.00")]
-    public float MysticArrowDuration { get; set; } = 0.1f;
+    [ModdedNumberOption("尸体箭头持续时间", 0f, 1f, 0.05f, MiraNumberSuffixes.Seconds, "0.00")]
+    public float MysticArrowDuration { get; set; } = 1f;
 }

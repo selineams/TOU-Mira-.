@@ -13,9 +13,9 @@ namespace TownOfUs.Roles.Crewmate;
 
 public sealed class InvestigatorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Investigator";
-    public string RoleDescription => "Find All Impostors By Examining Footprints.";
-    public string RoleLongDescription => "You can see everyone's footprints.";
+    public string RoleName => "调查员";
+    public string RoleDescription => "通过查看足迹找出所有伪装者。";
+    public string RoleLongDescription => "你可以看到所有人的足迹。";
     public Color RoleColor => TownOfUsColors.Investigator;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmateInvestigative;
@@ -61,7 +61,7 @@ public sealed class InvestigatorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITow
     public string GetAdvancedDescription()
     {
         return
-            "The Investigator is a Crewmate Investigative role can see player's footprints throughout the game. Swooped players' footprints will not be visible to the Investigator."
+            "调查员是一名船员调查型角色，可以在游戏中看到所有玩家的足迹。隐身状态下的玩家足迹对调查员不可见。"
             + MiscUtils.AppendOptionsText(GetType());
     }
 

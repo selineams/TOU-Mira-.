@@ -11,7 +11,7 @@ namespace TownOfUs.Modifiers;
 
 public class ScatterModifier(float time) : TimedModifier
 {
-    public override string ModifierName => "Scatter";
+    public override string ModifierName => "永动";
     public override float Duration => time;
     public override bool AutoStart => false;
     public override bool HideOnUi => true;
@@ -50,7 +50,7 @@ public class ScatterModifier(float time) : TimedModifier
         scatterUI!.SetActive(false);
 
         scatterText = scatterUI.transform.FindChild("ScatterCanvas").FindChild("ScatterText").gameObject.GetComponent<TextMeshProUGUI>();
-        scatterText.text = $"Scatter: {Duration}s";
+        scatterText.text = $"分散: {Duration}s";
         scatterText!.gameObject.SetActive(false);
 
         scatterBar = scatterUI.transform.FindChild("ScatterCanvas").FindChild("ScatterBar").gameObject.GetComponent<Image>();
@@ -92,7 +92,7 @@ public class ScatterModifier(float time) : TimedModifier
         };
 
         if (scatterText != null)
-            scatterText.text = $"Scatter: {textColor.ToTextColor()}{roundedTime}s</color>";
+            scatterText.text = $"分散: {textColor.ToTextColor()}{roundedTime}s</color>";
 
         if (scatterBar != null)
         {

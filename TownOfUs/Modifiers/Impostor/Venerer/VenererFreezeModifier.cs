@@ -10,7 +10,7 @@ namespace TownOfUs.Modifiers.Impostor.Venerer;
 
 public sealed class VenererFreezeModifier(PlayerControl venerer) : TimedModifier, IVenererModifier
 {
-    public override string ModifierName => "Freeze";
+    public override string ModifierName => "冰冻";
     public override bool AutoStart => true;
     public override float Duration => OptionGroupSingleton<VenererOptions>.Instance.AbilityDuration;
 

@@ -18,9 +18,9 @@ namespace TownOfUs.Roles.Impostor;
 
 public sealed class BomberRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable, ICrewVariant
 {
-    public string RoleName => "Bomber";
-    public string RoleDescription => "Plant Bombs To Kill Multiple Crewmates At Once";
-    public string RoleLongDescription => "Plant bombs to kill several crewmates at once";
+    public string RoleName => "爆破手";
+    public string RoleDescription => "布置炸弹，一次性击杀多名船员";
+    public string RoleLongDescription => "布置炸弹，可一次性击杀多名船员";
     public RoleBehaviour CrewVariant => RoleManager.Instance.GetRole((RoleTypes)RoleId.Get<TrapperRole>());
     public Color RoleColor => TownOfUsColors.Impostor;
     public ModdedRoleTeams Team => ModdedRoleTeams.Impostor;
@@ -64,14 +64,14 @@ public sealed class BomberRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITownOfUsR
     }
     public string GetAdvancedDescription()
     {
-        return $"The Bomber is an Impostor Killing role that can drop a bomb on the map, which detonates after {OptionGroupSingleton<BomberOptions>.Instance.DetonateDelay} second(s)" + MiscUtils.AppendOptionsText(GetType());
+        return $"爆破手是一名伪装者击杀型角色，可以在地图上布置炸弹，{OptionGroupSingleton<BomberOptions>.Instance.DetonateDelay}秒后爆炸。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } =
         [
-            new("Place", 
-                $"Place a bomb, showing the radius in which it'll kill, killing up to {(int)OptionGroupSingleton<BomberOptions>.Instance.MaxKillsInDetonation} player(s)",
+            new("布置", 
+                $"布置一个炸弹，显示其爆炸范围，最多可击杀{(int)OptionGroupSingleton<BomberOptions>.Instance.MaxKillsInDetonation}名玩家。",
                 TouImpAssets.PlaceSprite)
         ];
 }

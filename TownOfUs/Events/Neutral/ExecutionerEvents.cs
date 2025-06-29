@@ -32,7 +32,7 @@ public static class ExecutionerEvents
             {
                 PlayerControl.LocalPlayer.RpcPlayerExile();
                 var notif1 = Helpers.CreateAndShowNotification(
-                    $"<b>You have successfully won as the {TownOfUsColors.Executioner.ToTextColor()}Executioner</color>, as your target was exiled!</b>", Color.white, spr: TouRoleIcons.Executioner.LoadAsset());
+                    $"<b>你以{TownOfUsColors.Executioner.ToTextColor()}处刑者</color>的身份成功获胜，因为你的目标被放逐了！</b>", Color.white, spr: TouRoleIcons.Executioner.LoadAsset());
 
                 notif1.Text.SetOutlineThickness(0.35f);
                 notif1.transform.localPosition = new Vector3(0f, 1f, -20f);
@@ -40,7 +40,7 @@ public static class ExecutionerEvents
             else
             {
                 var notif1 = Helpers.CreateAndShowNotification(
-                    $"<b>The {TownOfUsColors.Executioner.ToTextColor()}Executioner</color>, {exe.Player.Data.PlayerName}, has successfully won, as their target was exiled!</b>", Color.white, spr: TouRoleIcons.Executioner.LoadAsset());
+                    $"<b>{TownOfUsColors.Executioner.ToTextColor()}处刑者</color>，{exe.Player.Data.PlayerName}，因其目标被放逐而成功获胜！</b>", Color.white, spr: TouRoleIcons.Executioner.LoadAsset());
 
                 notif1.Text.SetOutlineThickness(0.35f);
                 notif1.transform.localPosition = new Vector3(0f, 1f, -20f);
@@ -90,7 +90,7 @@ public static class ExecutionerEvents
                 else
                 {
                     var notif1 = Helpers.CreateAndShowNotification(
-                        $"<b>You have successfully won as the {TownOfUsColors.Executioner.ToTextColor()}Executioner</color>, as your target was exiled!</b>", Color.white, spr: TouRoleIcons.Executioner.LoadAsset());
+                        $"<b>你以{TownOfUsColors.Executioner.ToTextColor()}处刑者</color>的身份成功获胜，因为你的目标被放逐了！</b>", Color.white, spr: TouRoleIcons.Executioner.LoadAsset());
 
                     notif1.Text.SetOutlineThickness(0.35f);
                     notif1.transform.localPosition = new Vector3(0f, 1f, -20f);
@@ -101,10 +101,10 @@ public static class ExecutionerEvents
             else if (OptionGroupSingleton<ExecutionerOptions>.Instance.ExeWin is ExeWinOptions.Nothing)
             {
                 var notif1 = Helpers.CreateAndShowNotification(
-                    $"<b>The {TownOfUsColors.Executioner.ToTextColor()}Executioner</color>, {exe.Player.Data.PlayerName}, has successfully won, as their target was exiled!</b>", Color.white, spr: TouRoleIcons.Executioner.LoadAsset());
+                    $"<b>{TownOfUsColors.Executioner.ToTextColor()}处刑者</color>，{exe.Player.Data.PlayerName}，因其目标被放逐而成功获胜！</b>", Color.white, spr: TouRoleIcons.Executioner.LoadAsset());
 
                 notif1.Text.SetOutlineThickness(0.35f);
-                    notif1.transform.localPosition = new Vector3(0f, 1f, -20f);
+                notif1.transform.localPosition = new Vector3(0f, 1f, -20f);
             }
         }
     }

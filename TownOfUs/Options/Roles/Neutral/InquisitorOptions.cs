@@ -7,23 +7,23 @@ namespace TownOfUs.Options.Roles.Neutral;
 
 public sealed class InquisitorOptions : AbstractOptionGroup<InquisitorRole>
 {
-    public override string GroupName => "Inquisitor";
+    public override string GroupName => "审判官";
 
-    [ModdedNumberOption("Vanquish Cooldown", 10f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
-    public float VanquishCooldown { get; set; } = 25f;
+    [ModdedNumberOption("裁决冷却", 10f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
+    public float VanquishCooldown { get; set; } = 20f;
 
-    [ModdedNumberOption("Inquire Cooldown", 10f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
-    public float InquireCooldown { get; set; } = 25f;
+    [ModdedNumberOption("审问冷却", 10f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
+    public float InquireCooldown { get; set; } = 20f;
 
-    [ModdedToggleOption("Inquisitor Continues Game")]
-    public bool StallGame { get; set; } = true;
+    [ModdedToggleOption("审判官胜利继续游戏")]
+    public bool StallGame { get; set; } = false;
 
-    [ModdedToggleOption("Inquisitor Can't Inquire")]
+    [ModdedToggleOption("审判官无法审问")]
     public bool CantInquire { get; set; } = false;
 
-    [ModdedNumberOption("Max Number Of Inquires", 1f, 15f, 1f, MiraNumberSuffixes.None, "0")]
-    public float MaxUses { get; set; } = 5f;
+    [ModdedNumberOption("最大审问次数", 1f, 15f, 1f, MiraNumberSuffixes.None, "0")]
+    public float MaxUses { get; set; } = 15f;
 
-    [ModdedNumberOption("Amount of Heretics Needed", 3f, 5f, 1f, MiraNumberSuffixes.None, "0")]
+    [ModdedNumberOption("所需消灭异端数量", 3f, 5f, 1f, MiraNumberSuffixes.None, "0")]
     public float AmountOfHeretics { get; set; } = 3f;
 }

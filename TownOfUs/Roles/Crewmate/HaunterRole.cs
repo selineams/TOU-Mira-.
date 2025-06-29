@@ -18,9 +18,9 @@ namespace TownOfUs.Roles.Crewmate;
 
 public sealed class HaunterRole(IntPtr cppPtr) : CrewmateGhostRole(cppPtr), ITownOfUsRole, IGhostRole, IWikiDiscoverable
 {
-    public string RoleName => "Haunter";
+    public string RoleName => "冤魂";
     public string RoleDescription => string.Empty;
-    public string RoleLongDescription => "Complete all your tasks without getting caught to reveal impostors!";
+    public string RoleLongDescription => "在不被抓到的情况下完成所有任务即可揭示伪装者！";
     public Color RoleColor => TownOfUsColors.Haunter;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmateInvestigative;
@@ -210,7 +210,7 @@ public sealed class HaunterRole(IntPtr cppPtr) : CrewmateGhostRole(cppPtr), ITow
             if (Player.AmOwner)
             {
                 Coroutines.Start(MiscUtils.CoFlash(RoleColor));
-                var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.Haunter.ToTextColor()}You have alerted the Killers!</b></color>", Color.white, new Vector3(0f, 1f, -20f), spr: TouRoleIcons.Haunter.LoadAsset());
+                var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.Haunter.ToTextColor()}你已惊动了杀手！</b></color>", Color.white, new Vector3(0f, 1f, -20f), spr: TouRoleIcons.Haunter.LoadAsset());
                 notif1.Text.SetOutlineThickness(0.35f);
             }
             else if (IsTargetOfHaunter(PlayerControl.LocalPlayer))
@@ -219,7 +219,7 @@ public sealed class HaunterRole(IntPtr cppPtr) : CrewmateGhostRole(cppPtr), ITow
                 Coroutines.Start(MiscUtils.CoFlash(RoleColor));
 
                 Player.AddModifier<HaunterArrowModifier>(PlayerControl.LocalPlayer, RoleColor);
-                var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.Haunter.ToTextColor()}A Haunter is loose, catch them before they reveal you!</b></color>", Color.white, new Vector3(0f, 1f, -20f), spr: TouRoleIcons.Haunter.LoadAsset());
+                var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.Haunter.ToTextColor()}有冤魂在游荡，在他们揭示你身份前抓住他们！</b></color>", Color.white, new Vector3(0f, 1f, -20f), spr: TouRoleIcons.Haunter.LoadAsset());
                 notif1.Text.SetOutlineThickness(0.35f);
             }
         }
@@ -253,10 +253,10 @@ public sealed class HaunterRole(IntPtr cppPtr) : CrewmateGhostRole(cppPtr), ITow
     public string GetAdvancedDescription()
     {
         return
-            "The Haunter is a Crewmate Ghost who can do tasks. They will appear as a transparent player. " +
-            "If they finish all their tasks, all alive players will see who the Impostors are. " +
-            "However, if an Impostor clicks them first, they will become a normal ghost. " +
-            "Impostors get a warning shortly before and when the Haunter finishes their tasks. "
+            "冤魂是一名船员幽灵，可以做任务，会以半透明玩家的形象出现。 " +
+            "如果完成所有任务，所有存活玩家都能看到伪装者。" +
+            "但如果伪装者先点击你，你会变成普通幽灵。 " +
+            "伪装者会在冤魂快完成任务和完成任务时收到警告。"
             + MiscUtils.AppendOptionsText(GetType());
     }
 }

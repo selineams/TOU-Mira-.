@@ -10,9 +10,9 @@ namespace TownOfUs.Modifiers.Game.Crewmate;
 
 public sealed class DiseasedModifier : TouGameModifier, IWikiDiscoverable
 {
-    public override string ModifierName => "Diseased";
+    public override string ModifierName => "病人";
     public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.Diseased;
-    public override string GetDescription() => "Increase your killer's kill cooldown.";
+    public override string GetDescription() => "让你的击杀者击杀冷却增加。";
     public override ModifierFaction FactionType => ModifierFaction.CrewmatePostmortem;
 
     public override int GetAssignmentChance() => (int)OptionGroupSingleton<CrewmateModifierOptions>.Instance.DiseasedChance;
@@ -25,7 +25,7 @@ public sealed class DiseasedModifier : TouGameModifier, IWikiDiscoverable
     public string GetAdvancedDescription()
     {
         return
-            $"After you die, your killer's kill cooldown is multiplied by a factor of {OptionGroupSingleton<DiseasedOptions>.Instance.CooldownMultiplier}x.";
+            $"你死后，击杀你的玩家击杀冷却将乘以{OptionGroupSingleton<DiseasedOptions>.Instance.CooldownMultiplier}倍。";
     }
 
     public List<CustomButtonWikiDescription> Abilities { get; } = [];

@@ -10,9 +10,9 @@ namespace TownOfUs.Roles.Crewmate;
 
 public sealed class MysticRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Mystic";
-    public string RoleDescription => "Know When and Where Kills Happen";
-    public string RoleLongDescription => "Understand when and where kills happen";
+    public string RoleName => "灵媒";
+    public string RoleDescription => "知晓击杀发生的时间与地点";
+    public string RoleLongDescription => "感知击杀发生的时间与地点";
     public Color RoleColor => TownOfUsColors.Mystic;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmateInvestigative;
@@ -31,7 +31,7 @@ public sealed class MysticRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsR
 
     public string GetAdvancedDescription()
     {
-        return "The Mystic is a Crewmate Investigative role that gets an alert when someone dies."
+        return "灵媒是一名船员调查型角色，在有人死亡时会收到提示。"
             + MiscUtils.AppendOptionsText(GetType());
     }
 }

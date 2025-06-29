@@ -8,15 +8,15 @@ namespace TownOfUs.Options.Roles.Impostor;
 
 public sealed class EscapistOptions : AbstractOptionGroup<EscapistRole>
 {
-    public override string GroupName => "Escapist";
+    public override string GroupName => "逃逸者";
     public override Color GroupColor => Palette.ImpostorRoleRed;
 
-    [ModdedNumberOption("Recall Uses Per Game", 0f, 15f, 1f, MiraNumberSuffixes.None, "0", zeroInfinity: true)]
-    public float MaxEscapes { get; set; } = 0f;
+    [ModdedNumberOption("每局可用回溯次数", 0f, 15f, 1f, MiraNumberSuffixes.None, "0", zeroInfinity: true)]
+    public float MaxEscapes { get; set; } = 15f;
 
-    [ModdedNumberOption("Recall Cooldown", 10f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
-    public float RecallCooldown { get; set; } = 25f;
+    [ModdedNumberOption("回溯冷却", 10f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
+    public float RecallCooldown { get; set; } = 15f;
 
-    [ModdedToggleOption("Escapist Can Vent")]
+    [ModdedToggleOption("逃逸者可进通风口")]
     public bool CanVent { get; set; } = true;
 }

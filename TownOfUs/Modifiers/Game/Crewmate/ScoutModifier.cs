@@ -10,9 +10,9 @@ namespace TownOfUs.Modifiers.Game.Crewmate;
 
 public sealed class ScoutModifier : TouGameModifier, IWikiDiscoverable
 {
-    public override string ModifierName => "Scout";
+    public override string ModifierName => "侦察兵";
     public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.Scout;
-    public override string GetDescription() => "Your vision is higher when lights are on, but very low when lights are off.";
+    public override string GetDescription() => "灯亮时视野更大，灯灭时视野极低。";
     public override ModifierFaction FactionType => ModifierFaction.CrewmateVisibility;
 
     public override int GetAssignmentChance() => (int)OptionGroupSingleton<CrewmateModifierOptions>.Instance.ScoutChance;
@@ -24,8 +24,7 @@ public sealed class ScoutModifier : TouGameModifier, IWikiDiscoverable
     }
     public string GetAdvancedDescription()
     {
-        return
-            "While you can see twice as far as a regular crewmate, your vision falters when lights are off.";
+        return "你能比普通船员看得更远，但灯灭时视野会大幅下降。";
     }
 
     public List<CustomButtonWikiDescription> Abilities { get; } = [];

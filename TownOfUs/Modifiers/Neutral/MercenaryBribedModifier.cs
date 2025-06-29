@@ -8,7 +8,7 @@ namespace TownOfUs.Modifiers.Neutral;
 
 public sealed class MercenaryBribedModifier(PlayerControl mercenary) : BaseModifier
 {
-    public override string ModifierName => "Mercenary Bribed";
+    public override string ModifierName => "雇佣兵贿赂";
     public override bool HideOnUi => true;
     public PlayerControl Mercenary { get; } = mercenary;
 
@@ -33,8 +33,8 @@ public sealed class MercenaryBribedModifier(PlayerControl mercenary) : BaseModif
         if (!Player.AmOwner) return;
         if (alerted) return;
 
-        var title = $"<color=#{TownOfUsColors.Mercenary.ToHtmlStringRGBA()}>Mercenary Feedback</color>";
-        MiscUtils.AddFakeChat(Player.Data, title, "You have been bribed by a Mercenary!", false, true);
+        var title = $"<color=#{TownOfUsColors.Mercenary.ToHtmlStringRGBA()}>雇佣兵反馈</color>";
+        MiscUtils.AddFakeChat(Player.Data, title, "你被雇佣兵贿赂了！", false, true);
 
         alerted = true;
     }

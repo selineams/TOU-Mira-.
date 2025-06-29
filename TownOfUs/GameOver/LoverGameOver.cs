@@ -42,9 +42,9 @@ public sealed class LoverGameOver : CustomGameOver
         endGameManager.BackgroundBar.material.SetColor(ShaderID.Color, TownOfUsColors.Lover);
 
         var text = Object.Instantiate(endGameManager.WinText);
-        text.text = $"Lovers Win!";
+        text.text = $"恋人胜利！";
         text.color = TownOfUsColors.Lover;
-        GameHistory.WinningFaction = $"<color=#{TownOfUsColors.Lover.ToHtmlStringRGBA()}>Lovers</color>";
+        GameHistory.WinningFaction = $"<color=#{TownOfUsColors.Lover.ToHtmlStringRGBA()}>恋人</color>";
 
         var pos = endGameManager.WinText.transform.localPosition;
         pos.y = 1.5f;

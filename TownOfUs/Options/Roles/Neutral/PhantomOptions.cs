@@ -6,12 +6,12 @@ namespace TownOfUs.Options.Roles.Neutral;
 
 public sealed class PhantomOptions : AbstractOptionGroup<PhantomTouRole>
 {
-    public override string GroupName => "Phantom";
+    public override string GroupName => "幻影";
 
-    [ModdedNumberOption("Tasks Left Before Clickable", 1, 15, 1)]
-    public float NumTasksLeftBeforeClickable { get; set; } = 3f;
+    [ModdedNumberOption("可点击前剩余任务数", 1, 15, 1)]
+    public float NumTasksLeftBeforeClickable { get; set; } = 1f;
 
-    [ModdedEnumOption("Phantom Win", typeof(PhantomWinOptions), ["Ends Game", "Spooks", "Nothing"])]
+    [ModdedEnumOption("幻影胜利效果", typeof(PhantomWinOptions), ["结束游戏", "胜利离场并带走一人", "继续游戏"])]
     public PhantomWinOptions PhantomWin { get; set; } = PhantomWinOptions.Nothing;
 
 }

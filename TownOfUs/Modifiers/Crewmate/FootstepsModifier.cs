@@ -12,7 +12,7 @@ namespace TownOfUs.Modifiers.Crewmate;
 
 public sealed class FootstepsModifier : BaseModifier
 {
-    public override string ModifierName => "Footsteps";
+    public override string ModifierName => "脚印";
     public override bool HideOnUi => true;
 
     private Dictionary<GameObject, SpriteRenderer>? _currentSteps;

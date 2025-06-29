@@ -10,11 +10,11 @@ namespace TownOfUs.Modifiers.Game.Impostor;
 
 public sealed class TelepathModifier : TouGameModifier, IWikiDiscoverable
 {
-    public override string ModifierName => "Telepath";
+    public override string ModifierName => "通感者";
     public override string GetDescription() =>
-            (OptionGroupSingleton<TelepathOptions>.Instance.KnowKillLocation ? "Know when & where your teammate kills" : "Know when your teammate kills")
-            + (OptionGroupSingleton<TelepathOptions>.Instance.KnowDeath && !OptionGroupSingleton<TelepathOptions>.Instance.KnowDeathLocation ? ", know when they die" : string.Empty)
-            + (OptionGroupSingleton<TelepathOptions>.Instance.KnowDeath && OptionGroupSingleton<TelepathOptions>.Instance.KnowDeathLocation ? ", know when & where they die." : string.Empty);
+            (OptionGroupSingleton<TelepathOptions>.Instance.KnowKillLocation ? "知晓队友击杀的时间和位置" : "知晓队友击杀的时间")
+            + (OptionGroupSingleton<TelepathOptions>.Instance.KnowDeath && !OptionGroupSingleton<TelepathOptions>.Instance.KnowDeathLocation ? "，知晓队友死亡的时间" : string.Empty)
+            + (OptionGroupSingleton<TelepathOptions>.Instance.KnowDeath && OptionGroupSingleton<TelepathOptions>.Instance.KnowDeathLocation ? "，知晓队友死亡的时间和位置。" : string.Empty);
     public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.Telepath;
     public override ModifierFaction FactionType => ModifierFaction.ImpostorPostmortem;
 
@@ -31,9 +31,9 @@ public sealed class TelepathModifier : TouGameModifier, IWikiDiscoverable
     {
         var options = OptionGroupSingleton<TelepathOptions>.Instance;
         return
-            (options.KnowKillLocation ? "Know when & where your teammate kills" : "Know when your teammate kills")
-            + (options.KnowDeath && !options.KnowDeathLocation ? ", know when they die." : string.Empty)
-            + (options.KnowDeath && options.KnowDeathLocation ? ", know when & where they die." : string.Empty)
+            (options.KnowKillLocation ? "知晓队友击杀的时间和位置" : "知晓队友击杀的时间")
+            + (options.KnowDeath && !options.KnowDeathLocation ? "，知晓队友死亡的时间。" : string.Empty)
+            + (options.KnowDeath && options.KnowDeathLocation ? "，知晓队友死亡的时间和位置。" : string.Empty)
                + MiscUtils.AppendOptionsText(GetType());
     }
 

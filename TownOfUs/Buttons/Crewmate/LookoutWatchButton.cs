@@ -13,7 +13,7 @@ namespace TownOfUs.Buttons.Crewmate;
 
 public sealed class WatchButton : TownOfUsRoleButton<LookoutRole, PlayerControl>
 {
-    public override string Name => "Watch";
+    public override string Name => "观测";
     public override string Keybind => Keybinds.SecondaryAction;
     public override Color TextOutlineColor => TownOfUsColors.Lookout;
     public override float Cooldown => OptionGroupSingleton<LookoutOptions>.Instance.WatchCooldown + MapCooldown;
@@ -38,7 +38,7 @@ public sealed class WatchButton : TownOfUsRoleButton<LookoutRole, PlayerControl>
 
         Target.RpcAddModifier<LookoutWatchedModifier>(PlayerControl.LocalPlayer);  
         
-        var notif1 = Helpers.CreateAndShowNotification($"<b>You will know what roles interact with {Target.Data.PlayerName} if they are not dead by next meeting.</b>", Color.white, new Vector3(0f, 1f, -20f), spr: TouRoleIcons.Lookout.LoadAsset());
+        var notif1 = Helpers.CreateAndShowNotification($"<b>如果{Target.Data.PlayerName}在下次会议前未死亡，你将得知与其互动的所有职业。</b>", Color.white, new Vector3(0f, 1f, -20f), spr: TouRoleIcons.Lookout.LoadAsset());
         notif1.Text.SetOutlineThickness(0.35f);
     }
 }

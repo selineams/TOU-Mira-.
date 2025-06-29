@@ -136,7 +136,7 @@ public sealed class IngameWikiMinigame(nint cppPtr) : Minigame(cppPtr)
     private void LoadSearchScreen()
     {
         SearchScreen.Value.gameObject.SetActive(true);
-        SearchPageText.Value.text = _modifiersSelected ? "Modifiers" : "Roles";
+        SearchPageText.Value.text = _modifiersSelected ? "附加特性" : "职业";
         SearchPageIcon.Value.sprite = _modifiersSelected
             ? TouModifierIcons.Bait.LoadAsset()
             : TouRoleIcons.Warlock.LoadAsset();
@@ -203,7 +203,7 @@ public sealed class IngameWikiMinigame(nint cppPtr) : Minigame(cppPtr)
                     chance = allyMod2.CustomChance;
                 }
 
-                var txt = amount != 0 ? $"Amount: {amount} - Chance: {chance}%" : "Amount: 0";
+                var txt = amount != 0 ? $"数量: {amount} - 概率: {chance}%" : "数量: 0";
 
                 amountTxt.text = $"<font=\"LiberationSans SDF\" material=\"LiberationSans SDF - Chat Message Masked\">{txt}</font>";
                 amountTxt.fontSizeMin = 1.85f;
@@ -253,7 +253,7 @@ public sealed class IngameWikiMinigame(nint cppPtr) : Minigame(cppPtr)
                     var chance = role.GetChance();
                     var amountTxt = newItem.transform.FindChild("AmountTxt").gameObject.GetComponent<TextMeshPro>();
                     
-                    var txt = amount != 0 ? $"Amount: {amount} - Chance: {chance}%" : "Amount: 0";
+                    var txt = amount != 0 ? $"数量: {amount} - 概率: {chance}%" : "数量: 0";
                     amountTxt.text = $"<font=\"LiberationSans SDF\" material=\"LiberationSans SDF - Chat Message Masked\">{txt}</font>";
                     amountTxt.fontSizeMin = 1.85f;
                     amountTxt.fontSizeMax = 1.85f;
@@ -371,13 +371,13 @@ public sealed class IngameWikiMinigame(nint cppPtr) : Minigame(cppPtr)
         {
             if (DetailDescription.Value.gameObject.activeSelf)
             {
-                ToggleAbilitiesBtn.Value.buttonText.text = "Description";
+                ToggleAbilitiesBtn.Value.buttonText.text = "介绍";
                 DetailDescription.Value.gameObject.SetActive(false);
                 AbilityScroller.Value.transform.parent.gameObject.SetActive(true);
             }
             else
             {
-                ToggleAbilitiesBtn.Value.buttonText.text = _selectedItem != null ? _selectedItem.SecondTabName : "Abilities";
+                ToggleAbilitiesBtn.Value.buttonText.text = _selectedItem != null ? _selectedItem.SecondTabName : "技能";
                 DetailDescription.Value.gameObject.SetActive(true);
                 AbilityScroller.Value.transform.parent.gameObject.SetActive(false);
             }

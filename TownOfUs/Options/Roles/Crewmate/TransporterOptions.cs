@@ -7,19 +7,19 @@ namespace TownOfUs.Options.Roles.Crewmate;
 
 public sealed class TransporterOptions : AbstractOptionGroup<TransporterRole>
 {
-    public override string GroupName => "Transporter";
+    public override string GroupName => "传送师";
 
-    [ModdedNumberOption("Transport Cooldown", 10f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
-    public float TransporterCooldown { get; set; } = 25f;
+    [ModdedNumberOption("传送冷却", 10f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
+    public float TransporterCooldown { get; set; } = 15f;
 
-    [ModdedNumberOption("Max Uses", 1f, 15f, 1f, MiraNumberSuffixes.None, "0")]
-    public float MaxNumTransports { get; set; } = 5f;
+    [ModdedNumberOption("最大可用次数", 1f, 15f, 1f, MiraNumberSuffixes.None, "0")]
+    public float MaxNumTransports { get; set; } = 15f;
 
-    /* [ModdedToggleOption("Move While Using Transport Menu")]
+    /* [ModdedToggleOption("使用传送菜单时可移动")]
     public bool MoveWithMenu { get; set; } = true; */
 
-    [ModdedToggleOption("Transporter Can Use Vitals")]
+    [ModdedToggleOption("传送师可用生命体征")]
     public bool CanUseVitals { get; set; } = true;
-    [ModdedToggleOption("Get More Uses From Completing Tasks")]
+    [ModdedToggleOption("完成任务可获得更多可用次数")]
     public bool TaskUses { get; set; } = true;
 }

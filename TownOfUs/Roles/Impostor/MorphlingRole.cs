@@ -18,9 +18,9 @@ namespace TownOfUs.Roles.Impostor;
 
 public sealed class MorphlingRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Morphling";
-    public string RoleDescription => "Transform Into Crewmates";
-    public string RoleLongDescription => "Sample players and morph into them to disguise yourself.\nYour sample clears at the beginning of every round.";
+    public string RoleName => "化形者";
+    public string RoleDescription => "变身为船员";
+    public string RoleLongDescription => "采样玩家并变身为其伪装自己。每回合开始时采样会被清除。";
     public Color RoleColor => TownOfUsColors.Impostor;
     public ModdedRoleTeams Team => ModdedRoleTeams.Impostor;
     public RoleAlignment RoleAlignment => RoleAlignment.ImpostorConcealing;
@@ -71,7 +71,7 @@ public sealed class MorphlingRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITownOf
 
         if (Player.HasModifier<MorphlingMorphModifier>())
         {
-            stringB.Append(CultureInfo.InvariantCulture, $"\n<b>Morphed As:</b> {Sampled!.Data.Color.ToTextColor()}{Sampled.Data.PlayerName}</color>");
+            stringB.Append(CultureInfo.InvariantCulture, $"\n<b>当前变身：</b> {Sampled!.Data.Color.ToTextColor()}{Sampled.Data.PlayerName}</color>");
         }
 
         return stringB;
@@ -79,17 +79,17 @@ public sealed class MorphlingRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITownOf
 
     public string GetAdvancedDescription()
     {
-        return "The Morphling is an Impostor Concealing role that can Sample a player and Morph into it's appearance."
+        return "化形者是一名伪装者隐蔽型角色，可以采样一名玩家并变身为其外观。"
             + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Sample",
-            "Take a DNA sample of a player to morph into them later.",
+        new("采样",
+            "采集一名玩家的DNA，之后可变身为其。",
             TouImpAssets.SampleSprite),
-        new("Morph",
-            "Morph into the appearance of the sampled player, which can be cancelled early.",
+        new("变身",
+            "变身为已采样玩家的外观，可提前取消。",
             TouImpAssets.MorphSprite)
     ];
 }

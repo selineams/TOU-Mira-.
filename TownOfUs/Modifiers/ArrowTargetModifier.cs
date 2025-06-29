@@ -9,7 +9,7 @@ namespace TownOfUs.Modifiers;
 [MiraIgnore]
 public abstract class ArrowTargetModifier(PlayerControl owner, Color color, float updateInterval) : BaseModifier
 {
-    public override string ModifierName => "Arrow Target";
+    public override string ModifierName => "目标箭头";
     public override bool Unique => false;
     public override bool HideOnUi => true;
 
@@ -21,7 +21,7 @@ public abstract class ArrowTargetModifier(PlayerControl owner, Color color, floa
 
     //public override string GetHudString()
     //{
-    //    return ModifierName + $"\nOwner: {Owner.Data.PlayerName}\nTarget: {Player.Data.PlayerName}</color>";
+    //    return ModifierName + $"\n拥有者: {Owner.Data.PlayerName}\n目标: {Player.Data.PlayerName}</color>";
     //}
 
     public override void OnActivate()

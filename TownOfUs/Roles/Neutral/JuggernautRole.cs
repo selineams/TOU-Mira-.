@@ -15,9 +15,9 @@ namespace TownOfUs.Roles.Neutral;
 
 public sealed class JuggernautRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Juggernaut";
-    public string RoleDescription => "Your Power Grows With Every Kill";
-    public string RoleLongDescription => "With each kill your kill cooldown decreases";
+    public string RoleName => "天启";
+    public string RoleDescription => "每次击杀都将增强你的力量";
+    public string RoleLongDescription => "每击杀一人，你的击杀冷却都会减少";
     public Color RoleColor => TownOfUsColors.Juggernaut;
     public ModdedRoleTeams Team => ModdedRoleTeams.Custom;
     public RoleAlignment RoleAlignment => RoleAlignment.NeutralKilling;
@@ -58,7 +58,7 @@ public sealed class JuggernautRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOf
     {
         var stringB = ITownOfUsRole.SetNewTabText(this);
 
-        stringB.Append(CultureInfo.InvariantCulture, $"\n<b>Kill Count:</b> {KillCount}");
+        stringB.Append(CultureInfo.InvariantCulture, $"\n<b>击杀次数:</b> {KillCount}");
 
         return stringB;
     }
@@ -88,6 +88,6 @@ public sealed class JuggernautRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOf
 
     public string GetAdvancedDescription()
     {
-        return "The Juggernaut is a Neutral Killing role that wins by being the last killer alive. For each kill they get, their kill cooldown gets reduced." + MiscUtils.AppendOptionsText(GetType());
+        return "天启是一名中立击杀型角色，通过成为场上最后一名杀手获胜。每击杀一人，击杀冷却都会减少。" + MiscUtils.AppendOptionsText(GetType());
     }
 }

@@ -12,7 +12,7 @@ public static class VanillaSettingsPatch
 
     public static void Postfix(GameOptionsMenu __instance)
     {
-        if (__instance.gameObject.name == "GAME SETTINGS TAB")
+        if (__instance.gameObject.name == "游戏设置选项卡")
         {
             try
             {

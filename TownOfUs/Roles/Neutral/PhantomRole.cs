@@ -20,9 +20,9 @@ namespace TownOfUs.Roles.Neutral;
 
 public sealed class PhantomTouRole(IntPtr cppPtr) : NeutralGhostRole(cppPtr), ITownOfUsRole, IGhostRole, IWikiDiscoverable
 {
-    public override string RoleName => "Phantom";
+    public override string RoleName => "幻影";
     public override string RoleDescription => string.Empty;
-    public override string RoleLongDescription => "Complete all your tasks without being caught!";
+    public override string RoleLongDescription => "在不被抓到的情况下完成你所有的任务！";
     public override Color RoleColor => TownOfUsColors.Phantom;
     public override RoleAlignment RoleAlignment => RoleAlignment.NeutralEvil;
     public override CustomRoleConfiguration Configuration => new(this)
@@ -186,7 +186,7 @@ public sealed class PhantomTouRole(IntPtr cppPtr) : NeutralGhostRole(cppPtr), IT
         CanBeClicked = tasksRemaining <= (int)OptionGroupSingleton<PhantomOptions>.Instance.NumTasksLeftBeforeClickable;
         if (tasksRemaining == (int)OptionGroupSingleton<PhantomOptions>.Instance.NumTasksLeftBeforeClickable && Player.AmOwner)
         {
-            var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.Phantom.ToTextColor()}You are now clickable by players!</b></color>", Color.white, new Vector3(0f, 1f, -20f), spr: TouRoleIcons.Phantom.LoadAsset());
+            var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.Phantom.ToTextColor()}你现在可以被玩家点击了！</b></color>", Color.white, new Vector3(0f, 1f, -20f), spr: TouRoleIcons.Phantom.LoadAsset());
             notif1.Text.SetOutlineThickness(0.35f);
         }
         CompletedAllTasks = completedTasks == Player.myTasks.Count;
@@ -218,6 +218,6 @@ public sealed class PhantomTouRole(IntPtr cppPtr) : NeutralGhostRole(cppPtr), IT
 
     public string GetAdvancedDescription() 
     {
-        return "The Phantom is a Neutral Ghost role that wins the game by finishing their tasks before a alive player has clicked on them." + MiscUtils.AppendOptionsText(GetType());
+        return "幻影是一名中立幽灵型角色，只要在被存活玩家点击之前完成所有任务即可获胜。" + MiscUtils.AppendOptionsText(GetType());
     }
 }

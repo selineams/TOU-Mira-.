@@ -25,9 +25,9 @@ namespace TownOfUs.Roles.Neutral;
 
 public sealed class AmnesiacRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable, ICrewVariant
 {
-    public string RoleName => "Amnesiac";
-    public string RoleDescription => "Remember A Role Of A Deceased Player";
-    public string RoleLongDescription => "Find a dead body to remember and become their role";
+    public string RoleName => "失忆者";
+    public string RoleDescription => "记起死者的身份";
+    public string RoleLongDescription => "找到一具尸体并记起其身份，成为该角色";
     public RoleBehaviour CrewVariant => RoleManager.Instance.GetRole((RoleTypes)RoleId.Get<MysticRole>());
     public Color RoleColor => TownOfUsColors.Amnesiac;
     public ModdedRoleTeams Team => ModdedRoleTeams.Custom;
@@ -134,13 +134,13 @@ public sealed class AmnesiacRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfUs
 
     public string GetAdvancedDescription()
     {
-        return "The Amnesiac is a Neutral Benign role that gains access to a new role from remembering a dead body’s role. Use the role you remember to win the game." + MiscUtils.AppendOptionsText(GetType());
+        return "失忆者是一名中立善良型角色，可以通过记起一具尸体的身份获得新身份。利用你记起的身份赢得游戏。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Remember",
-            "Remember the role of a dead body. If the dead body's role is a unique role, you will remember the base faction's role instead.",
+        new("回忆",
+            "记住一具尸体的身份。如果该尸体的身份是唯一身份，你将记住其基础阵营身份。",
             TouNeutAssets.RememberButtonSprite)    
     ];
 }

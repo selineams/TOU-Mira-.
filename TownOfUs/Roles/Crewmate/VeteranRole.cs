@@ -13,9 +13,9 @@ namespace TownOfUs.Roles.Crewmate;
 
 public sealed class VeteranRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITouCrewRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Veteran";
-    public string RoleDescription => "Alert To Kill Anyone Who Interacts With You";
-    public string RoleLongDescription => "Alert to kill whoever who interacts with you.";
+    public string RoleName => "老兵";
+    public string RoleDescription => "警戒并反杀所有与你互动的人";
+    public string RoleLongDescription => "警戒状态下，杀死所有与你互动的玩家。";
     public Color RoleColor => TownOfUsColors.Veteran;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmateKilling;
@@ -44,15 +44,14 @@ public sealed class VeteranRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITouCrewR
     
     public string GetAdvancedDescription()
     {
-        return
-            "The Veteran is a Crewmate Killing role that can go on alert and kill anyone who interacts with them."
+        return "老兵是一名船员击杀型角色，可以进入警戒状态，杀死所有与其互动的玩家。"
             + MiscUtils.AppendOptionsText(GetType());
     }
     
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Alert",
-            $"When the Veteran is on alert, any player who interacts with them will be instantly killed, with the exception of Pestilence and shielded players, who will ignore the attack.",
+        new("警戒",
+            $"老兵处于警戒状态时，任何与其互动的玩家都会被立即击杀，瘟疫使者和有护盾的玩家除外，他们会无视攻击。",
             TouCrewAssets.AlertSprite),
     ];
 }

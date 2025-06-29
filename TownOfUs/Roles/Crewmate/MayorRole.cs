@@ -21,9 +21,9 @@ namespace TownOfUs.Roles.Crewmate;
 
 public sealed class MayorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITouCrewRole, IWikiDiscoverable, IDoomable, IUnguessable
 {
-    public string RoleName => "Mayor";
-    public string RoleDescription => "Reveal Yourself To Save The Crew";
-    public string RoleLongDescription => "Lead the crew to victory!";
+    public string RoleName => "市长";
+    public string RoleDescription => "现身拯救船员";
+    public string RoleLongDescription => "带领船员取得胜利";
     public Color RoleColor => TownOfUsColors.Mayor;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public bool Revealed { get; set; }
@@ -131,11 +131,11 @@ public sealed class MayorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITouCrewRol
         var stringB = ITownOfUsRole.SetNewTabText(this);
         if (!Revealed)
         {
-            stringB.AppendLine(CultureInfo.InvariantCulture, $"<b>Reveal yourself whenever you wish.</b>");
+            stringB.AppendLine(CultureInfo.InvariantCulture, $"<b>你可以随时现身。</b>");
         }
         if (PlayerControl.LocalPlayer.HasModifier<EgotistModifier>())
         {
-            stringB.AppendLine(CultureInfo.InvariantCulture, $"<b>The Impostors know your true motives.</b>");
+            stringB.AppendLine(CultureInfo.InvariantCulture, $"<b>伪装者知道你的真实意图。</b>");
         }
 
         return stringB;
@@ -235,7 +235,7 @@ public sealed class MayorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITouCrewRol
     }
     public string GetAdvancedDescription()
     {
-        return "The Mayor is a Crewmate Power role that gains three votes and is revealed to all players, also changing their look in meetings.";
+        return "市长是一名船员强力型角色，拥有三票并会向所有玩家公开身份，且在会议中的外观会发生变化。";
     }
 
     [HideFromIl2Cpp]

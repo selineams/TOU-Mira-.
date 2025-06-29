@@ -11,7 +11,7 @@ namespace TownOfUs.Modifiers.Impostor;
 
 public sealed class HypnotisedModifier(PlayerControl hypnotist) : BaseModifier
 {
-    public override string ModifierName => "Hypnotised";
+    public override string ModifierName => "被催眠";
     public override bool HideOnUi => true;
     public PlayerControl Hypnotist { get; } = hypnotist;
 
@@ -80,7 +80,7 @@ public sealed class HypnotisedModifier(PlayerControl hypnotist) : BaseModifier
         if (Player.AmOwner)
         {
             var notif1 = Helpers.CreateAndShowNotification(
-                $"<b>{TownOfUsColors.ImpSoft.ToTextColor()}You are under a Mass Hysteria!</color></b>", Color.white, spr: TouRoleIcons.Hypnotist.LoadAsset());
+                $"<b>{TownOfUsColors.ImpSoft.ToTextColor()}你处于集体癔症状态！</color></b>", Color.white, spr: TouRoleIcons.Hypnotist.LoadAsset());
 
             notif1.Text.SetOutlineThickness(0.35f);
             notif1.transform.localPosition = new Vector3(0f, 1f, -20f);

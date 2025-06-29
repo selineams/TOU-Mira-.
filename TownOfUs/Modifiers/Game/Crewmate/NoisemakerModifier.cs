@@ -13,9 +13,9 @@ namespace TownOfUs.Modifiers.Game.Crewmate;
 
 public sealed class NoisemakerModifier : TouGameModifier, IWikiDiscoverable
 {
-    public override string ModifierName => "Noisemaker";
+    public override string ModifierName => "大嗓门";
     public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.Noisemaker;
-    public override string GetDescription() => $"When you die, you will send an alert to all players on the map for {OptionGroupSingleton<NoisemakerOptions>.Instance.AlertDuration} second(s)";
+    public override string GetDescription() => $"你死亡时，会在地图上向所有玩家发出持续{OptionGroupSingleton<NoisemakerOptions>.Instance.AlertDuration}秒的警报。";
     public override ModifierFaction FactionType => ModifierFaction.CrewmatePostmortem;
 
     public override int GetAssignmentChance() => (int)OptionGroupSingleton<CrewmateModifierOptions>.Instance.NoisemakerChance;
@@ -77,9 +77,7 @@ public sealed class NoisemakerModifier : TouGameModifier, IWikiDiscoverable
     }
     public string GetAdvancedDescription()
     {
-        return
-            $"After your death, you will show a red body indicator to everyone on the map."
-               + MiscUtils.AppendOptionsText(GetType());
+        return $"你死后，所有玩家的地图上会显示一个红色尸体指示器。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     public List<CustomButtonWikiDescription> Abilities { get; } = [];

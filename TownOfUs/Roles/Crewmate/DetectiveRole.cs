@@ -17,9 +17,9 @@ namespace TownOfUs.Roles.Crewmate;
 
 public sealed class DetectiveRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Detective";
-    public string RoleDescription => "Inspect Crime Scenes To Catch The Killer";
-    public string RoleLongDescription => "Inspect crime scenes, then examine players to see if they were at the scene.";
+    public string RoleName => "侧写师";
+    public string RoleDescription => "调查案发现场，找出凶手";
+    public string RoleLongDescription => "调查案发现场，然后检查玩家是否在现场。";
     public Color RoleColor => TownOfUsColors.Detective;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmateInvestigative;
@@ -60,13 +60,13 @@ public sealed class DetectiveRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOf
 
             var deadPlayer = InvestigatingScene?.DeadPlayer!;
 
-            var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.Detective.ToTextColor()}{player.Data.PlayerName} was at the scene of {deadPlayer.Data.PlayerName}'s death!\nThey might be the killer or a witness.</b></color>", Color.white, new Vector3(0f, 1f, -20f), spr: TouRoleIcons.Detective.LoadAsset());
+            var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.Detective.ToTextColor()}{player.Data.PlayerName}曾出现在{deadPlayer.Data.PlayerName}的死亡现场！\n他们可能是凶手或目击者。</b></color>", Color.white, new Vector3(0f, 1f, -20f), spr: TouRoleIcons.Detective.LoadAsset());
             notif1.Text.SetOutlineThickness(0.35f);
         }
         else
         {
             Coroutines.Start(MiscUtils.CoFlash(Color.green));
-            var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.Detective.ToTextColor()}{player.Data.PlayerName} was not at the scene of the crime.</b></color>", Color.white, new Vector3(0f, 1f, -20f), spr: TouRoleIcons.Detective.LoadAsset());
+            var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.Detective.ToTextColor()}{player.Data.PlayerName}未出现在案发现场。</b></color>", Color.white, new Vector3(0f, 1f, -20f), spr: TouRoleIcons.Detective.LoadAsset());
             notif1.Text.SetOutlineThickness(0.35f);
         }
     }
@@ -101,7 +101,7 @@ public sealed class DetectiveRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOf
             return;
 
         // Send the message through chat only visible to the detective
-        var title = $"<color=#{TownOfUsColors.Detective.ToHtmlStringRGBA()}>Detective Report</color>";
+        var title = $"<color=#{TownOfUsColors.Detective.ToHtmlStringRGBA()}>侧写师报告</color>";
         var reported = Player;
         if (br.Body != null) reported = br.Body;
         MiscUtils.AddFakeChat(reported.Data, title, reportMsg, false, true);
@@ -115,17 +115,16 @@ public sealed class DetectiveRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOf
     
     public string GetAdvancedDescription()
     {
-        return "The Detective can inspect a crime scene and examine players to see if they were at the crime scene, flashing red if they were there."
-               + MiscUtils.AppendOptionsText(GetType());
+        return "侧写师可以调查案发现场，并检查玩家是否在现场。如果玩家在现场会闪红光。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Inspect",
-            $"Crime scenes will spawn with all dead bodies. Inspect the crime scene and then examine players to discover clues. During the next meeting, you will recieve a report revealing the killer's role.",
+        new("调查",
+            $"所有尸体都会生成案发现场。调查案发现场后检查玩家以发现线索。下次会议你会收到凶手身份的报告。",
             TouCrewAssets.InspectSprite),
-        new("Examine",
-            $"Examine players after inspecting a crime scene. You will be told if the player was at the crime scene.",
+        new("检查",
+            $"调查案发现场后检查玩家。你会被告知该玩家是否在案发现场。",
             TouCrewAssets.ExamineSprite),
     ];
 }

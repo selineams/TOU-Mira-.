@@ -12,7 +12,7 @@ namespace TownOfUs.Buttons.Impostor;
 
 public sealed class MorphlingMorphButton : TownOfUsRoleButton<MorphlingRole>, IAftermathableButton
 {
-    public override string Name => "Morph";
+    public override string Name => "化形";
     public override string Keybind => Keybinds.SecondaryAction;
     public override Color TextOutlineColor => TownOfUsColors.Impostor;
     public override float Cooldown => OptionGroupSingleton<MorphlingOptions>.Instance.MorphlingCooldown + MapCooldown;

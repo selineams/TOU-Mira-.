@@ -9,9 +9,9 @@ namespace TownOfUs.Modifiers.Game.Universal;
 
 public sealed class SixthSenseModifier : UniversalGameModifier, IWikiDiscoverable
 {
-    public override string ModifierName => "Sixth Sense";
+    public override string ModifierName => "第六感";
     public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.SixthSense;
-    public override string GetDescription() => "Know when someone interacts with you.";
+    public override string GetDescription() => "有人对你使用技能时你会知晓。";
     public override ModifierFaction FactionType => ModifierFaction.UniversalPassive;
 
     public override int GetAssignmentChance() => (int)OptionGroupSingleton<UniversalModifierOptions>.Instance.SixthSenseChance;
@@ -22,8 +22,7 @@ public sealed class SixthSenseModifier : UniversalGameModifier, IWikiDiscoverabl
     }
     public string GetAdvancedDescription()
     {
-        return
-            "You will know when someone uses their ability on you.";
+        return "有人对你使用技能时你会知晓。";
     }
 
     public List<CustomButtonWikiDescription> Abilities { get; } = [];

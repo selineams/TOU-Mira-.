@@ -17,9 +17,9 @@ namespace TownOfUs.Modifiers.Game.Universal;
 
 public sealed class ButtonBarryModifier : UniversalGameModifier, IWikiDiscoverable
 {
-    public override string ModifierName => "Button Barry";
+    public override string ModifierName => "执钮人";
     public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.ButtonBarry;
-    public override string GetDescription() => "You can call a meeting\n from anywhere on the map.";
+    public override string GetDescription() => "你可以在地图任意位置召开会议。";
     public int Priority { get; set; } = 5;
     public override ModifierFaction FactionType => ModifierFaction.UniversalUtility;
 
@@ -50,14 +50,13 @@ public sealed class ButtonBarryModifier : UniversalGameModifier, IWikiDiscoverab
 
     public string GetAdvancedDescription()
     {
-        return "You can button from anywhere on the map."
-               + MiscUtils.AppendOptionsText(GetType());
+        return "你可以在地图任意位置按下按钮召开紧急会议。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Button",
-            $"You can trigger an emergency meeting from across the map, which you may do {OptionGroupSingleton<ButtonBarryOptions>.Instance.MaxNumButtons} time(s) per game.",
+        new("按钮",
+            $"你可以在地图任意位置触发紧急会议，每局可用{OptionGroupSingleton<ButtonBarryOptions>.Instance.MaxNumButtons}次。",
             TouAssets.BarryButtonSprite),
     ];
     

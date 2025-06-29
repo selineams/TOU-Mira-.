@@ -13,7 +13,7 @@ namespace TownOfUs.Buttons.Crewmate;
 
 public sealed class HunterStalkButton : TownOfUsRoleButton<HunterRole, PlayerControl>
 {
-    public override string Name => "Stalk";
+    public override string Name => "盯梢";
     public override string Keybind => Keybinds.SecondaryAction;
     public override Color TextOutlineColor => TownOfUsColors.Hunter;
     public override float Cooldown => OptionGroupSingleton<HunterOptions>.Instance.HunterStalkCooldown + MapCooldown;
@@ -29,7 +29,7 @@ public sealed class HunterStalkButton : TownOfUsRoleButton<HunterRole, PlayerCon
             Logger<TownOfUsPlugin>.Error("Stalk: Target is null");
             return;
         }  
-        var notif1 = Helpers.CreateAndShowNotification($"<b>If {Target.Data.PlayerName} uses an ability, you will be able to kill them at any time in the round.</b>", Color.white, new Vector3(0f, 1f, -20f), spr: TouRoleIcons.Hunter.LoadAsset());
+        var notif1 = Helpers.CreateAndShowNotification($"<b>如果{Target.Data.PlayerName}使用了技能，你将在本回合内可以随时击杀TA。</b>", Color.white, new Vector3(0f, 1f, -20f), spr: TouRoleIcons.Hunter.LoadAsset());
         notif1.Text.SetOutlineThickness(0.35f);
 
         Target.RpcAddModifier<HunterStalkedModifier>(PlayerControl.LocalPlayer);

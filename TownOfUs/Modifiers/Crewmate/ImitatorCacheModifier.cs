@@ -13,7 +13,7 @@ namespace TownOfUs.Modifiers.Crewmate;
 
 public sealed class ImitatorCacheModifier() : BaseModifier, ICachedRole
 {
-    public override string ModifierName => "Imitator";
+    public override string ModifierName => "模仿者";
     public override bool HideOnUi => true;
     public bool ShowCurrentRoleFirst => true;
     public RoleBehaviour CachedRole => RoleManager.Instance.GetRole((RoleTypes)RoleId.Get<ImitatorRole>());

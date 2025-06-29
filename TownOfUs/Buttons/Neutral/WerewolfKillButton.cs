@@ -11,7 +11,7 @@ namespace TownOfUs.Buttons.Neutral;
 
 public sealed class WerewolfKillButton : TownOfUsRoleButton<WerewolfRole, PlayerControl>, IDiseaseableButton, IKillButton
 {
-    public override string Name => "Kill";
+    public override string Name => "击杀";
     public override string Keybind => Keybinds.PrimaryAction;
     public override Color TextOutlineColor => TownOfUsColors.Werewolf;
     public override float Cooldown => OptionGroupSingleton<WerewolfOptions>.Instance.RampageKillCooldown + MapCooldown;

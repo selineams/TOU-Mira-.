@@ -14,9 +14,9 @@ namespace TownOfUs.Modifiers.Game.Crewmate;
 
 public sealed class InvestigatorModifier : TouGameModifier, IWikiDiscoverable
 {
-    public override string ModifierName => "Investigator";
+    public override string ModifierName => "调查员";
     public override LoadableAsset<Sprite>? ModifierIcon => TouRoleIcons.Investigator;
-    public override string GetDescription() => "You can see everyone's footprints.";
+    public override string GetDescription() => "你可以看到所有人的脚印。";
     public override ModifierFaction FactionType => ModifierFaction.CrewmateUtility;
 
     public override int GetAssignmentChance() => (int)OptionGroupSingleton<CrewmateModifierOptions>.Instance.InvestigatorChance;
@@ -44,9 +44,7 @@ public sealed class InvestigatorModifier : TouGameModifier, IWikiDiscoverable
     }
     public string GetAdvancedDescription()
     {
-        return
-            "The Investigator can see player's footprints throughout the game. Swooped players' footprints will not be visible to the Investigator."
-            + MiscUtils.AppendOptionsText(CustomRoleSingleton<InvestigatorRole>.Instance.GetType());
+        return "调查员可以在游戏中看到所有玩家的脚印，被变形的玩家脚印对调查员不可见。" + MiscUtils.AppendOptionsText(CustomRoleSingleton<InvestigatorRole>.Instance.GetType());
     }
 
     public List<CustomButtonWikiDescription> Abilities { get; } = [];

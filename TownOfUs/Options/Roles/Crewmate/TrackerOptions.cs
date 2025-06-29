@@ -8,24 +8,24 @@ namespace TownOfUs.Options.Roles.Crewmate;
 
 public sealed class TrackerOptions : AbstractOptionGroup<TrackerTouRole>
 {
-    public override string GroupName => "Tracker";
+    public override string GroupName => "追踪者";
 
-    [ModdedNumberOption("Track Cooldown", 1f, 30f, 1f, MiraNumberSuffixes.Seconds)]
-    public float TrackCooldown { get; set; } = 20f;
+    [ModdedNumberOption("追踪冷却", 1f, 30f, 1f, MiraNumberSuffixes.Seconds)]
+    public float TrackCooldown { get; set; } = 10f;
 
-    [ModdedNumberOption("Max Number Of Tracks", 1f, 15f, 1f, MiraNumberSuffixes.None, "0")]
+    [ModdedNumberOption("最大追踪次数", 1f, 15f, 1f, MiraNumberSuffixes.None, "0")]
     public float MaxTracks { get; set; } = 5f;
 
-    [ModdedNumberOption("Arrow Update Interval", 0.5f, 15f, 0.5f, MiraNumberSuffixes.Seconds)]
-    public float UpdateInterval { get; set; } = 5f;
+    [ModdedNumberOption("箭头刷新间隔", 0.5f, 15f, 0.5f, MiraNumberSuffixes.Seconds)]
+    public float UpdateInterval { get; set; } = 2.5f;
 
-    [ModdedToggleOption("Tracker Arrows Make Sound On Death")]
+    [ModdedToggleOption("死亡时追踪者箭头发声")]
     public bool SoundOnDeactivate { get; set; } = true;
 
-    [ModdedToggleOption("Tracker Arrows Reset After Each Round")]
+    [ModdedToggleOption("每回合重置追踪箭头")]
     public bool ResetOnNewRound { get; set; } = true;
 
-    public ModdedToggleOption TaskUses { get; } = new ModdedToggleOption("Get More Uses From Completing Tasks", false)
+    public ModdedToggleOption TaskUses { get; } = new ModdedToggleOption("完成任务可获得更多追踪次数", true)
     {
         Visible = () => !OptionGroupSingleton<TrackerOptions>.Instance.ResetOnNewRound,
     };

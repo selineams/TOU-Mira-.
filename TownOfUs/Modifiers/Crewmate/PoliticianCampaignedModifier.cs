@@ -6,7 +6,7 @@ namespace TownOfUs.Modifiers.Crewmate;
 
 public sealed class PoliticianCampaignedModifier(PlayerControl politician) : BaseModifier
 {
-    public override string ModifierName => "Campaigned";
+    public override string ModifierName => "被游说拉票";
     public override bool HideOnUi => true;
 
     public PlayerControl Politician { get; } = politician;

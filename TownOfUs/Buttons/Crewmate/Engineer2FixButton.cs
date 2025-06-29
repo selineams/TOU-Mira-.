@@ -9,7 +9,7 @@ namespace TownOfUs.Buttons.Crewmate;
 
 public sealed class EngineerFixButton : TownOfUsRoleButton<EngineerTouRole>
 {
-    public override string Name => "Fix";
+    public override string Name => "修理";
     public override string Keybind => Keybinds.SecondaryAction;
     public override Color TextOutlineColor => TownOfUsColors.Engineer;
     public override float Cooldown => 0.001f + MapCooldown;

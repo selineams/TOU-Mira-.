@@ -22,9 +22,9 @@ namespace TownOfUs.Roles.Crewmate;
 
 public sealed class MedicRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Medic";
-    public string RoleDescription => "Create A Shield To Protect A Crewmate";
-    public string RoleLongDescription => "Protect a crewmate with a shield";
+    public string RoleName => "法医";
+    public string RoleDescription => "为船员加护盾进行保护";
+    public string RoleLongDescription => "用护盾保护一名船员";
     public Color RoleColor => TownOfUsColors.Medic;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmateProtective;
@@ -86,7 +86,7 @@ public sealed class MedicRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsRo
 
                 renderer.sprite = colorType switch
                 {
-                    "lighter" => TouAssets.LighterSprite.LoadAsset(),
+                    "浅色" => TouAssets.LighterSprite.LoadAsset(),
                     _ => TouAssets.DarkerSprite.LoadAsset(),
                 };
             }
@@ -110,7 +110,7 @@ public sealed class MedicRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsRo
 
         if (Shielded != null)
         {
-            stringB.Append(CultureInfo.InvariantCulture, $"\n<b>Shielded: </b>{Color.white.ToTextColor()}{Shielded.Data.PlayerName}</color>");
+            stringB.Append(CultureInfo.InvariantCulture, $"\n<b>被上盾: </b>{Color.white.ToTextColor()}{Shielded.Data.PlayerName}</color>");
         }
 
         return stringB;
@@ -187,7 +187,7 @@ public sealed class MedicRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsRo
         if (string.IsNullOrWhiteSpace(reportMsg))
             return;
 
-        var title = $"<color=#{TownOfUsColors.Medic.ToHtmlStringRGBA()}>Medic Report</color>";
+        var title = $"<color=#{TownOfUsColors.Medic.ToHtmlStringRGBA()}>法医报告</color>";
         var reported = Player;
         if (br.Body != null) reported = br.Body;
         MiscUtils.AddFakeChat(reported.Data, title, reportMsg, false, true);
@@ -197,41 +197,41 @@ public sealed class MedicRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsRo
     {
         var colors = new Dictionary<int, string>
         {
-            { 0, "darker" }, // red
-            { 1, "darker" }, // blue
-            { 2, "darker" }, // green
-            { 3, "lighter" }, // pink
-            { 4, "lighter" }, // orange
-            { 5, "lighter" }, // yellow
-            { 6, "darker" }, // black
-            { 7, "lighter" }, // white
-            { 8, "darker" }, // purple
-            { 9, "darker" }, // brown
-            { 10, "lighter" }, // cyan
-            { 11, "lighter" }, // lime
-            { 12, "darker" }, // maroon
-            { 13, "lighter" }, // rose
-            { 14, "lighter" }, // banana
-            { 15, "darker" }, // gray
-            { 16, "darker" }, // tan
-            { 17, "lighter" }, // coral
-            { 18, "darker" }, // watermelon
-            { 19, "darker" }, // chocolate
-            { 20, "lighter" }, // sky blue
-            { 21, "lighter" }, // beige
-            { 22, "darker" }, // magenta
-            { 23, "lighter" }, // turquoise/Sea Green
-            { 24, "lighter" }, // lilac
-            { 25, "darker" }, // olive
-            { 26, "lighter" }, // azure
-            { 27, "darker" }, // plum
-            { 28, "darker" }, // jungle
-            { 29, "lighter" }, // mint
-            { 30, "lighter" }, // chartreuse
-            { 31, "darker" }, // macau
-            { 32, "lighter" }, // gold
-            { 33, "darker" }, // tawny
-            { 34, "lighter" }, // rainbow
+            { 0, "深色" }, // 红
+            { 1, "深色" }, // 蓝
+            { 2, "深色" }, // 绿
+            { 3, "浅色" }, // 粉
+            { 4, "浅色" }, // 橙
+            { 5, "浅色" }, // 黄
+            { 6, "深色" }, // 黑
+            { 7, "浅色" }, // 白
+            { 8, "深色" }, // 紫
+            { 9, "深色" }, // 棕
+            { 10, "浅色" }, // 青
+            { 11, "浅色" }, // 黄绿
+            { 12, "深色" }, // 栗
+            { 13, "浅色" }, // 玫红
+            { 14, "浅色" }, // 香蕉
+            { 15, "深色" }, // 灰
+            { 16, "深色" }, // 棕褐
+            { 17, "浅色" }, // 珊瑚
+            { 18, "深色" }, // 西瓜
+            { 19, "深色" }, // 巧克力
+            { 20, "浅色" }, // 天蓝
+            { 21, "浅色" }, // 米色
+            { 22, "深色" }, // 洋红
+            { 23, "浅色" }, // 绿松石
+            { 24, "浅色" }, // 淡紫
+            { 25, "深色" }, // 橄榄
+            { 26, "浅色" }, // 蔚蓝
+            { 27, "深色" }, // 李子
+            { 28, "深色" }, // 丛林
+            { 29, "浅色" }, // 薄荷
+            { 30, "浅色" }, // 黄绿
+            { 31, "深色" }, // 澳门
+            { 32, "浅色" }, // 金色
+            { 33, "深色" }, // 黄褐
+            { 34, "浅色" }, // 彩虹
         };
 
         var typeOfColor = colors[player.Data.DefaultOutfit.ColorId];
@@ -325,14 +325,14 @@ public sealed class MedicRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsRo
 
     public string GetAdvancedDescription()
     {
-        return "The Medic is a Crewmate Protective role that can give a Shield to player."
+        return "法医是一名船员保护型角色，可以为一名玩家加护盾，保护其免受他人击杀。"
             + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new ("Shield",
-            "Give a Shield to a player, protecting them from being killed by others",
+        new ("护盾",
+            "为一名玩家加护盾，保护其免受他人击杀",
             TouCrewAssets.MedicSprite)    
     ];
 }

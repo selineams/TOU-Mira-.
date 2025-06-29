@@ -12,7 +12,7 @@ namespace TownOfUs.Buttons.Crewmate;
 
 public sealed class PlumberFlushButton : TownOfUsRoleButton<PlumberRole, Vent>
 {
-    public override string Name => "Flush";
+    public override string Name => "冲洗";
     public override string Keybind => Keybinds.SecondaryAction;
     public override Color TextOutlineColor => TownOfUsColors.Plumber;
     public override float Cooldown => OptionGroupSingleton<PlumberOptions>.Instance.FlushCooldown + MapCooldown;

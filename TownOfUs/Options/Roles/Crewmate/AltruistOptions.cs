@@ -7,17 +7,17 @@ namespace TownOfUs.Options.Roles.Crewmate;
 
 public sealed class AltruistOptions : AbstractOptionGroup<AltruistRole>
 {
-    public override string GroupName => "Altruist";
+    public override string GroupName => "殉道者";
 
-    [ModdedNumberOption("Revive Duration", 1f, 15f, 1f, MiraNumberSuffixes.Seconds)]
-    public float ReviveDuration { get; set; } = 10f;
+    [ModdedNumberOption("复活持续时间", 1f, 15f, 1f, MiraNumberSuffixes.Seconds)]
+    public float ReviveDuration { get; set; } = 5f;
 
-    [ModdedNumberOption("Revive Range", 0.05f, 1f, 0.05f, MiraNumberSuffixes.Multiplier, "0.00")]
+    [ModdedNumberOption("复活范围", 0.05f, 1f, 0.05f, MiraNumberSuffixes.Multiplier, "0.00")]
     public float ReviveRange { get; set; } = 0.25f;
 
-    [ModdedNumberOption("Revive Uses", 1f, 5f, 1f, MiraNumberSuffixes.None, "0")]
-    public float MaxRevives { get; set; } = 2;
+    [ModdedNumberOption("复活次数", 1f, 5f, 1f, MiraNumberSuffixes.None, "0")]
+    public float MaxRevives { get; set; } = 3;
 
-    [ModdedToggleOption("Hide Bodies at Beginning Of Revive")]
+    [ModdedToggleOption("复活开始时隐藏尸体")]
     public bool HideAtBeginningOfRevive { get; set; } = false;
 }

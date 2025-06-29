@@ -10,7 +10,7 @@ namespace TownOfUs.Buttons.Modifiers;
 
 public sealed class DisperseButton : TownOfUsButton
 {
-    public override string Name => "Disperse";
+    public override string Name => "分散";
     public override string Keybind => Keybinds.ModifierAction;
     public override Color TextOutlineColor => TownOfUsColors.Impostor;
     public override float Cooldown => 0.001f + MapCooldown;

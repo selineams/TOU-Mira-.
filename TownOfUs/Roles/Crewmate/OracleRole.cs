@@ -17,9 +17,9 @@ namespace TownOfUs.Roles.Crewmate;
 
 public sealed class OracleRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Oracle";
-    public string RoleDescription => "Get Other Player's To Confess Their Sins";
-    public string RoleLongDescription => "Get another player to confess on your passing";
+    public string RoleName => "神谕者";
+    public string RoleDescription => "让其他玩家坦白他们的身份";
+    public string RoleLongDescription => "在你死亡时让其他玩家坦白身份";
     public Color RoleColor => TownOfUsColors.Oracle;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmateProtective;
@@ -54,18 +54,18 @@ public sealed class OracleRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsR
 
         var report = BuildReport(confessing);
 
-        var title = $"<color=#{TownOfUsColors.Oracle.ToHtmlStringRGBA()}>Oracle Confession</color>";
+        var title = $"<color=#{TownOfUsColors.Oracle.ToHtmlStringRGBA()}>神谕者坦白</color>";
         MiscUtils.AddFakeChat(confessing.Data, title, report, false, true);
     }
 
     public static string BuildReport(PlayerControl player)
     {
         if (player.HasDied())
-            return "Your confessor failed to survive so you received no confession";
+            return "你的坦白者未能存活，因此没有获得坦白信息";
 
         var allPlayers = PlayerControl.AllPlayerControls.ToArray().Where(x => !x.HasDied() && x != PlayerControl.LocalPlayer && x != player).ToList();
         if (allPlayers.Count < 2)
-            return "Too few people alive to receive a confessional";
+            return "存活人数过少，无法获得坦白信息";
 
         var options = OptionGroupSingleton<OracleOptions>.Instance;
 
@@ -76,7 +76,7 @@ public sealed class OracleRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsR
             (x.Is(RoleAlignment.NeutralBenign) && options.ShowNeutralBenignAsEvil))).ToList();
 
         if (evilPlayers.Count == 0)
-            return $"{player.GetDefaultAppearance().PlayerName} confesses to knowing that there are no more evil players!";
+            return $"{player.GetDefaultAppearance().PlayerName} 坦白得知场上已无恶人！";
 
         allPlayers.Shuffle();
         evilPlayers.Shuffle();
@@ -92,13 +92,13 @@ public sealed class OracleRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsR
         {
             var thirdPlayer = allPlayers[1];
 
-            return $"{player.GetDefaultAppearance().PlayerName} confesses to knowing that they, {secondPlayer.GetDefaultAppearance().PlayerName} and/or {thirdPlayer.GetDefaultAppearance().PlayerName} is evil!";
+            return $"{player.GetDefaultAppearance().PlayerName} 坦白得知自己、{secondPlayer.GetDefaultAppearance().PlayerName} 和/或 {thirdPlayer.GetDefaultAppearance().PlayerName} 是恶人！";
         }
         else
         {
             var thirdPlayer = evilPlayers[0];
 
-            return $"{player.GetDefaultAppearance().PlayerName} confesses to knowing that they, {secondPlayer.GetDefaultAppearance().PlayerName} and/or {thirdPlayer.GetDefaultAppearance().PlayerName} is evil!";
+            return $"{player.GetDefaultAppearance().PlayerName} 坦白得知自己、{secondPlayer.GetDefaultAppearance().PlayerName} 和/或 {thirdPlayer.GetDefaultAppearance().PlayerName} 是恶人！";
         }
     }
 
@@ -128,17 +128,17 @@ public sealed class OracleRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsR
     public string GetAdvancedDescription()
     {
         return
-            $"The Oracle is a Crewmate Protective role that can get another player to confess (revealing their faction with {OptionGroupSingleton<OracleOptions>.Instance.RevealAccuracyPercentage}% accuracy if the Oracle dies) or can protect a player from meeting abilities."
+            $"神谕者是一名船员保护型角色，可以让一名玩家坦白（当神谕者死亡时，以{OptionGroupSingleton<OracleOptions>.Instance.RevealAccuracyPercentage}%的准确率揭示其阵营），也可以保护一名玩家免受会议技能影响。"
                + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Bless",
-            $"Blessing a player prevents any harm from being done to them in the meeting.",
+        new("佑护",
+            $"佑护一名玩家，使其在会议中免受任何伤害。",
             TouCrewAssets.BlessSprite),
-        new("Confess",
-            $"Make a player confess in a meeting, giving a vision of 3 possible evils (including the confessor), and also reveal their faction to everyone with {OptionGroupSingleton<OracleOptions>.Instance.RevealAccuracyPercentage}% accuracy when the Oracle dies.",
+        new("坦白",
+            $"让一名玩家在会议中坦白身份，展示3个可能的恶人（包括坦白者），并在神谕者死亡时以{OptionGroupSingleton<OracleOptions>.Instance.RevealAccuracyPercentage}%的准确率向所有人揭示其阵营。",
             TouCrewAssets.ConfessSprite),
     ];
 }

@@ -13,9 +13,9 @@ namespace TownOfUs.Modifiers.Game.Crewmate;
 
 public sealed class RottingModifier : TouGameModifier, IWikiDiscoverable
 {
-    public override string ModifierName => "Rotting";
+    public override string ModifierName => "腐烂";
     public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.Rotting;
-    public override string GetDescription() => $"Your body will rot away after {OptionGroupSingleton<RottingOptions>.Instance.RotDelay} second(s).";
+    public override string GetDescription() => $"你的尸体将在{OptionGroupSingleton<RottingOptions>.Instance.RotDelay}秒后腐烂消失。";
     public override ModifierFaction FactionType => ModifierFaction.CrewmatePostmortem;
 
     public override int GetAssignmentChance() => (int)OptionGroupSingleton<CrewmateModifierOptions>.Instance.RottingChance;
@@ -35,8 +35,7 @@ public sealed class RottingModifier : TouGameModifier, IWikiDiscoverable
     }
     public string GetAdvancedDescription()
     {
-        return
-            $"After {OptionGroupSingleton<RottingOptions>.Instance.RotDelay} second(s), your body will rot away, preventing you from being reported";
+        return $"{OptionGroupSingleton<RottingOptions>.Instance.RotDelay}秒后，你的尸体会腐烂，无法被报告。";
     }
 
     public List<CustomButtonWikiDescription> Abilities { get; } = [];

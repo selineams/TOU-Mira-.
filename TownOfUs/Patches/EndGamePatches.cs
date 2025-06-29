@@ -62,7 +62,7 @@ public static class EndGamePatches
                 if (!string.IsNullOrEmpty(role.NiceName.Trim()))
                     roleName = role.NiceName;
                 else
-                    roleName = role.Player.IsImpostor() ? "Impostor" : "Crewmate";
+                    roleName = role.Player.IsImpostor() ? "内鬼" : "船员";
 
                 playerRoleString.Append(TownOfUsPlugin.Culture, $"{color.ToTextColor()}{roleName}</color> > ");
             }
@@ -99,11 +99,11 @@ public static class EndGamePatches
             {
                 if ((playerControl.Data.Tasks.Count - playerControl.GetTasksLeft()) / playerControl.Data.Tasks.Count == 1)
                 {
-                    playerRoleString.Append(TownOfUsPlugin.Culture, $" | Tasks: {Color.green.ToTextColor()}{playerControl.Data.Tasks.Count - playerControl.GetTasksLeft()}/{playerControl.Data.Tasks.Count}</color>");
+                    playerRoleString.Append(TownOfUsPlugin.Culture, $" | 任务: {Color.green.ToTextColor()}{playerControl.Data.Tasks.Count - playerControl.GetTasksLeft()}/{playerControl.Data.Tasks.Count}</color>");
                 }
                 else
                 {
-                    playerRoleString.Append(TownOfUsPlugin.Culture, $" | Tasks: {playerControl.Data.Tasks.Count - playerControl.GetTasksLeft()}/{playerControl.Data.Tasks.Count}");
+                    playerRoleString.Append(TownOfUsPlugin.Culture, $" | 任务: {playerControl.Data.Tasks.Count - playerControl.GetTasksLeft()}/{playerControl.Data.Tasks.Count}");
                 }
             }
 
@@ -111,26 +111,26 @@ public static class EndGamePatches
 
             if (killedPlayers > 0 && !playerControl.IsCrewmate() && !playerControl.Is(RoleAlignment.NeutralEvil))
             {
-                playerRoleString.Append(TownOfUsPlugin.Culture, $" |{TownOfUsColors.Impostor.ToTextColor()} Kills: {killedPlayers}</color>");
+                playerRoleString.Append(TownOfUsPlugin.Culture, $" |{TownOfUsColors.Impostor.ToTextColor()} 击杀: {killedPlayers}</color>");
             }
 
             if (GameHistory.PlayerStats.TryGetValue(playerControl.PlayerId, out var stats))
             {
                 if (stats.CorrectKills > 0)
                 {
-                    playerRoleString.Append(TownOfUsPlugin.Culture, $" | {Color.green.ToTextColor()}Correct Kills: {stats.CorrectKills}</color>");
+                    playerRoleString.Append(TownOfUsPlugin.Culture, $" | {Color.green.ToTextColor()}正确击杀: {stats.CorrectKills}</color>");
                 }
                 if (stats.IncorrectKills > 0)
                 {
-                    playerRoleString.Append(TownOfUsPlugin.Culture, $" | {TownOfUsColors.Impostor.ToTextColor()}Incorrect Kills: {stats.IncorrectKills}</color>");
+                    playerRoleString.Append(TownOfUsPlugin.Culture, $" | {TownOfUsColors.Impostor.ToTextColor()}错误击杀: {stats.IncorrectKills}</color>");
                 }
                 if (stats.CorrectAssassinKills > 0)
                 {
-                    playerRoleString.Append(TownOfUsPlugin.Culture, $" | {Color.green.ToTextColor()}Correct Guesses: {stats.CorrectAssassinKills}</color>");
+                    playerRoleString.Append(TownOfUsPlugin.Culture, $" | {Color.green.ToTextColor()}正确猜测: {stats.CorrectAssassinKills}</color>");
                 }
                 if (stats.IncorrectAssassinKills > 0)
                 {
-                    playerRoleString.Append(TownOfUsPlugin.Culture, $" | {TownOfUsColors.Impostor.ToTextColor()}Incorrect Guesses: {stats.IncorrectAssassinKills}</color>");
+                    playerRoleString.Append(TownOfUsPlugin.Culture, $" | {TownOfUsColors.Impostor.ToTextColor()}错误猜测: {stats.IncorrectAssassinKills}</color>");
                 }
             }
 
@@ -193,8 +193,8 @@ public static class EndGamePatches
         var roleSummaryText2 = new StringBuilder();
         var roleSummaryTextFull = new StringBuilder();
         var roleSummaryBackup = new StringBuilder();
-        roleSummaryText1.AppendLine("End game summary:");
-        roleSummaryTextFull.AppendLine("End game summary:");
+        roleSummaryText1.AppendLine("结算总结：");
+        roleSummaryTextFull.AppendLine("结算总结：");
         var count = 0;
         foreach (var data in EndGameData.PlayerRecords)
         {
@@ -255,7 +255,7 @@ public static class EndGamePatches
         GameSummaryButton.transform.position += Vector3.up * 1.65f;
         if (GameSummaryButton.transform.GetChild(1).TryGetComponent<TextTranslatorTMP>(out var tmp2))
         {
-            tmp2.defaultStr = $"<size=70%>Game</size>\n<size=55%>Summary</size>";
+            tmp2.defaultStr = $"<size=70%>结算</size>\n<size=55%>总结</size>";
             tmp2.TargetText = StringNames.None;
             tmp2.ResetText();
         }

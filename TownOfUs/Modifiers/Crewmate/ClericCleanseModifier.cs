@@ -11,7 +11,7 @@ namespace TownOfUs.Modifiers.Crewmate;
 
 public sealed class ClericCleanseModifier(PlayerControl cleric) : BaseModifier
 {
-    public override string ModifierName => "Cleric Cleanse";
+    public override string ModifierName => "牧师净化";
     public override bool HideOnUi => true;
     public PlayerControl Cleric { get; } = cleric;
 
@@ -39,7 +39,7 @@ public sealed class ClericCleanseModifier(PlayerControl cleric) : BaseModifier
         // Logger<TownOfUsPlugin>.Error($"ClericCleanseModifier.OnMeetingStart");
         if (Cleric.AmOwner)
         {
-            var text = new StringBuilder($"Cleansed effects on {Player.Data.PlayerName}:");
+            var text = new StringBuilder($"净化了{Player.Data.PlayerName}身上的效果:");
 
             foreach (var effect in Effects)
             {
@@ -48,7 +48,7 @@ public sealed class ClericCleanseModifier(PlayerControl cleric) : BaseModifier
 
             text = text.Remove(text.Length - 1, 1);
 
-            var title = $"<color=#{TownOfUsColors.Cleric.ToHtmlStringRGBA()}>Cleric Feedback</color>";
+            var title = $"<color=#{TownOfUsColors.Cleric.ToHtmlStringRGBA()}>牧师反馈</color>";
             MiscUtils.AddFakeChat(PlayerControl.LocalPlayer.Data, title, text.ToString(), false, true);
         }
     }

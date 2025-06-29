@@ -22,9 +22,9 @@ namespace TownOfUs.Roles.Neutral;
 
 public sealed class VampireRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Vampire";
-    public string RoleDescription => "Convert Crewmates And Kill The Rest";
-    public string RoleLongDescription => "Bite all other players";
+    public string RoleName => "吸血魔";
+    public string RoleDescription => "转化船员并杀死其他人";
+    public string RoleLongDescription => "咬所有其他玩家";
     public Color RoleColor => TownOfUsColors.Vampire;
     public ModdedRoleTeams Team => ModdedRoleTeams.Custom;
     public RoleAlignment RoleAlignment => RoleAlignment.NeutralKilling;
@@ -111,12 +111,12 @@ public sealed class VampireRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfUsR
     [HideFromIl2Cpp]
     public StringBuilder SetTabText()
     {
-        var alignment = RoleAlignment.ToDisplayString().Replace("Neutral", "<color=#8A8A8AFF>Neutral");
+        var alignment = RoleAlignment.ToDisplayString().Replace("中立", "<color=#8A8A8AFF>中立");
 
 
         var stringB = new StringBuilder();
-        stringB.AppendLine(CultureInfo.InvariantCulture, $"{RoleColor.ToTextColor()}You are a<b> {RoleName}.</b></color>");
-        stringB.AppendLine(CultureInfo.InvariantCulture, $"<size=60%>Alignment: <b>{alignment}</color></b></size>");
+        stringB.AppendLine(CultureInfo.InvariantCulture, $"{RoleColor.ToTextColor()}你是<b> {RoleName}。</b></color>");
+        stringB.AppendLine(CultureInfo.InvariantCulture, $"<size=60%>阵营: <b>{alignment}</color></b></size>");
         stringB.Append("<size=70%>");
         stringB.AppendLine(CultureInfo.InvariantCulture, $"{RoleLongDescription}");
 
@@ -125,13 +125,13 @@ public sealed class VampireRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfUsR
 
     public string GetAdvancedDescription()
     {
-        return "The Vampire is a Neutral Killing role that wins by being the last killer(s) alive. They can bite, changing others into Vampires, or kill players." + MiscUtils.AppendOptionsText(GetType());
+        return "吸血魔是一名中立击杀型角色，通过成为场上最后的杀手获胜。可以咬人将其转化为吸血魔，或直接击杀玩家。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Bite",
-            "Bite a player. If the bitten player is a Crewmate and you have not exceeded the maximum amount of vampires in a game yet. You convert them into a vampire. Otherwise they just get killed.",
+        new("咬击",
+            "咬一名玩家。如果被咬者是船员且未超过最大吸血魔数量，则会转化为吸血魔，否则直接击杀。",
             TouNeutAssets.BiteSprite)
     ];
 }

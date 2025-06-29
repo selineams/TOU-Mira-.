@@ -7,11 +7,11 @@ namespace TownOfUs.Options.Roles.Neutral;
 
 public sealed class SoulCollectorOptions : AbstractOptionGroup<SoulCollectorRole>
 {
-    public override string GroupName => "Soul Collector";
+    public override string GroupName => "噬魂兽";
 
-    [ModdedNumberOption("Reap Cooldown", 10f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
-    public float KillCooldown { get; set; } = 25f;
+    [ModdedNumberOption("收割冷却", 10f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
+    public float KillCooldown { get; set; } = 20f;
 
-    [ModdedToggleOption("Soul Collector Can Vent")]
-    public bool CanVent { get; set; } = false;
+    [ModdedToggleOption("噬魂兽可进通风口")]
+    public bool CanVent { get; set; } = true;
 }

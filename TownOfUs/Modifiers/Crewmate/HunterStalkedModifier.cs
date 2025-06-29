@@ -10,7 +10,7 @@ namespace TownOfUs.Modifiers.Crewmate;
 
 public sealed class HunterStalkedModifier(PlayerControl hunter) : TimedModifier
 {
-    public override string ModifierName => "Stalked";
+    public override string ModifierName => "被盯梢";
     public override bool HideOnUi => true;
     public override float Duration => OptionGroupSingleton<HunterOptions>.Instance.HunterStalkDuration;
     public PlayerControl Hunter { get; set; } = hunter;

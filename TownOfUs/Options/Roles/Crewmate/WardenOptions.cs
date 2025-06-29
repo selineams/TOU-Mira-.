@@ -6,9 +6,9 @@ namespace TownOfUs.Options.Roles.Crewmate;
 
 public sealed class WardenOptions : AbstractOptionGroup<WardenRole>
 {
-    public override string GroupName => "Warden";
+    public override string GroupName => "护卫者";
 
-    [ModdedEnumOption("Show Fortify Player", typeof(FortifyOptions), ["Self", "Warden", "Self + Warden", "Everyone"])]
+    [ModdedEnumOption("强化结界显示对象", typeof(FortifyOptions), ["自身", "护卫者", "自身+护卫者", "所有人"])]
     public FortifyOptions ShowFortified { get; set; } = FortifyOptions.SelfAndWarden;
 }
 

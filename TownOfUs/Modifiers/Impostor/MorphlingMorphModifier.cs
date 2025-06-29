@@ -9,7 +9,7 @@ namespace TownOfUs.Modifiers.Impostor;
 public sealed class MorphlingMorphModifier(PlayerControl target) : ConcealedModifier, IVisualAppearance
 {
     public override float Duration => OptionGroupSingleton<MorphlingOptions>.Instance.MorphlingDuration;
-    public override string ModifierName => "Morph";
+    public override string ModifierName => "化形";
     public override bool HideOnUi => true;
     public override bool AutoStart => true;
     public bool VisualPriority => true;

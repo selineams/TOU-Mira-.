@@ -7,28 +7,28 @@ namespace TownOfUs.Options.Roles.Neutral;
 
 public sealed class GuardianAngelOptions : AbstractOptionGroup<GuardianAngelTouRole>
 {
-    public override string GroupName => "Guardian Angel";
+    public override string GroupName => "守护天使";
 
-    [ModdedNumberOption("Protect Cooldown", 10f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
-    public float ProtectCooldown { get; set; } = 25f;
+    [ModdedNumberOption("守护冷却", 10f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
+    public float ProtectCooldown { get; set; } = 15f;
 
-    [ModdedNumberOption("Protect Duration", 5f, 15f, 1f, MiraNumberSuffixes.Seconds)]
-    public float ProtectDuration { get; set; } = 10f;
+    [ModdedNumberOption("守护持续时间", 5f, 15f, 1f, MiraNumberSuffixes.Seconds)]
+    public float ProtectDuration { get; set; } = 15f;
 
-    [ModdedNumberOption("Max Number Of Protects", 1, 15, 1, MiraNumberSuffixes.None, "0")]
-    public float MaxProtects { get; set; } = 5;
+    [ModdedNumberOption("最大守护次数", 1, 15, 1, MiraNumberSuffixes.None, "0")]
+    public float MaxProtects { get; set; } = 15;
 
-    [ModdedEnumOption("Show Protected Player", typeof(ProtectOptions), ["Guardian Angel", "Self + GA", "Everyone"])]
+    [ModdedEnumOption("显示被守护玩家", typeof(ProtectOptions), ["守护天使", "自身+守护天使", "所有人"])]
     public ProtectOptions ShowProtect { get; set; } = ProtectOptions.SelfAndGA;
 
-    [ModdedEnumOption("On Target Death, GA Becomes", typeof(BecomeOptions))]
-    public BecomeOptions OnTargetDeath { get; set; } = BecomeOptions.Amnesiac;
+    [ModdedEnumOption("目标死亡后，守护天使变为", typeof(BecomeOptions))]
+    public BecomeOptions OnTargetDeath { get; set; } = BecomeOptions.Mercenary;
 
-    [ModdedToggleOption("GA Knows Targets Role")]
+    [ModdedToggleOption("守护天使知晓目标职业")]
     public bool GAKnowsTargetRole { get; set; } = true;
 
-    [ModdedNumberOption("Odds Of Target Being Evil", 0f, 100f, 10f, MiraNumberSuffixes.Percent, "0")]
-    public float EvilTargetPercent { get; set; } = 20f;
+    [ModdedNumberOption("目标为邪恶阵营概率", 0f, 100f, 10f, MiraNumberSuffixes.Percent, "0")]
+    public float EvilTargetPercent { get; set; } = 60f;
 }
 
 public enum ProtectOptions

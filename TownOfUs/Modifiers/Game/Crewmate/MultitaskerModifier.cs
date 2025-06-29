@@ -9,9 +9,9 @@ namespace TownOfUs.Modifiers.Game.Crewmate;
 
 public sealed class MultitaskerModifier : TouGameModifier, IWikiDiscoverable
 {
-    public override string ModifierName => "Multitasker";
+    public override string ModifierName => "多线程";
     public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.Multitasker;
-    public override string GetDescription() => "Your tasks are transparent.";
+    public override string GetDescription() => "你的任务界面是透明的。";
     public override ModifierFaction FactionType => ModifierFaction.CrewmateVisibility;
 
     public override int GetAssignmentChance() => (int)OptionGroupSingleton<CrewmateModifierOptions>.Instance.MultitaskerChance;
@@ -53,8 +53,7 @@ public sealed class MultitaskerModifier : TouGameModifier, IWikiDiscoverable
     }
     public string GetAdvancedDescription()
     {
-        return
-            "All your menus are seethrough, allowing you to look behind menus!";
+        return "你所有的菜单都是半透明的，可以看到菜单背后的内容！";
     }
 
     public List<CustomButtonWikiDescription> Abilities { get; } = [];

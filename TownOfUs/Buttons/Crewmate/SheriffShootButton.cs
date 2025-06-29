@@ -18,7 +18,7 @@ namespace TownOfUs.Buttons.Crewmate;
 
 public sealed class SheriffShootButton : TownOfUsRoleButton<SheriffRole, PlayerControl>, IKillButton
 {
-    public override string Name => "Shoot";
+    public override string Name => "射击";
     public override string Keybind => Keybinds.PrimaryAction;
     public override Color TextOutlineColor => TownOfUsColors.Sheriff;
     public override float Cooldown => OptionGroupSingleton<SheriffOptions>.Instance.KillCooldown + MapCooldown;
@@ -52,7 +52,7 @@ public sealed class SheriffShootButton : TownOfUsRoleButton<SheriffRole, PlayerC
 
         FailedShot = true;
 
-        var notif1 = Helpers.CreateAndShowNotification("<b>You have lost the ability to shoot!</b>", Color.white, spr: TouRoleIcons.Sheriff.LoadAsset());
+        var notif1 = Helpers.CreateAndShowNotification("<b>你已失去射击能力！</b>", Color.white, spr: TouRoleIcons.Sheriff.LoadAsset());
 
         notif1.Text.SetOutlineThickness(0.35f);
             notif1.transform.localPosition = new Vector3(0f, 1f, -20f);

@@ -9,7 +9,7 @@ namespace TownOfUs.Modifiers.Game.Impostor;
 
 public sealed class TelepathDeathNotifierModifier(PlayerControl telepath) : TimedModifier
 {
-    public override string ModifierName => "Death Notifier";
+    public override string ModifierName => "ËÀÍöÌáÊ¾";
     public override float Duration => OptionGroupSingleton<TelepathOptions>.Instance.TelepathArrowDuration.Value;
     public override bool HideOnUi => true;
 

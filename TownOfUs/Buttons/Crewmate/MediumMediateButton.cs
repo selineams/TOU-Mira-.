@@ -11,7 +11,7 @@ namespace TownOfUs.Buttons.Crewmate;
 
 public sealed class MediumMediateButton : TownOfUsRoleButton<MediumRole>
 {
-    public override string Name => "Mediate";
+    public override string Name => "招魂";
     public override string Keybind => Keybinds.SecondaryAction;
     public override Color TextOutlineColor => TownOfUsColors.Medium;
     public override float Cooldown => OptionGroupSingleton<MediumOptions>.Instance.MediateCooldown + MapCooldown;

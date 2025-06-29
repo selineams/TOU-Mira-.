@@ -7,7 +7,7 @@ namespace TownOfUs.Modifiers.Game.Crewmate;
 
 public sealed class FrozenModifier : TimedModifier
 {
-    public override string ModifierName => "Frozen";
+    public override string ModifierName => "冰冻";
     public override bool HideOnUi => true;
     public override float Duration => OptionGroupSingleton<FrostyOptions>.Instance.ChillDuration;
 

@@ -15,9 +15,9 @@ namespace TownOfUs.Modifiers.Game.Universal;
 
 public sealed class ShyModifier : UniversalGameModifier, IWikiDiscoverable
 {
-    public override string ModifierName => "Shy";
+    public override string ModifierName => "变色龙";
     public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.Shy;
-    public override string GetDescription() => "You become transparent when \nstanding still for a short duration.";
+    public override string GetDescription() => "你静止一段时间后会变得半透明。";
     public override int GetAssignmentChance() => (int)OptionGroupSingleton<UniversalModifierOptions>.Instance.ShyChance;
     public override int GetAmountPerGame() => (int)OptionGroupSingleton<UniversalModifierOptions>.Instance.ShyAmount;
     public override ModifierFaction FactionType => ModifierFaction.UniversalVisibility;
@@ -142,9 +142,7 @@ public sealed class ShyModifier : UniversalGameModifier, IWikiDiscoverable
     }
     public string GetAdvancedDescription()
     {
-        return
-            "You blend in with the environment, becoming transparent when staying still."
-               + MiscUtils.AppendOptionsText(GetType());
+        return "你会与环境融为一体，静止时变得半透明。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     public List<CustomButtonWikiDescription> Abilities { get; } = [];

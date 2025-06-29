@@ -16,9 +16,9 @@ namespace TownOfUs.Roles.Crewmate;
 
 public sealed class SwapperRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITouCrewRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Swapper";
-    public string RoleDescription => "Swap Votes To Save The Crew!";
-    public string RoleLongDescription => "Swap votes from one player to another during a meeting";
+    public string RoleName => "换票师";
+    public string RoleDescription => "交换票数拯救船员！";
+    public string RoleLongDescription => "在会议期间将一名玩家的票数转移到另一名玩家身上";
     public Color RoleColor => TownOfUsColors.Swapper;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmatePower;
@@ -148,15 +148,15 @@ public sealed class SwapperRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITouCrewR
     public string GetAdvancedDescription()
     {
         return
-            "The Swapper is a Crewmate Power that can swap the votes of two players in a meeting. " +
-            "Their meeting vote areas will be swapped visually, and the votes will be swapped. " +
-            "If player 1 recieved the most votes, and you swap them with player 2, player 2 will now be ejected instead. "
+            "换票师是一名船员强力型角色，可以在会议中交换两名玩家的票数。" +
+            "被交换的两名玩家的投票区会互换，票数也会互换。" +
+            "如果1号玩家原本票数最多，被你和2号玩家交换后，2号玩家将被放逐。 "
             + MiscUtils.AppendOptionsText(GetType());
     }
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Swap (Meeting)",
-            $"Select two players to swap votes for, and at the end of the meeting, they will swap spots!",
+        new("交换（会议）",
+            "选择两名玩家交换票数，会议结束时他们的位置会互换！",
             TouAssets.SwapActive),
     ];
 }

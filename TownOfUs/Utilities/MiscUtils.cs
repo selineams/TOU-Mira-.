@@ -60,7 +60,7 @@ public static class MiscUtils
         if (options == null) return string.Empty;
 
         var builder = new StringBuilder();
-        builder.AppendLine(CultureInfo.InvariantCulture, $"\n<size=50%> \n</size><b>{TownOfUsColors.Vigilante.ToTextColor()}Options</color></b>");
+        builder.AppendLine(CultureInfo.InvariantCulture, $"\n<size=50%> \n</size><b>{TownOfUsColors.Vigilante.ToTextColor()}选项</color></b>");
 
         foreach (var option in options)
         {
@@ -177,7 +177,7 @@ public static class MiscUtils
     public static string RoleNameLookup(RoleTypes roleType)
     {
         var role = RoleManager.Instance.GetRole(roleType);
-        return role?.NiceName ?? (roleType == RoleTypes.Crewmate ? "Crewmate" : "Impostor");
+        return role?.NiceName ?? (roleType == RoleTypes.Crewmate ? "船员" : "内鬼");
     }
 
     public static IEnumerable<RoleBehaviour> GetPotentialRoles()

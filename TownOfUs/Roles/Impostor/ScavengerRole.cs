@@ -20,9 +20,9 @@ namespace TownOfUs.Roles.Impostor;
 
 public sealed class ScavengerRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable, ICrewVariant
 {
-    public string RoleName => "Scavenger";
-    public string RoleDescription => "Hunt Down Your Prey";
-    public string RoleLongDescription => "Kill your given targets for a reduced kill cooldown";
+    public string RoleName => "赏金猎人";
+    public string RoleDescription => "追猎你的猎物";
+    public string RoleLongDescription => "击杀指定目标可获得更短的击杀冷却";
     public RoleBehaviour CrewVariant => RoleManager.Instance.GetRole((RoleTypes)RoleId.Get<TrackerTouRole>());
     public Color RoleColor => TownOfUsColors.Impostor;
     public ModdedRoleTeams Team => ModdedRoleTeams.Impostor;
@@ -115,9 +115,9 @@ public sealed class ScavengerRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITownOf
 
         if (Target != null && Scavenging)
         {
-            stringB.Append("\n<b>Scavenge Time:</b> ");
+            stringB.Append("\n<b>追猎时间：</b> ");
             stringB.Append(CultureInfo.InvariantCulture, $"{Color.white.ToTextColor()}{TimeRemaining.ToString("0", CultureInfo.InvariantCulture)}</color>");
-            stringB.Append("\n\n<b>Current Target:</b> ");
+            stringB.Append("\n\n<b>当前目标：</b> ");
             stringB.Append(CultureInfo.InvariantCulture, $"{Color.white.ToTextColor()}{Target.Data.PlayerName}</color>");
         }
 
@@ -167,8 +167,8 @@ public sealed class ScavengerRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITownOf
     }
     public string GetAdvancedDescription()
     {
-        return $"The Scavenger is an Impostor Killing role that gets new targets after every kill and when the round starts. "
-            + "If they kill their target, they get a reduced kill cooldown, but if they don't, their cooldown is increased significantly."
+        return $"赏金猎人是一名伪装者击杀型角色，每次击杀和回合开始都会获得新目标。 "
+            + "击杀目标可获得更短的击杀冷却，未击杀目标则冷却大幅增加。"
             + MiscUtils.AppendOptionsText(GetType());
     }
 

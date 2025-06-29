@@ -22,9 +22,9 @@ namespace TownOfUs.Roles.Impostor;
 
 public sealed class UndertakerRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable, ICrewVariant
 {
-    public string RoleName => "Undertaker";
-    public string RoleDescription => "Drag Bodies And Hide Them";
-    public string RoleLongDescription => "Drag bodies around to hide them from being reported";
+    public string RoleName => "送葬者";
+    public string RoleDescription => "拖动尸体并隐藏";
+    public string RoleLongDescription => "拖动尸体到地图各处以隐藏，防止被举报";
     public RoleBehaviour CrewVariant => RoleManager.Instance.GetRole((RoleTypes)RoleId.Get<AltruistRole>());
     public Color RoleColor => TownOfUsColors.Impostor;
     public ModdedRoleTeams Team => ModdedRoleTeams.Impostor;
@@ -83,16 +83,16 @@ public sealed class UndertakerRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITownO
 
     public string GetAdvancedDescription()
     {
-        return "The Undertaker is an Impostor Support role that can drag dead bodies around the map." + MiscUtils.AppendOptionsText(GetType());
+        return "送葬者是一名伪装者辅助型角色，可以拖动尸体到地图各处。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Drag",
-            "Drag a dead body, if allowed through settings you can also take it into a vent.",
+        new("拖拽",
+            "拖动尸体，如设置允许可拖入管道。",
             TouImpAssets.DragSprite),
-        new("Drop",
-            "Drop the dragged dead body, stopping it from being dragged any further.",
+        new("放下",
+            "放下被拖拽的尸体，停止继续拖动。",
             TouImpAssets.DropSprite)      
     ];
 }

@@ -10,7 +10,7 @@ namespace TownOfUs.Buttons.Impostor;
 
 public sealed class JanitorCleanButton : TownOfUsRoleButton<JanitorRole, DeadBody>, IAftermathableBodyButton, IDiseaseableButton
 {
-    public override string Name => "Clean";
+    public override string Name => "清理";
     public override string Keybind => Keybinds.SecondaryAction;
     public override Color TextOutlineColor => TownOfUsColors.Impostor;
     public override float Cooldown => OptionGroupSingleton<JanitorOptions>.Instance.CleanCooldown + MapCooldown;

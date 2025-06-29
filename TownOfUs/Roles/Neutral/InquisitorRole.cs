@@ -24,9 +24,9 @@ namespace TownOfUs.Roles.Neutral;
 
 public sealed class InquisitorRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable, IAssignableTargets, ICrewVariant
 {
-    public string RoleName => "Inquisitor";
-    public string RoleDescription => "Vanquish The Heretics!";
-    public string RoleLongDescription => "Vanquish your Heretics or get them killed.\nYou will win after every heretic dies.\nIf they're all dead after a meeting ends,\nyou'll leave & announce your victory.";
+    public string RoleName => "审判官";
+    public string RoleDescription => "消灭异端！";
+    public string RoleLongDescription => "消灭你的异端目标或让他们被杀。所有异端死亡后你将获胜并离开游戏。";
     public Color RoleColor => TownOfUsColors.Inquisitor;
     public RoleBehaviour CrewVariant => RoleManager.Instance.GetRole((RoleTypes)RoleId.Get<OracleRole>());
     public bool CanVanquish { get; set; } = true;
@@ -101,7 +101,7 @@ public sealed class InquisitorRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOf
         {
             if (player.Object.HasModifier<InquisitorHereticModifier>())
             {
-                reportBuilder.AppendLine(TownOfUsPlugin.Culture, $"Your inquiry reveals that {player.PlayerName} is a heretic!\n");
+                reportBuilder.AppendLine(TownOfUsPlugin.Culture, $"你的调查显示{player.PlayerName}是异端！\n");
                 var roles = TargetRoles;
                 var lastRole = roles[roles.Count - 1];
 
@@ -113,11 +113,11 @@ public sealed class InquisitorRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOf
                         reportBuilder.Append(TownOfUsPlugin.Culture, $"{role2.NiceName}, ");
                     }
                     reportBuilder = reportBuilder.Remove(reportBuilder.Length - 2, 2);
-                    reportBuilder.Append(TownOfUsPlugin.Culture, $" or {lastRole.NiceName})");
+                    reportBuilder.Append(TownOfUsPlugin.Culture, $"或{lastRole.NiceName})");
                 }
             }
             else
-                reportBuilder.AppendLine(TownOfUsPlugin.Culture, $"Your inquiry reveals that {player.PlayerName} is not a heretic!");
+                reportBuilder.AppendLine(TownOfUsPlugin.Culture, $"你的调查显示{player.PlayerName}不是异端！");
 
             player.Object.RemoveModifier<InquisitorInquiredModifier>();
         }
@@ -126,7 +126,7 @@ public sealed class InquisitorRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOf
 
         if (HudManager.Instance && report.Length > 0)
         {
-            var title = $"<color=#{TownOfUsColors.Inquisitor.ToHtmlStringRGBA()}>Inquisitor Report</color>";
+            var title = $"<color=#{TownOfUsColors.Inquisitor.ToHtmlStringRGBA()}>审判官报告</color>";
             MiscUtils.AddFakeChat(Player.Data, title, report, false, true);
         }
     }
@@ -259,7 +259,7 @@ public sealed class InquisitorRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOf
     public StringBuilder SetTabText()
     {
         var stringB = ITownOfUsRole.SetNewTabText(this);
-        stringB.AppendLine(CultureInfo.InvariantCulture, $"<b>The roles of your Heretics:</b>");
+        stringB.AppendLine(CultureInfo.InvariantCulture, $"<b>你的异端目标身份：</b>");
         foreach (var role in TargetRoles)
         {
             var newText = $"<b><size=80%>{role.TeamColor.ToTextColor()}{role.NiceName}</size></b>";
@@ -271,15 +271,15 @@ public sealed class InquisitorRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOf
 
     public string GetAdvancedDescription()
     {
-        return $"The Inquisitor is a Neutral Evil role that wins if their targets (Heretics) die. The only information provided is their roles, and it's up to the Inquisitor to identify those players (marked with <color=#D94291>$</color> to the dead) and get them killed by any means neccesary." + MiscUtils.AppendOptionsText(GetType());
+        return $"审判官是一名中立邪恶型角色，只要所有异端目标死亡即可获胜。你只知道他们的身份，需要自己找出这些玩家（对死者以<color=#D94291>$</color>标记），并想办法让他们被杀。" + MiscUtils.AppendOptionsText(GetType());
     }
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Inquire",
-            "Inquire a player, which will tell you if they are one of your targets within the meeting.",
+        new("调查",
+            "调查一名玩家，在会议中得知其是否为你的目标。",
             TouNeutAssets.InquireSprite),
-        new("Vanquish",
-            "Vanquish a player to kill them. If they are a heretic, you will be told and you can continue vanquishing. However, if the victim isn't a heretic, you will lose the ability to vanquish for the rest of the game.",
+        new("审判",
+            "审判一名玩家。如果对方是异端，你会被告知并可继续审判；如果不是异端，你将失去审判能力。",
             TouNeutAssets.InquisKillSprite)
     ];
 }

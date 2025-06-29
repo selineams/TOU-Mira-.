@@ -10,9 +10,9 @@ namespace TownOfUs.Modifiers.Game.Universal;
 
 public sealed class GiantModifier : UniversalGameModifier, IWikiDiscoverable, IVisualAppearance
 {
-    public override string ModifierName => "Giant";
+    public override string ModifierName => "巨人";
     public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.Giant;
-    public override string GetDescription() => $"You are bigger than the average player, moving {Math.Round(1f / OptionGroupSingleton<GiantOptions>.Instance.GiantSpeed, 2)}x slower";
+    public override string GetDescription() => $"你比普通玩家更大，移动速度比普通玩家慢{Math.Round(1f / OptionGroupSingleton<GiantOptions>.Instance.GiantSpeed, 2)}倍。";
     public override ModifierFaction FactionType => ModifierFaction.UniversalVisibility;
 
     public override int GetAssignmentChance() =>
@@ -38,8 +38,7 @@ public sealed class GiantModifier : UniversalGameModifier, IWikiDiscoverable, IV
     }
     public string GetAdvancedDescription()
     {
-        return
-            $"You are bigger than regular players, and you also move {Math.Round(OptionGroupSingleton<GiantOptions>.Instance.GiantSpeed, 2)}x slower than regular players.";
+        return $"你比普通玩家更大，移动速度也比普通玩家慢{Math.Round(OptionGroupSingleton<GiantOptions>.Instance.GiantSpeed, 2)}倍。";
     }
 
     public List<CustomButtonWikiDescription> Abilities { get; } = [];

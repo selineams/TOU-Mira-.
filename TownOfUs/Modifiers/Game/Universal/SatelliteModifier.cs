@@ -16,9 +16,9 @@ namespace TownOfUs.Modifiers.Game.Universal;
 
 public sealed class SatelliteModifier : UniversalGameModifier, IWikiDiscoverable
 {
-    public override string ModifierName => "Satellite";
+    public override string ModifierName => "卫星";
     public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.Satellite;
-    public override string GetDescription() => "You can broadcast a signal to detect all dead bodies on the map.";
+    public override string GetDescription() => "你可以发射信号，探测地图上所有尸体的位置。";
     public override int GetAssignmentChance() => (int)OptionGroupSingleton<UniversalModifierOptions>.Instance.SatelliteChance;
     public override int GetAmountPerGame() => (int)OptionGroupSingleton<UniversalModifierOptions>.Instance.SatelliteAmount;
     public override ModifierFaction FactionType => ModifierFaction.UniversalUtility;
@@ -65,14 +65,13 @@ public sealed class SatelliteModifier : UniversalGameModifier, IWikiDiscoverable
     }
     public string GetAdvancedDescription()
     {
-        return "You can broadcast a signal to know where dead bodies are."
-               + MiscUtils.AppendOptionsText(GetType());
+        return "你可以发射信号，得知所有尸体的位置。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Broadcast",
-            $"You can check for bodies on the map, which you can do {OptionGroupSingleton<SatelliteOptions>.Instance.MaxNumCast} time(s) per game.",
+        new("信号广播",
+            $"你可以在地图上检测尸体，每局可用{OptionGroupSingleton<SatelliteOptions>.Instance.MaxNumCast}次。",
             TouAssets.BroadcastSprite),
     ];
 }

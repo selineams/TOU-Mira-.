@@ -14,7 +14,7 @@ namespace TownOfUs.Buttons.Neutral;
 
 public sealed class GlitchHackButton : TownOfUsRoleButton<GlitchRole, PlayerControl>, IAftermathablePlayerButton
 {
-    public override string Name => "Hack";
+    public override string Name => "黑入";
     public override string Keybind => "tou.ActionCustom";
     public override Color TextOutlineColor => TownOfUsColors.Glitch;
     public override float Cooldown => OptionGroupSingleton<GlitchOptions>.Instance.HackCooldown + MapCooldown;
@@ -30,7 +30,7 @@ public sealed class GlitchHackButton : TownOfUsRoleButton<GlitchRole, PlayerCont
             Logger<TownOfUsPlugin>.Error("Glitch Hack: Target is null");
             return;
         }
-        var notif1 = Helpers.CreateAndShowNotification($"<b>Once {Target.Data.PlayerName} attempts to use an ability, all their abilities will get disabled.</b>", Color.white, new Vector3(0f, 1f, -20f), spr: TouRoleIcons.Glitch.LoadAsset());
+        var notif1 = Helpers.CreateAndShowNotification($"<b>一旦{Target.Data.PlayerName}尝试使用技能，TA的所有技能都将被禁用。</b>", Color.white, new Vector3(0f, 1f, -20f), spr: TouRoleIcons.Glitch.LoadAsset());
         notif1.Text.SetOutlineThickness(0.35f);
 
         TouAudio.PlaySound(TouAudio.HackedSound);

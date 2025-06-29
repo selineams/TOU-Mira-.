@@ -18,9 +18,9 @@ namespace TownOfUs.Roles.Crewmate;
 
 public sealed class PoliticianRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITouCrewRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Politician";
-    public string RoleDescription => "Campaign To Become The Mayor!";
-    public string RoleLongDescription => "Spread your campaign to become the Mayor!";
+    public string RoleName => "政治家";
+    public string RoleDescription => "竞选成为市长！";
+    public string RoleLongDescription => "宣传你的竞选活动，成为市长！";
     public Color RoleColor => TownOfUsColors.Politician;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmatePower;
@@ -112,13 +112,13 @@ public sealed class PoliticianRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITouCr
         }
         else
         {
-            var text = "You need to campaign more Crewmates! You may not reveal again in this meeting.";
+            var text = "你需要拉拢更多船员！本次会议你不能再次现身。";
             if (OptionGroupSingleton<PoliticianOptions>.Instance.PreventCampaign)
             {
                 CanCampaign = false;
-                text = "You need to campaign more Crewmates! However, you may not campaign next round.";
+                text = "你需要拉拢更多船员！不过你下回合不能拉票。";
             }
-            var title = $"<color=#{TownOfUsColors.Mayor.ToHtmlStringRGBA()}>Politician Feedback</color>";
+            var title = $"<color=#{TownOfUsColors.Mayor.ToHtmlStringRGBA()}>政客反馈</color>";
             MiscUtils.AddFakeChat(Player.Data, title, text, false, true);
         }
     }
@@ -134,24 +134,24 @@ public sealed class PoliticianRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITouCr
         var stringB = ITownOfUsRole.SetNewTabText(this);
         if (PlayerControl.LocalPlayer.HasModifier<EgotistModifier>())
         {
-            stringB.AppendLine(CultureInfo.InvariantCulture, $"<b>The Impostors will know your true motives when revealed.</b>");
+            stringB.AppendLine(CultureInfo.InvariantCulture, $"<b>现身后伪装者会知道你的真实意图。</b>");
         }
 
         return stringB;
     }
     public string GetAdvancedDescription()
     {
-        return "The Politician is a Crewmate Power role that can reveal themselves to the crew as the Mayor, given that they have campaigned at least half of the crewmates."
+        return "政客是一名船员强力型角色，只要拉拢到至少一半船员支持，就能向全体公开身份并成为市长。"
                + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Campaign",
-            $"Give a player a ballot, which will only be useful to you if they are a Crewmate.",
+        new("拉票",
+            "给一名玩家发放选票，只有船员身份的玩家才会对你有用。",
             TouCrewAssets.CampaignButtonSprite),
-        new("Reveal (Meeting)",
-            $"If you reveal and you have more than half of the crewmates campaigned (or no other crewmates remain), you will become the Mayor! Otherwise, your ability will fail and you " + (OptionGroupSingleton<PoliticianOptions>.Instance.PreventCampaign ? "cannot" : "can") + " campaign the following round.",
+        new("现身（会议）",
+            "如果你现身且有超过一半的船员被你拉票（或没有其他船员存活），你将成为市长！否则本回合你的能力会失败，且" + (OptionGroupSingleton<PoliticianOptions>.Instance.PreventCampaign ? "下回合不能" : "下回合可以") + "继续拉票。",
             TouAssets.RevealCleanSprite),
     ];
 }

@@ -24,7 +24,7 @@ namespace TownOfUs.Roles.Neutral;
 
 public sealed class GuardianAngelTouRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable, IAssignableTargets, ICrewVariant
 {
-    public string RoleName => "Guardian Angel";
+    public string RoleName => "守护天使";
     public string RoleDescription => TargetString();
     public string RoleLongDescription => TargetString();
     public RoleBehaviour CrewVariant => RoleManager.Instance.GetRole((RoleTypes)RoleId.Get<ClericRole>());
@@ -43,8 +43,8 @@ public sealed class GuardianAngelTouRole(IntPtr cppPtr) : NeutralRole(cppPtr), I
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Protect",
-            "Protect your target from getting killed.",
+        new("守护",
+            "保护你的目标免于被击杀。",
             TouNeutAssets.ProtectSprite)
     ];
 
@@ -56,7 +56,7 @@ public sealed class GuardianAngelTouRole(IntPtr cppPtr) : NeutralRole(cppPtr), I
 
     public string GetAdvancedDescription()
     {
-        return $"The Guardian Angel is a Neutral Benign that needs to protect their target (signified by <color=#B3FFFFFF>★</color>) from getting killed/ejected." + MiscUtils.AppendOptionsText(GetType());
+        return $"守护天使是一名中立善良型角色，需要保护带有<color=#B3FFFFFF>★</color>标记的目标不被击杀或放逐。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     public override void Initialize(PlayerControl player)
@@ -159,10 +159,10 @@ public sealed class GuardianAngelTouRole(IntPtr cppPtr) : NeutralRole(cppPtr), I
     {
         if (!Target)
         {
-            return "Protect Your Target With Your Life!";
+            return "用你的生命守护你的目标！";
         }
 
-        return $"Protect {Target?.Data.PlayerName} With Your Life!";
+        return $"用你的生命守护{Target?.Data.PlayerName}！";
     }
 
     public void AssignTargets()

@@ -40,21 +40,21 @@ public static class InquisitorEvents
             if (victim.HasModifier<InquisitorHereticModifier>() && !victim.AmOwner && !source.AmOwner)
             {
                 Coroutines.Start(MiscUtils.CoFlash(TownOfUsColors.Inquisitor, alpha: 0.1f));
-                var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.Inquisitor.ToTextColor()}A Heretic has perished!</b></color>", Color.white, spr: TouRoleIcons.Inquisitor.LoadAsset());
+                var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.Inquisitor.ToTextColor()}异端已被消灭！</b></color>", Color.white, spr: TouRoleIcons.Inquisitor.LoadAsset());
                 notif1.Text.SetOutlineThickness(0.35f);
                 notif1.transform.localPosition = new Vector3(0f, 1f, -20f);
             }
             else if (!victim.HasModifier<InquisitorHereticModifier>() && !victim.AmOwner && source.AmOwner)
             {
                 Coroutines.Start(MiscUtils.CoFlash(TownOfUsColors.Inquisitor, alpha: 0.4f));
-                var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.Inquisitor.ToTextColor()}{victim.Data.PlayerName} was not a heretic!\nYou can no longer vanquish players.</b></color>", Color.white, spr: TouRoleIcons.Inquisitor.LoadAsset());
+                var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.Inquisitor.ToTextColor()}{victim.Data.PlayerName}不是异端！\n你无法再消灭其他玩家。</b></color>", Color.white, spr: TouRoleIcons.Inquisitor.LoadAsset());
                 notif1.Text.SetOutlineThickness(0.35f);
                 notif1.transform.localPosition = new Vector3(0f, 1f, -20f);
             }
             else if (victim.HasModifier<InquisitorHereticModifier>() && !victim.AmOwner && source.AmOwner)
             {
                 Coroutines.Start(MiscUtils.CoFlash(TownOfUsColors.Doomsayer, alpha: 0.4f));
-                var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.Inquisitor.ToTextColor()}{victim.Data.PlayerName} was a heretic!</b></color>", Color.white, spr: TouRoleIcons.Inquisitor.LoadAsset());
+                var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.Inquisitor.ToTextColor()}{victim.Data.PlayerName}是异端！</b></color>", Color.white, spr: TouRoleIcons.Inquisitor.LoadAsset());
                 notif1.Text.SetOutlineThickness(0.35f);
                 notif1.transform.localPosition = new Vector3(0f, 1f, -20f);
             }
@@ -81,7 +81,7 @@ public static class InquisitorEvents
             {
                 PlayerControl.LocalPlayer.RpcPlayerExile();
                 var notif1 = Helpers.CreateAndShowNotification(
-                    $"<b>You have successfully won as the {TownOfUsColors.Inquisitor.ToTextColor()}Inquisitor</color>, as all Heretics have perished!</b>", Color.white, spr: TouRoleIcons.Inquisitor.LoadAsset());
+                    $"<b>你作为{TownOfUsColors.Inquisitor.ToTextColor()}审判官</color>已成功获胜，所有异端已被消灭！</b>", Color.white, spr: TouRoleIcons.Inquisitor.LoadAsset());
 
                 notif1.Text.SetOutlineThickness(0.35f);
                     notif1.transform.localPosition = new Vector3(0f, 1f, -20f);
@@ -89,7 +89,7 @@ public static class InquisitorEvents
             else
             {
                 var notif1 = Helpers.CreateAndShowNotification(
-                    $"<b>The {TownOfUsColors.Inquisitor.ToTextColor()}Inquisitor</color>, {inquis.Player.Data.PlayerName}, has successfully won, as all Heretics have perished!</b>", Color.white, spr: TouRoleIcons.Inquisitor.LoadAsset());
+                    $"<b>{TownOfUsColors.Inquisitor.ToTextColor()}审判官</color> {inquis.Player.Data.PlayerName} 已成功获胜，所有异端已被消灭！</b>", Color.white, spr: TouRoleIcons.Inquisitor.LoadAsset());
 
                 notif1.Text.SetOutlineThickness(0.35f);
                     notif1.transform.localPosition = new Vector3(0f, 1f, -20f);

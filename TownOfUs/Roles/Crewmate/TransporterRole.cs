@@ -27,9 +27,9 @@ namespace TownOfUs.Roles.Crewmate;
 
 public sealed class TransporterRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Transporter";
-    public string RoleDescription => "Choose Two Players To Swap Locations";
-    public string RoleLongDescription => "Choose two players to swap locations with one another";
+    public string RoleName => "传送师";
+    public string RoleDescription => "选择两名玩家交换位置";
+    public string RoleLongDescription => "选择两名玩家将他们的位置互换";
     public Color RoleColor => TownOfUsColors.Transporter;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmateSupport;
@@ -182,7 +182,7 @@ public sealed class TransporterRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITown
         if (play1.AmOwner || play2.AmOwner)
         {
             var notif1 = Helpers.CreateAndShowNotification(
-                $"<b>{TownOfUsColors.Transporter.ToTextColor()}You were transported!</color></b>", Color.white, spr: TouRoleIcons.Transporter.LoadAsset());
+                $"<b>{TownOfUsColors.Transporter.ToTextColor()}你被传送了!</color></b>", Color.white, spr: TouRoleIcons.Transporter.LoadAsset());
 
             notif1.Text.SetOutlineThickness(0.35f);
             notif1.transform.localPosition = new Vector3(0f, 1f, -20f);
@@ -368,17 +368,16 @@ public sealed class TransporterRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITown
     }
     public string GetAdvancedDescription()
     {
-        return
-            "The Transporter is a Crewmate Support role that can transport two players, dead or alive, to swap their locations."
+        return "传送师是一名船员支援型角色，可以让两名玩家（无论生死）交换位置。"
                + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Transport",
-            "Switch the positions of two players. Players can be transported out of vents." +
-            "A red flash means one of the players became an invalid target," +
-            "such as going on a ladder or zipline",
+        new("传送",
+            "交换两名玩家的位置。玩家可以被传送出通风口。" +
+            "红色闪烁表示有玩家变成了无效目标。" +
+            "（如爬梯子或滑索）",
             TouCrewAssets.Transport),
     ];
 }

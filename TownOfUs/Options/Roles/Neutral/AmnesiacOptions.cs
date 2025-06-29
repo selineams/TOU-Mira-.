@@ -8,11 +8,11 @@ namespace TownOfUs.Options.Roles.Neutral;
 
 public sealed class AmnesiacOptions : AbstractOptionGroup<AmnesiacRole>
 {
-    public override string GroupName => "Amnesiac";
+    public override string GroupName => "失忆者";
 
-    [ModdedToggleOption("Amnesiac Gets Arrows Pointing To Dead Bodies")]
+    [ModdedToggleOption("失忆者获得指向尸体的箭头")]
     public bool RememberArrows { get; set; } = true;
-    public ModdedNumberOption RememberArrowDelay { get; } = new ModdedNumberOption("Time After Death Arrow Appears", 5f, 0f, 15f, 1f, MiraNumberSuffixes.Seconds, "0")
+    public ModdedNumberOption RememberArrowDelay { get; } = new ModdedNumberOption("死亡后箭头出现时间", 0f, 0f, 15f, 1f, MiraNumberSuffixes.Seconds, "0")
     {
         Visible = () => OptionGroupSingleton<AmnesiacOptions>.Instance.RememberArrows,
     };

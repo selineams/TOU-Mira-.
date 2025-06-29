@@ -26,9 +26,9 @@ namespace TownOfUs.Roles.Crewmate;
 
 public sealed class AltruistRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Altruist";
-    public string RoleDescription => "Revive Dead Crewmates";
-    public string RoleLongDescription => "Revive dead crewmates in groups";
+    public string RoleName => "殉道者";
+    public string RoleDescription => "复活死亡的船员";
+    public string RoleLongDescription => "可成组复活死亡的船员";
     public Color RoleColor => TownOfUsColors.Altruist;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmateProtective;
@@ -208,14 +208,13 @@ public sealed class AltruistRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfU
     
     public string GetAdvancedDescription()
     {
-        return "The Altruist is a Crewmate Protective role can revive dead players in groups. However, their location and the revived players' locations will be revealed to all Impostors." + MiscUtils.AppendOptionsText(GetType());
+        return "殉道者是一名船员保护型角色，可以成组复活死亡玩家。但复活时你和被复活者的位置会被所有伪装者看到。且你们这群人无法主动发起会议" + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Revive",
-            "Revive a group of dead bodies near you. You will be frozen during the revival and you will be unable to move until the revival is complete." +
-            " Impostors will also have an arrow pointing towards you during the revival, so be cautious.",
+        new("复活",
+            "复活你附近的一组尸体。复活期间你会被冻结，无法移动直到复活完成。伪装者在复活期间会有箭头指向你，请小心。",
             TouCrewAssets.ReviveSprite)
     ];
 }

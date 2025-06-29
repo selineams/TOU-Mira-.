@@ -10,7 +10,7 @@ namespace TownOfUs.Modifiers.Crewmate;
 
 public sealed class LookoutWatchedModifier(PlayerControl lookout) : BaseModifier
 {
-    public override string ModifierName => "Watched";
+    public override string ModifierName => "被观测";
     public override bool HideOnUi => true;
 
     public PlayerControl Lookout { get; set; } = lookout;
@@ -41,12 +41,12 @@ public sealed class LookoutWatchedModifier(PlayerControl lookout) : BaseModifier
     public override void OnMeetingStart()
     {
         if (!Lookout.AmOwner) return;
-        var title = $"<color=#{TownOfUsColors.Lookout.ToHtmlStringRGBA()}>Lookout Feedback</color>";
-        var msg = $"No players interacted with {Player.Data.PlayerName}";
+        var title = $"<color=#{TownOfUsColors.Lookout.ToHtmlStringRGBA()}>观测者反馈</color>";
+        var msg = $"没有玩家与{Player.Data.PlayerName}互动";
 
         if (SeenPlayers.Count != 0)
         {
-            var message = new StringBuilder($"Roles seen interacting with {Player.Data.PlayerName}:\n");
+            var message = new StringBuilder($"与{Player.Data.PlayerName}互动的角色:\n");
 
             SeenPlayers.Shuffle();
 

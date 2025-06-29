@@ -257,14 +257,14 @@ public static class ModifierIntroPatch
         }
         else if (uniModifier != null && option is ModReveal.Universal)
         {
-            ModifierText.text = $"<size=4><color=#FFFFFF>Modifier: </color>{uniModifier.ModifierName}</size>";
+            ModifierText.text = $"<size=4><color=#FFFFFF>附加特性: </color>{uniModifier.ModifierName}</size>";
 
             ModifierText.color = MiscUtils.GetRoleColour(uniModifier.ModifierName.Replace(" ", string.Empty));
             if (uniModifier is IColoredModifier colorMod) ModifierText.color = colorMod.ModifierColor;
         }
         else if (teamModifier != null && option is ModReveal.Faction)
         {
-            ModifierText.text = $"<size=4><color=#FFFFFF>Modifier: </color>{teamModifier.ModifierName}</size>";
+            ModifierText.text = $"<size=4><color=#FFFFFF>附加特性: </color>{teamModifier.ModifierName}</size>";
 
             ModifierText.color = MiscUtils.GetRoleColour(teamModifier.ModifierName.Replace(" ", string.Empty));
             if (teamModifier is IColoredModifier colorMod) ModifierText.color = colorMod.ModifierColor;

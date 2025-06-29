@@ -18,9 +18,9 @@ namespace TownOfUs.Roles.Crewmate;
 
 public sealed class SnitchRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Snitch";
-    public string RoleDescription => "Find the <color=#FF0000FF>Impostors</color>!";
-    public string RoleLongDescription => CompletedAllTasks ? "Find the Impostors!" : "Complete all your tasks to discover the Impostors.";
+    public string RoleName => "告密者";
+    public string RoleDescription => "找出<color=#FF0000FF>伪装者</color>！";
+    public string RoleLongDescription => CompletedAllTasks ? "找出伪装者！" : "完成所有任务以发现伪装者。";
     public Color RoleColor => TownOfUsColors.Snitch;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmateInvestigative;
@@ -46,8 +46,8 @@ public sealed class SnitchRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsR
         {
             CreateRevealingArrow();
             Coroutines.Start(MiscUtils.CoFlash(TownOfUsColors.Snitch, alpha: 0.5f));
-            var text = "The Snitch is getting closer to reveal you!";
-            if (Player.HasModifier<EgotistModifier>()) text = "The Snitch is an Egotist, who will help you overthrow the crewmates!";
+            var text = "告密者快要发现你了！";
+            if (Player.HasModifier<EgotistModifier>()) text = "告密者是营己徒，会帮助你推翻船员！";
             var notif1 = Helpers.CreateAndShowNotification(
                 $"<b>{TownOfUsColors.Snitch.ToTextColor()}{text}</color></b>", Color.white, spr: TouRoleIcons.Snitch.LoadAsset());
 
@@ -60,8 +60,8 @@ public sealed class SnitchRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsR
         if (OnLastTask && Player.AmOwner && !CompletedAllTasks)
         {
             Coroutines.Start(MiscUtils.CoFlash(TownOfUsColors.Snitch, alpha: 0.5f));
-            var text = "The impostors know of your whereabouts!";
-            if (Player.HasModifier<EgotistModifier>()) text = "The impostors know of your whereabouts, and know you're the Egotist!";
+            var text = "伪装者已经知道你的位置！";
+            if (Player.HasModifier<EgotistModifier>()) text = "伪装者已经知道你的位置，并且知道你是营己徒！";
             var notif1 = Helpers.CreateAndShowNotification(
                 $"<b>{TownOfUsColors.Snitch.ToTextColor()}{text}</color></b>", Color.white, spr: TouRoleIcons.Snitch.LoadAsset());
 
@@ -72,8 +72,8 @@ public sealed class SnitchRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsR
         if (CompletedAllTasks && IsTargetOfSnitch(PlayerControl.LocalPlayer))
         {
             Coroutines.Start(MiscUtils.CoFlash(TownOfUsColors.Snitch, alpha: 0.5f));
-            var text = "The Snitch knows what you are now!";
-            if (Player.HasModifier<EgotistModifier>()) text = "The Snitch can now help you as the Egotist!";
+            var text = "告密者现在已经知道你的身份！";
+            if (Player.HasModifier<EgotistModifier>()) text = "告密者现在可以作为营己徒帮助你！";
             var notif1 = Helpers.CreateAndShowNotification(
                 $"<b>{TownOfUsColors.Snitch.ToTextColor()}{text}</color></b>", Color.white, spr: TouRoleIcons.Snitch.LoadAsset());
 
@@ -84,8 +84,8 @@ public sealed class SnitchRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsR
         if (CompletedAllTasks && Player.AmOwner)
         {
             CreateSnitchArrows();
-            var text = "You have revealed the impostors!";
-            if (Player.HasModifier<EgotistModifier>()) text = "You have revealed the impostors, who can help your win condition!";
+            var text = "你已经发现了伪装者！";
+            if (Player.HasModifier<EgotistModifier>()) text = "你已经发现了伪装者，他们可以帮助你达成胜利条件！";
             var notif1 = Helpers.CreateAndShowNotification(
                 $"<b>{TownOfUsColors.Snitch.ToTextColor()}{text}</color></b>", Color.white, spr: TouRoleIcons.Snitch.LoadAsset());
 
@@ -238,14 +238,14 @@ public sealed class SnitchRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsR
     [HideFromIl2Cpp]
     public StringBuilder SetTabText()
     {
-        var alignment = RoleAlignment.ToDisplayString().Replace("Crewmate", "<color=#68ACF4FF>Crewmate");
+        var alignment = RoleAlignment.ToDisplayString().Replace("船员", "<color=#68ACF4FF>船员");
 
         var stringB = new StringBuilder();
-        stringB.AppendLine(CultureInfo.InvariantCulture, $"{RoleColor.ToTextColor()}You are a<b> {RoleName}.</b></color>");
-        stringB.AppendLine(CultureInfo.InvariantCulture, $"<size=60%>Alignment: <b>{alignment}</color></b></size>");
+        stringB.AppendLine(CultureInfo.InvariantCulture, $"{RoleColor.ToTextColor()}你是<b> {RoleName}。</b></color>");
+        stringB.AppendLine(CultureInfo.InvariantCulture, $"<size=60%>阵营: <b>{alignment}</color></b></size>");
         stringB.Append("<size=70%>");
         var desc = RoleLongDescription;
-        if (PlayerControl.LocalPlayer.HasModifier<EgotistModifier>()) desc = CompletedAllTasks ? "Help the Impostors!" : "Complete all your tasks to discover & help the Impostors.";
+        if (PlayerControl.LocalPlayer.HasModifier<EgotistModifier>()) desc = CompletedAllTasks ? "帮助伪装者！" : "完成所有任务以发现并帮助伪装者。";
         stringB.AppendLine(CultureInfo.InvariantCulture, $"{desc}");
     
         return stringB;
@@ -254,8 +254,8 @@ public sealed class SnitchRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsR
     public string GetAdvancedDescription()
     {
         return
-            "The Snitch is a Crewmate Investigative role that can reveal the Impostors to themselves by finishing all their tasks. " +
-            "Upon completing all tasks, the Impostors will be revealed to the Snitch with an arrow and their red name."
+            "告密者是一名船员调查型角色，通过完成所有任务可以发现伪装者。 " +
+            "完成所有任务后，伪装者会被箭头和红名标记。"
             + MiscUtils.AppendOptionsText(GetType());
     }
 }

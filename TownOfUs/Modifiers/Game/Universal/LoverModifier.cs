@@ -24,7 +24,7 @@ namespace TownOfUs.Modifiers.Game.Alliance;
 
 public sealed class LoverModifier : AllianceGameModifier, IWikiDiscoverable, IAssignableTargets
 {
-    public override string ModifierName => "Lover";
+    public override string ModifierName => "恋人";
     public override string Symbol => "♥";
     public override string IntroInfo => LoverString();
     public override float IntroSize => 3f;
@@ -43,7 +43,7 @@ public sealed class LoverModifier : AllianceGameModifier, IWikiDiscoverable, IAs
     public string GetAdvancedDescription()
     {
         return
-            $"As a lover, you can chat with your other lover (signified with <color=#FF66CCFF>♥</color>) during the round, and you can win with your lover if you are both a part of the final 3 players."
+            $"作为恋人，你可以在回合中与另一位恋人（以<color=#FF66CCFF>♥</color>标识）聊天。如果你们是最后三人之一且都存活，则可以共同获胜。"
                + MiscUtils.AppendOptionsText(GetType());
     }
 
@@ -138,7 +138,7 @@ public sealed class LoverModifier : AllianceGameModifier, IWikiDiscoverable, IAs
 
     public string LoverString()
     {
-        return !OtherLover ? "You are in love with nobody" : $"You are in love with {OtherLover!.Data.PlayerName}";
+        return !OtherLover ? "你没有恋人" : $"你的恋人是{OtherLover!.Data.PlayerName}";
     }
 
     public void KillOther(bool isHidden = false)

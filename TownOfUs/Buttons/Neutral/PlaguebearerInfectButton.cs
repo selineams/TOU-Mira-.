@@ -12,7 +12,7 @@ namespace TownOfUs.Buttons.Neutral;
 
 public sealed class PlaguebearerInfectButton : TownOfUsRoleButton<PlaguebearerRole, PlayerControl>
 {
-    public override string Name => "Infect";
+    public override string Name => "感染";
     public override string Keybind => Keybinds.SecondaryAction;
     public override Color TextOutlineColor => TownOfUsColors.Plaguebearer;
     public override float Cooldown => OptionGroupSingleton<PlaguebearerOptions>.Instance.InfectCooldown;

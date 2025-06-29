@@ -10,9 +10,9 @@ namespace TownOfUs.Modifiers.Game.Crewmate;
 
 public sealed class TorchModifier : TouGameModifier, IWikiDiscoverable
 {
-    public override string ModifierName => "Torch";
+    public override string ModifierName => "火炬";
     public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.Torch;
-    public override string GetDescription() => "Your vision wont get reduced\nwhen the lights are sabotaged.";
+    public override string GetDescription() => "当灯被破坏时，你的视野不会减少。";
     public override ModifierFaction FactionType => ModifierFaction.CrewmateVisibility;
 
     public override int GetAssignmentChance() => (int)OptionGroupSingleton<CrewmateModifierOptions>.Instance.TorchChance;
@@ -24,8 +24,7 @@ public sealed class TorchModifier : TouGameModifier, IWikiDiscoverable
     }
     public string GetAdvancedDescription()
     {
-        return
-            "The lights being off do not affect your vision.";
+        return "灯被破坏时不会影响你的视野。";
     }
 
     public List<CustomButtonWikiDescription> Abilities { get; } = [];

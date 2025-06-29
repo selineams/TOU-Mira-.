@@ -17,11 +17,11 @@ public interface ITownOfUsRole : ICustomRole
     {
         get
         {
-            var prefix = " a";
-            if (RoleName.StartsWithVowel()) prefix = " an";
-            if (Configuration.MaxRoleCount is 0 or 1) prefix = " the";
+            var prefix = " ";
+            if (RoleName.StartsWithVowel()) prefix = " ";
+            if (Configuration.MaxRoleCount is 0 or 1) prefix = " ";
             if (RoleName.StartsWith("the", StringComparison.OrdinalIgnoreCase)) prefix = "";
-            return $"You are{prefix}";
+            return $"你是{prefix}";
         }
     }
 
@@ -38,29 +38,29 @@ public interface ITownOfUsRole : ICustomRole
     {
         var alignment = role is ITownOfUsRole touRole
             ? touRole.RoleAlignment.ToDisplayString()
-            : "Custom";
+            : "自定义";
 
         if (alignment.Contains("Crewmate"))
         {
-            alignment = alignment.Replace("Crewmate", "<color=#68ACF4>Crewmate");
+            alignment = alignment.Replace("Crewmate", "<color=#68ACF4>船员");
         }
         else if (alignment.Contains("Impostor"))
         {
-            alignment = alignment.Replace("Impostor", "<color=#D63F42>Impostor");
+            alignment = alignment.Replace("Impostor", "<color=#D63F42>内鬼");
         }
         else if (alignment.Contains("Neutral"))
         {
-            alignment = alignment.Replace("Neutral", "<color=#8A8A8A>Neutral");
+            alignment = alignment.Replace("Neutral", "<color=#8A8A8A>中立");
         }
 
-        var prefix = " a";
-        if (role.RoleName.StartsWithVowel()) prefix = " an";
-        if (role.Configuration.MaxRoleCount is 0 or 1) prefix = " the";
+        var prefix = " ";
+        if (role.RoleName.StartsWithVowel()) prefix = " ";
+        if (role.Configuration.MaxRoleCount is 0 or 1) prefix = " ";
         if (role.RoleName.StartsWith("the", StringComparison.OrdinalIgnoreCase)) prefix = "";
 
         var stringB = new StringBuilder();
-        stringB.AppendLine(CultureInfo.InvariantCulture, $"{role.RoleColor.ToTextColor()}You are{prefix}<b> {role.RoleName}.</b></color>");
-        stringB.AppendLine(CultureInfo.InvariantCulture, $"<size=60%>Alignment: <b>{alignment}</color></b></size>");
+        stringB.AppendLine(CultureInfo.InvariantCulture, $"{role.RoleColor.ToTextColor()}你是{prefix}<b> {role.RoleName}。</b></color>");
+        stringB.AppendLine(CultureInfo.InvariantCulture, $"<size=60%>阵营: <b>{alignment}</color></b></size>");
         stringB.Append("<size=70%>");
         stringB.AppendLine(CultureInfo.InvariantCulture, $"{role.RoleLongDescription}");
 
@@ -70,29 +70,29 @@ public interface ITownOfUsRole : ICustomRole
     {
         var alignment = role is ITownOfUsRole touRole
             ? touRole.RoleAlignment.ToDisplayString()
-            : "Custom";
+            : "自定义";
 
         if (alignment.Contains("Crewmate"))
         {
-            alignment = alignment.Replace("Crewmate", "<color=#68ACF4>Crewmate");
+            alignment = alignment.Replace("Crewmate", "<color=#68ACF4>船员");
         }
         else if (alignment.Contains("Impostor"))
         {
-            alignment = alignment.Replace("Impostor", "<color=#D63F42>Impostor");
+            alignment = alignment.Replace("Impostor", "<color=#D63F42>内鬼");
         }
         else if (alignment.Contains("Neutral"))
         {
-            alignment = alignment.Replace("Neutral", "<color=#8A8A8A>Neutral");
+            alignment = alignment.Replace("Neutral", "<color=#8A8A8A>中立");
         }
 
-        var prefix = " a";
-        if (role.RoleName.StartsWithVowel()) prefix = " an";
-        if (role.Configuration.MaxRoleCount is 0 or 1) prefix = " the";
+        var prefix = " ";
+        if (role.RoleName.StartsWithVowel()) prefix = " ";
+        if (role.Configuration.MaxRoleCount is 0 or 1) prefix = " ";
         if (role.RoleName.StartsWith("the", StringComparison.OrdinalIgnoreCase)) prefix = "";
 
         var stringB = new StringBuilder();
-        stringB.AppendLine(CultureInfo.InvariantCulture, $"{role.RoleColor.ToTextColor()}You were{prefix}<b> {role.RoleName}.</b></color>");
-        stringB.AppendLine(CultureInfo.InvariantCulture, $"<size=60%>Alignment: <b>{alignment}</color></b></size>");
+        stringB.AppendLine(CultureInfo.InvariantCulture, $"{role.RoleColor.ToTextColor()}你曾是{prefix}<b> {role.RoleName}。</b></color>");
+        stringB.AppendLine(CultureInfo.InvariantCulture, $"<size=60%>阵营: <b>{alignment}</color></b></size>");
         stringB.Append("<size=70%>");
         stringB.AppendLine(CultureInfo.InvariantCulture, $"{role.RoleLongDescription}");
 

@@ -12,7 +12,7 @@ namespace TownOfUs.Modifiers.Impostor;
 
 public sealed class TraitorCacheModifier : BaseModifier, ICachedRole
 {
-    public override string ModifierName => "Traitor";
+    public override string ModifierName => "背叛";
     public override bool HideOnUi => true;
     public bool ShowCurrentRoleFirst => true;
     public RoleBehaviour CachedRole => RoleManager.Instance.GetRole((RoleTypes)RoleId.Get<TraitorRole>());
@@ -26,7 +26,7 @@ public sealed class TraitorCacheModifier : BaseModifier, ICachedRole
         if (Player.AmOwner)
         {
             var notif1 = Helpers.CreateAndShowNotification(
-                $"<b>{TownOfUsColors.ImpSoft.ToTextColor()}You are a new role, and you are only guessable as Traitor now!</color></b>", Color.white, spr: TouRoleIcons.Traitor.LoadAsset());
+                $"<b>{TownOfUsColors.ImpSoft.ToTextColor()}你获得了新身份，现在只能被猜测为背叛者！</color></b>", Color.white, spr: TouRoleIcons.Traitor.LoadAsset());
 
             notif1.Text.SetOutlineThickness(0.35f);
             notif1.transform.localPosition = new Vector3(0f, 1f, -20f);

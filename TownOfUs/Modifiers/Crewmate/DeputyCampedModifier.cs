@@ -10,7 +10,7 @@ namespace TownOfUs.Modifiers.Crewmate;
 
 public sealed class DeputyCampedModifier(PlayerControl deputy) : BaseModifier
 {
-    public override string ModifierName => "Camped";
+    public override string ModifierName => "被蹲守";
     public override bool HideOnUi => true;
 
     public PlayerControl Deputy { get; } = deputy;
@@ -38,7 +38,7 @@ public sealed class DeputyCampedModifier(PlayerControl deputy) : BaseModifier
         if (Deputy.AmOwner)
         {
             var notif1 = Helpers.CreateAndShowNotification(
-                $"<b>{TownOfUsColors.Deputy.ToTextColor()}Your camped target, {Player.Data.PlayerName}, has died! Avenge them in the meeting.</color></b>",
+                $"<b>{TownOfUsColors.Deputy.ToTextColor()}你蹲守的目标 {Player.Data.PlayerName} 已死亡！请在会议中为其复仇。</color></b>",
                 Color.white, spr: TouRoleIcons.Deputy.LoadAsset());
 
             notif1.Text.SetOutlineThickness(0.35f);

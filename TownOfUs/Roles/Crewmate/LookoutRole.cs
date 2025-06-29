@@ -13,9 +13,9 @@ namespace TownOfUs.Roles.Crewmate;
 
 public sealed class LookoutRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Lookout";
-    public string RoleDescription => "Keep Your Eyes Wide Open";
-    public string RoleLongDescription => "Watch other crewmates to see what roles interact with them";
+    public string RoleName => "观测者";
+    public string RoleDescription => "时刻保持警惕";
+    public string RoleLongDescription => "观察其他船员，了解与其互动的角色";
     public Color RoleColor => TownOfUsColors.Lookout;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmateInvestigative;
@@ -37,7 +37,7 @@ public sealed class LookoutRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUs
     {
         if (!target.TryGetModifier<LookoutWatchedModifier>(out var mod))
         {
-            Logger<TownOfUsPlugin>.Error("Not a watched player");
+            Logger<TownOfUsPlugin>.Error("无被观测的玩家");
             return;
         }
 
@@ -55,14 +55,14 @@ public sealed class LookoutRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUs
 
     public string GetAdvancedDescription() 
     {
-        return "The Lookout is a Crewmate Investigative role that can watch other players during rounds. During meetings they will see all roles who interact with each watched player."
+        return "观测者是一名船员调查型角色，可以在回合中观测其他玩家。会议期间你会看到所有与被观测者互动过的角色。"
             + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Watch", 
-            "Watch a player or multiple, the next meeting you will know which players interacted with the watched ones.",
+        new("观测",
+            "观测一名或多名玩家，下次会议你会知道哪些玩家与被观测者有过互动。",
             TouCrewAssets.WatchSprite)
     ];
 }

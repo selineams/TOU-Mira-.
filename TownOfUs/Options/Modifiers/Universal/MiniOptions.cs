@@ -8,10 +8,10 @@ namespace TownOfUs.Options.Modifiers.Universal;
 
 public sealed class MiniOptions : AbstractOptionGroup<MiniModifier>
 {
-    public override string GroupName => "Mini";
+    public override string GroupName => "迷你";
     public override uint GroupPriority => 26;
     public override Color GroupColor => TownOfUsColors.Mini;
 
-    [ModdedNumberOption("Mini Speed", 1.05f, 2.5f, 0.05f, MiraNumberSuffixes.Multiplier, "0.00")]
-    public float MiniSpeed { get; set; } = 1.35f;
+    [ModdedNumberOption("迷你速度", 1.05f, 2.5f, 0.05f, MiraNumberSuffixes.Multiplier, "0.00")]
+    public float MiniSpeed { get; set; } = 1.5f;
 }

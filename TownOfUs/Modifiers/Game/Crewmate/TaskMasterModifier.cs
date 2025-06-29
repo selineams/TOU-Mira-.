@@ -12,9 +12,9 @@ namespace TownOfUs.Modifiers.Game.Crewmate;
 
 public sealed class TaskmasterModifier : TouGameModifier, IWikiDiscoverable
 {
-    public override string ModifierName => "Taskmaster";
+    public override string ModifierName => "任务大师";
     public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.Taskmaster;
-    public override string GetDescription() => "A random task is auto completed for you after each meeting";
+    public override string GetDescription() => "每次会议后会自动完成一个随机任务";
     public override ModifierFaction FactionType => ModifierFaction.CrewmatePassive;
     public override int GetAssignmentChance() => (int)OptionGroupSingleton<CrewmateModifierOptions>.Instance.TaskmasterChance;
     public override int GetAmountPerGame() => (int)OptionGroupSingleton<CrewmateModifierOptions>.Instance.TaskmasterAmount;
@@ -47,16 +47,15 @@ public sealed class TaskmasterModifier : TouGameModifier, IWikiDiscoverable
                 var taskText = Regex.Replace(query, pattern, string.Empty);
                 taskText = taskText.Replace(Environment.NewLine, "");
 
-                var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.Taskmaster.ToTextColor()}The task '{taskText}' has been completed for you.</b></color>", Color.white, spr: TouModifierIcons.Taskmaster.LoadAsset());
+                var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.Taskmaster.ToTextColor()}任务“{taskText}”已为你自动完成。</b></color>", Color.white, spr: TouModifierIcons.Taskmaster.LoadAsset());
                 notif1.Text.SetOutlineThickness(0.35f);
-            notif1.transform.localPosition = new Vector3(0f, 1f, -20f);
+                notif1.transform.localPosition = new Vector3(0f, 1f, -20f);
             }
         }
     }
     public string GetAdvancedDescription()
     {
-        return
-            "Every time a round starts, you will automatically finish a task.";
+        return "每回合开始时，你会自动完成一个任务。";
     }
 
     public List<CustomButtonWikiDescription> Abilities { get; } = [];

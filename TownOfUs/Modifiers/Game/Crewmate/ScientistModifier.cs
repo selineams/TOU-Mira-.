@@ -14,9 +14,9 @@ namespace TownOfUs.Modifiers.Game.Crewmate;
 
 public sealed class ScientistModifier : TouGameModifier, IWikiDiscoverable
 {
-    public override string ModifierName => "Scientist";
+    public override string ModifierName => "科学家";
     public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.Scientist;
-    public override string GetDescription() => $"Access vitals anytime, anywhere, as long as you have charge";
+    public override string GetDescription() => $"可随时随地查看生命体征，只要有电量";
     public override ModifierFaction FactionType => ModifierFaction.CrewmateUtility;
     public override void OnActivate()
     {
@@ -43,9 +43,7 @@ public sealed class ScientistModifier : TouGameModifier, IWikiDiscoverable
 	}
     public string GetAdvancedDescription()
     {
-        return
-            $"Access Vitals at anytime with a limited battery charge."
-               + MiscUtils.AppendOptionsText(GetType());
+        return $"可随时查看生命体征，但有电量限制。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     public List<CustomButtonWikiDescription> Abilities { get; } = [];

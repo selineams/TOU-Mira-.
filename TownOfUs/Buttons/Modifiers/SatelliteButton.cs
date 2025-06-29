@@ -13,7 +13,7 @@ namespace TownOfUs.Buttons.Modifiers;
 
 public sealed class SatelliteButton : TownOfUsButton
 {
-    public override string Name => "Broadcast";
+    public override string Name => "广播寻找";
     public override string Keybind => Keybinds.ModifierAction;
     public override Color TextOutlineColor => TownOfUsColors.Satellite;
     public override float Cooldown => OptionGroupSingleton<SatelliteOptions>.Instance.Cooldown + MapCooldown;
@@ -46,7 +46,7 @@ public sealed class SatelliteButton : TownOfUsButton
         deadBodies.Do(x => PlayerControl.LocalPlayer.AddModifier<SatelliteArrowModifier>(x, Color.white));
         if (deadBodies.Count == 0)
         {
-            var notif1 = Helpers.CreateAndShowNotification($"<b>No bodies were found on the map.</b>", Color.white, new Vector3(0f, 1f, -20f), spr: TouModifierIcons.Satellite.LoadAsset());
+            var notif1 = Helpers.CreateAndShowNotification($"<b>地图上未发现尸体。</b>", Color.white, new Vector3(0f, 1f, -20f), spr: TouModifierIcons.Satellite.LoadAsset());
             notif1.Text.SetOutlineThickness(0.35f);
         }
         if (OptionGroupSingleton<SatelliteOptions>.Instance.OneUsePerRound) Usable = false;

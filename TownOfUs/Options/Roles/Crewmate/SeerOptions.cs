@@ -7,23 +7,23 @@ namespace TownOfUs.Options.Roles.Crewmate;
 
 public sealed class SeerOptions : AbstractOptionGroup<SeerRole>
 {
-    public override string GroupName => "Seer";
+    public override string GroupName => "预言家";
 
-    [ModdedNumberOption("Seer Cooldown", 10f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
+    [ModdedNumberOption("预言家冷却", 10f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
     public float SeerCooldown { get; set; } = 25f;
 
-    [ModdedToggleOption("Crewmate Killing Roles Are Red")]
-    public bool ShowCrewmateKillingAsRed { get; set; } = false;
+    [ModdedToggleOption("船员击杀职业显示为红色")]
+    public bool ShowCrewmateKillingAsRed { get; set; } = true;
 
-    [ModdedToggleOption("Neutral Benign Roles Are Red")]
+    [ModdedToggleOption("中立善良职业显示为红色")]
     public bool ShowNeutralBenignAsRed { get; set; } = false;
 
-    [ModdedToggleOption("Neutral Evil Roles Are Red")]
+    [ModdedToggleOption("中立邪恶职业显示为红色")]
     public bool ShowNeutralEvilAsRed { get; set; } = false;
 
-    [ModdedToggleOption("Neutral Killing Roles Are Red")]
+    [ModdedToggleOption("中立杀手职业显示为红色")]
     public bool ShowNeutralKillingAsRed { get; set; } = true;
 
-    [ModdedToggleOption("Traitor Swaps Colors")]
-    public bool SwapTraitorColors { get; set; } = true;
+    [ModdedToggleOption("背叛者转换颜色")]
+    public bool SwapTraitorColors { get; set; } = false;
 }

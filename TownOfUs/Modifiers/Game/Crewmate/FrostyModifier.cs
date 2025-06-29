@@ -9,9 +9,9 @@ namespace TownOfUs.Modifiers.Game.Crewmate;
 
 public sealed class FrostyModifier : TouGameModifier, IWikiDiscoverable
 {
-    public override string ModifierName => "Frosty";
+    public override string ModifierName => "雪人";
     public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.Frosty;
-    public override string GetDescription() => "Slow your killer for a short duration.";
+    public override string GetDescription() => "让你的击杀者短时间内减速。";
     public override ModifierFaction FactionType => ModifierFaction.CrewmatePostmortem;
 
     public override int GetAssignmentChance() => (int)OptionGroupSingleton<CrewmateModifierOptions>.Instance.FrostyChance;
@@ -23,9 +23,7 @@ public sealed class FrostyModifier : TouGameModifier, IWikiDiscoverable
     }
     public string GetAdvancedDescription()
     {
-        return
-            "After you die, your killer will be slowed down!"
-               + MiscUtils.AppendOptionsText(GetType());
+        return "你死后，击杀你的玩家会被减速！" + MiscUtils.AppendOptionsText(GetType());
     }
 
     public List<CustomButtonWikiDescription> Abilities { get; } = [];

@@ -7,17 +7,17 @@ namespace TownOfUs.Options.Roles.Neutral;
 
 public sealed class PlaguebearerOptions : AbstractOptionGroup<PlaguebearerRole>
 {
-    public override string GroupName => "Plaguebearer";
+    public override string GroupName => "瘟疫之源";
 
-    [ModdedNumberOption("Instant Pestilence Chance", 0, 100f, 10f, MiraNumberSuffixes.Percent)]
-    public float PestChance { get; set; } = 0f;
+    [ModdedNumberOption("一开始生成万疫之神概率", 0, 100f, 10f, MiraNumberSuffixes.Percent)]
+    public float PestChance { get; set; } = 70f;
 
-    [ModdedNumberOption("Infect Cooldown", 10f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
-    public float InfectCooldown { get; set; } = 25f;
+    [ModdedNumberOption("感染冷却", 10f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
+    public float InfectCooldown { get; set; } = 10f;
 
-    [ModdedNumberOption("Pestilence Kill Cooldown", 10f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
+    [ModdedNumberOption("万疫之神击杀冷却", 10f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
     public float PestKillCooldown { get; set; } = 25f;
 
-    [ModdedToggleOption("Pestilence Can Vent")]
-    public bool CanVent { get; set; } = false;
+    [ModdedToggleOption("万疫之神可进通风口")]
+    public bool CanVent { get; set; } = true;
 }

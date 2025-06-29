@@ -7,7 +7,7 @@ namespace TownOfUs.Buttons.Impostor;
 
 public sealed class EscapistMarkButton : TownOfUsRoleButton<EscapistRole>, IAftermathableButton
 {
-    public override string Name => "Mark Location";
+    public override string Name => "标记地点";
     public override string Keybind => Keybinds.SecondaryAction;
     public override Color TextOutlineColor => TownOfUsColors.Impostor;
     public override float Cooldown => 0;

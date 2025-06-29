@@ -13,9 +13,9 @@ namespace TownOfUs.Modifiers.Crewmate;
 
 public sealed class MedicShieldModifier(PlayerControl medic) : BaseShieldModifier
 {
-    public override string ModifierName => "Medic Shield";
+    public override string ModifierName => "法医护盾";
     public override LoadableAsset<Sprite>? ModifierIcon => TouRoleIcons.Medic;
-    public override string ShieldDescription => "You are shielded by a Medic!\nYou may not die to other players";
+    public override string ShieldDescription => "你被法医保护着！\n你不会被其他玩家杀死。";
     public PlayerControl Medic { get; } = medic;
     public GameObject? MedicShield { get; set; }
     public override bool HideOnUi

@@ -27,9 +27,9 @@ namespace TownOfUs.Roles.Crewmate;
 
 public sealed class JailorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITouCrewRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Jailor";
-    public string RoleDescription => "Jail And Execute The <color=#FF0000FF>Impostors</color>";
-    public string RoleLongDescription => "Execute evildoers in meetings but avoid crewmates";
+    public string RoleName => "典狱长";
+    public string RoleDescription => "关押并处决<color=#FF0000FF>伪装者</color>";
+    public string RoleLongDescription => "在会议中处决恶人，但要避免误杀船员";
     public Color RoleColor => TownOfUsColors.Jailor;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmatePower;
@@ -75,8 +75,8 @@ public sealed class JailorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITouCrewRo
         {
             if (Jailed!.HasDied())
                 return;
-            var title = $"<color=#{TownOfUsColors.Jailor.ToHtmlStringRGBA()}>Jailor Feedback</color>";
-            MiscUtils.AddFakeChat(Jailed.Data, title, "Communicate with your jailee in the other chatbot.", false, true);
+            var title = $"<color=#{TownOfUsColors.Jailor.ToHtmlStringRGBA()}>典狱长反馈</color>";
+            MiscUtils.AddFakeChat(Jailed.Data, title, "请在另一聊天框与被关押者交流。", false, true);
         }
 
         if (MeetingHud.Instance)
@@ -167,7 +167,7 @@ public sealed class JailorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITouCrewRo
                 Coroutines.Start(MiscUtils.CoFlash(Color.red));
 
                 var notif1 = Helpers.CreateAndShowNotification(
-                    $"<b>{TownOfUsColors.Jailor.ToTextColor()}{Jailed.Data.PlayerName} cannot be executed! They must be Invulnerable!</color></b>", Color.white, spr: TouRoleIcons.Jailor.LoadAsset());
+                    $"<b>{TownOfUsColors.Jailor.ToTextColor()}{Jailed.Data.PlayerName}无法被处决！他们拥有无敌效果！</color></b>", Color.white, spr: TouRoleIcons.Jailor.LoadAsset());
 
                 notif1.Text.SetOutlineThickness(0.35f);
                 notif1.transform.localPosition = new Vector3(0f, 1f, -20f);
@@ -200,7 +200,7 @@ public sealed class JailorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITouCrewRo
         var stringB = ITownOfUsRole.SetNewTabText(this);
         if (PlayerControl.LocalPlayer.TryGetModifier<AllianceGameModifier>(out var allyMod) && !allyMod.GetsPunished)
         {
-            stringB.AppendLine(CultureInfo.InvariantCulture, $"You can execute crewmates.");
+            stringB.AppendLine(CultureInfo.InvariantCulture, $"你可以处决船员。");
         }
 
         return stringB;
@@ -208,17 +208,17 @@ public sealed class JailorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITouCrewRo
 
     public string GetAdvancedDescription()
     {
-        return "The Jailor is a Crewmate Power role that can jail other players. During a meeting, the Jailor can choose to execute their jailed player. (Unless the Jailor is an Imitator)"
+        return "典狱长是一名船员强力型角色，可以关押其他玩家。在会议期间，典狱长可以选择处决被关押的玩家。（如果是效颦者变身的典狱长则无法处决）"
             + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Jail",
-            "Jail a player. During the meeting everyone will see who is jailed. You can privately talk with your detained player using the instructions that are in the private chatbox",
+        new("关押",
+            "关押一名玩家。会议期间所有人都能看到被关押者。你可以通过私聊与被关押者交流。",
             TouCrewAssets.JailSprite),
-        new("Execute (Meeting)",
-            "Execute the detained player. If the player is a crewmate the Jailor will lose the ability to Jail.",
+        new("处决（会议）",
+            "处决被关押的玩家。如果对方是船员，典狱长将失去关押能力。",
             TouAssets.ExecuteCleanSprite)
     ];
 }

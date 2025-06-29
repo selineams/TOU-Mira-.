@@ -270,15 +270,15 @@ public static class Extensions
 
         if (alignment.Contains("Crewmate"))
         {
-            alignment = alignment.Replace("Crewmate", $"<color=#68ACF4FF>Crewmate</color>");
+            alignment = alignment.Replace("Crewmate", $"<color=#68ACF4FF>船员</color>");
         }
         else if (alignment.Contains("Impostor"))
         {
-            alignment = alignment.Replace("Impostor", $"<color=#D63F42FF>Impostor</color>");
+            alignment = alignment.Replace("Impostor", $"<color=#D63F42FF>内鬼</color>");
         }
         else if (alignment.Contains("Neutral"))
         {
-            alignment = alignment.Replace("Neutral", $"<color=#8A8A8AFF>Neutral</color>");
+            alignment = alignment.Replace("Neutral", $"<color=#8A8A8AFF>中立</color>");
         }
 
         var finalString = $"<size=88%>{roleBehaviour.NiceName}</size>\n<size=70%><color=white>{alignment}</color></size>";
@@ -362,9 +362,9 @@ public static class Extensions
         // var material = panel.PlayerIcon.cosmetics.currentBodySprite.BodySprite.material;
 
 
-        if (teamName.Contains("Crewmate")) teamName = teamName.Replace("Crewmate", $"<color=#68ACF4FF>Crewmate</color>");
-        else if (teamName.Contains("Impostor")) teamName = teamName.Replace("Impostor", $"<color=#D63F42FF>Impostor</color>");
-        else teamName = teamName.Replace("Neutral", $"<color=#8A8A8AFF>Neutral</color>");
+        if (teamName.Contains("Crewmate")) teamName = teamName.Replace("Crewmate", $"<color=#68ACF4FF>船员</color>");
+        else if (teamName.Contains("Impostor")) teamName = teamName.Replace("Impostor", $"<color=#D63F42FF>内鬼</color>");
+        else teamName = teamName.Replace("Neutral", $"<color=#8A8A8AFF>中立</color>");
         //teamName += " Modifier";
 
         var finalString = $"<size=88%>{modifier.ModifierName}<color=white> (Modifier)</size>\n<size=70%>{teamName}</color></size>";

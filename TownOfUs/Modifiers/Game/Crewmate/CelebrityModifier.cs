@@ -15,9 +15,9 @@ namespace TownOfUs.Modifiers.Game.Crewmate;
 
 public sealed class CelebrityModifier : TouGameModifier, IWikiDiscoverable
 {
-    public override string ModifierName => "Celebrity";
+    public override string ModifierName => "名人";
     public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.Celebrity;
-    public override string GetDescription() => "Announce how you died on your passing.";
+    public override string GetDescription() => "你死亡时会公布你的死因。";
     public override ModifierFaction FactionType => ModifierFaction.CrewmatePostmortem;
     public override int GetAssignmentChance() => (int)OptionGroupSingleton<CrewmateModifierOptions>.Instance.CelebrityChance;
     public override int GetAmountPerGame() => (int)OptionGroupSingleton<CrewmateModifierOptions>.Instance.CelebrityAmount != 0 ? 1 : 0;
@@ -32,7 +32,7 @@ public sealed class CelebrityModifier : TouGameModifier, IWikiDiscoverable
 
     public string GetAdvancedDescription()
     {
-        return "After you die, details about your death will be revealed such as where you were killed and which role killed you during the meeting.";
+        return "你死后，你的死亡细节会被公布，包括你被杀的位置和杀你的角色，并会在会议中显示。";
     }
 
     public override bool IsModifierValidOn(RoleBehaviour role)
@@ -59,43 +59,43 @@ public sealed class CelebrityModifier : TouGameModifier, IWikiDiscoverable
             }
         }
 
-        var room = plainShipRoom != null ? TranslationController.Instance.GetString(plainShipRoom.RoomId) : "Outside/Hallway";
+        var room = plainShipRoom != null ? TranslationController.Instance.GetString(plainShipRoom.RoomId) : "室外/走廊";
 
         var celeb = player.GetModifier<CelebrityModifier>()!;
         celeb.StoredRoom = room;
         celeb.DeathTime = DateTime.UtcNow;
 
-        celeb.AnnounceMessage = $"<size=90%>The Celebrity, {player.GetDefaultAppearance().PlayerName}, has died!</size>\n<size=70%>(Details in chat)</size>";
+        celeb.AnnounceMessage = $"<size=90%>名人 {player.GetDefaultAppearance().PlayerName} 已死亡!</size>\n<size=70%>(详情见聊天框)</size>";
 
-        var cod = "killed";
+        var cod = "被杀";
         switch (source.Data.Role)
         {
             case SheriffRole or HunterRole or VeteranRole:
-                cod = "shot";
+                cod = "正义执行";
                 break;
             case InquisitorRole:
-                cod = "vanquished";
+                cod = "审判";
                 break;
             case ArsonistRole:
-                cod = "ignited";
+                cod = "烧";
                 break;
             case GlitchRole:
-                cod = "bugged";
+                cod = "混沌";
                 break;
             case JuggernautRole:
-                cod = "destroyed";
+                cod = "天启创";
                 break;
             case PestilenceRole:
-                cod = "diseased";
+                cod = "疫病";
                 break;
             case SoulCollectorRole:
-                cod = "reaped";
+                cod = "收割";
                 break;
             case VampireRole:
-                cod = "bit";
+                cod = "咬";
                 break;
             case WerewolfRole:
-                cod = "rampaged";
+                cod = "月狼抓";
                 break;
         }
         if (customDeath != string.Empty && customDeath != "") cod = customDeath;
@@ -105,9 +105,9 @@ public sealed class CelebrityModifier : TouGameModifier, IWikiDiscoverable
         }
 
         if (source == player)
-            celeb.DeathMessage = $"The Celebrity, {player.GetDefaultAppearance().PlayerName}, was killed! Location: {celeb.StoredRoom}, Death: By Suicide, Time: ";
+            celeb.DeathMessage = $"名人 {player.GetDefaultAppearance().PlayerName} 死亡! 地点: {celeb.StoredRoom}, 死因: 自杀, 时间: ";
         else
-            celeb.DeathMessage = $"The Celebrity, {player.GetDefaultAppearance().PlayerName}, was {cod}! Location: {celeb.StoredRoom}, Death: By the {source.Data.Role.NiceName}, Time: ";
+            celeb.DeathMessage = $"名人 {player.GetDefaultAppearance().PlayerName} 遭{cod}! 地点: {celeb.StoredRoom}, 凶手: {source.Data.Role.NiceName}, 时间: ";
     }
 
     [MethodRpc((uint)TownOfUsRpc.UpdateCelebrityKilled, SendImmediately = true)]

@@ -8,18 +8,18 @@ namespace TownOfUs.Options.Roles.Crewmate;
 
 public sealed class DetectiveOptions : AbstractOptionGroup<DetectiveRole>
 {
-    public override string GroupName => "Detective";
+    public override string GroupName => "侧写师";
 
-    [ModdedNumberOption("Examine Cooldown", 10f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
-    public float ExamineCooldown { get; set; } = 25f;
+    [ModdedNumberOption("侧写师调查冷却", 10f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
+    public float ExamineCooldown { get; set; } = 10f;
 
-    [ModdedToggleOption("Show Detective Reports")]
+    [ModdedToggleOption("显示侧写师报告")]
     public bool DetectiveReportOn { get; set; } = true;
-    public ModdedNumberOption DetectiveRoleDuration { get; set; } = new("Time Where Detective Will Have Role", 7.5f, 0f, 60f, 2.5f, MiraNumberSuffixes.Seconds)
+    public ModdedNumberOption DetectiveRoleDuration { get; set; } = new("最大死亡时间 —— 侧写报告包含职业", 15f, 0f, 60f, 2.5f, MiraNumberSuffixes.Seconds)
     {
         Visible = () => !OptionGroupSingleton<DetectiveOptions>.Instance.DetectiveReportOn
     };
-    public ModdedNumberOption DetectiveFactionDuration { get; set; } = new("Time Where Detective Will Have Faction", 30f, 0f, 60f, 2.5f, MiraNumberSuffixes.Seconds)
+    public ModdedNumberOption DetectiveFactionDuration { get; set; } = new("最大死亡时间 —— 侧写报告包含阵营", 30f, 0f, 60f, 2.5f, MiraNumberSuffixes.Seconds)
     {
         Visible = () => !OptionGroupSingleton<DetectiveOptions>.Instance.DetectiveReportOn
     };

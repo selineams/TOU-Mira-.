@@ -19,9 +19,9 @@ namespace TownOfUs.Roles.Impostor;
 
 public sealed class HypnotistRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable, ICrewVariant
 {
-    public string RoleName => "Hypnotist";
-    public string RoleDescription => "Hypnotize Crewmates";
-    public string RoleLongDescription => "Hypnotize crewmates and drive them insane";
+    public string RoleName => "催眠师";
+    public string RoleDescription => "催眠船员";
+    public string RoleLongDescription => "催眠船员并使其陷入疯狂";
     public RoleBehaviour CrewVariant => RoleManager.Instance.GetRole((RoleTypes)RoleId.Get<LookoutRole>());
     public Color RoleColor => TownOfUsColors.Impostor;
     public ModdedRoleTeams Team => ModdedRoleTeams.Impostor;
@@ -130,17 +130,17 @@ public sealed class HypnotistRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITownOf
 
     public string GetAdvancedDescription()
     {
-        return $"The Hypnotist is an Impostor Support role that can hypnotize players. During a meeting they can release Mass Hysteria, which makes all hypnotised players (marked with <color=#D53F42>@</color>) have different visuals applied to players the following round." 
+        return $"催眠师是一名伪装者辅助型角色，可以催眠玩家。在会议期间可释放集体癔症，使所有被催眠的玩家（以<color=#D53F42>@</color>标记）在下一回合看到不同的视觉效果。" 
             + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Hypnotise",
-            "Hypnotise a player, causing them to see the game differently than non-hypnotised players if mass hysteria is active.",
+        new("催眠",
+            "催眠一名玩家，若集体癔症生效，被催眠者看到的游戏画面将与其他玩家不同。",
             TouImpAssets.HypnotiseButtonSprite),
-        new("Mass Hysteria (Meeting)",
-            "Cause all hypnotised players to have different visuals applied to players on their screen the following round.",
+        new("集体癔症（会议）",
+            "让所有被催眠的玩家在下一回合看到不同的视觉效果。",
             TouAssets.HysteriaCleanSprite)
     ];
 }

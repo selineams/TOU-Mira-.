@@ -12,7 +12,7 @@ namespace TownOfUs.Buttons.Neutral;
 
 public sealed class SoulCollectorReapButton : TownOfUsRoleButton<SoulCollectorRole, PlayerControl>, IDiseaseableButton, IKillButton
 {
-    public override string Name => "Reap";
+    public override string Name => "收割";
     public override string Keybind => Keybinds.PrimaryAction;
     public override Color TextOutlineColor => TownOfUsColors.SoulCollector;
     public override float Cooldown => OptionGroupSingleton<SoulCollectorOptions>.Instance.KillCooldown + MapCooldown;

@@ -14,7 +14,7 @@ namespace TownOfUs.Buttons.Crewmate;
 
 public sealed class OracleConfessButton : TownOfUsRoleButton<OracleRole, PlayerControl>
 {
-    public override string Name => "Confess";
+    public override string Name => "忏悔";
     public override Color TextOutlineColor => TownOfUsColors.Oracle;
     public override string Keybind => Keybinds.PrimaryAction;
     public override float Cooldown => OptionGroupSingleton<OracleOptions>.Instance.ConfessCooldown;

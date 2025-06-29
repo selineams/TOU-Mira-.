@@ -14,9 +14,9 @@ namespace TownOfUs.Roles.Crewmate;
 
 public sealed class ClericRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Cleric";
-    public string RoleDescription => "Save The Crewmates";
-    public string RoleLongDescription => "Barrier and Cleanse crewmates";
+    public string RoleName => "牧师";
+    public string RoleDescription => "拯救船员";
+    public string RoleLongDescription => "为船员加护盾并净化负面效果";
     public Color RoleColor => TownOfUsColors.Cleric;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmateProtective;
@@ -48,16 +48,16 @@ public sealed class ClericRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsR
 
     public string GetAdvancedDescription()
     {
-        return "The Cleric is a Crewmate Protective that can protect crewmates by negating their negative effects, as well as placing barriers on them to prevent interactions." + MiscUtils.AppendOptionsText(GetType());
+        return "牧师是一名船员保护型角色，可以通过净化负面效果和为船员加护盾来保护他们。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Barrier",
-            $"Prevent a Crewmate from being interacted with. The shield will last for {OptionGroupSingleton<ClericOptions>.Instance.BarrierCooldown} seconds.",
+        new("护盾",
+            $"使一名船员免受互动影响。护盾持续{OptionGroupSingleton<ClericOptions>.Instance.BarrierCooldown}秒。",
             TouCrewAssets.BarrierSprite),
-        new("Cleanse",
-            $"Remove all negative effects on a player. (Douse, Hack, Infect, Blackmail, Blind, Flash, and Hypnosis)",
+        new("净化",
+            $"移除玩家身上的所有负面效果。（涂油、黑入、感染、勒索、致盲、闪光、催眠）",
             TouCrewAssets.CleanseSprite)
     ];
 }

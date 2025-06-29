@@ -15,9 +15,9 @@ namespace TownOfUs.Roles.Crewmate;
 
 public sealed class WardenRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Warden";
-    public string RoleDescription => "Fortify Crewmates";
-    public string RoleLongDescription => "Fortify crewmates to prevent interactions with them";
+    public string RoleName => "护卫者";
+    public string RoleDescription => "强化船员";
+    public string RoleLongDescription => "强化船员，防止他人对其进行互动";
     public Color RoleColor => TownOfUsColors.Warden;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmateProtective;
@@ -38,7 +38,7 @@ public sealed class WardenRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsR
 
         if (Fortified != null)
         {
-            stringB.Append(CultureInfo.InvariantCulture, $"\n<b>Fortified: </b>{Color.white.ToTextColor()}{Fortified.Data.PlayerName}</color>");
+            stringB.Append(CultureInfo.InvariantCulture, $"\n<b>已强化：</b>{Color.white.ToTextColor()}{Fortified.Data.PlayerName}</color>");
         }
 
         return stringB;
@@ -124,15 +124,14 @@ public sealed class WardenRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsR
     
     public string GetAdvancedDescription()
     {
-        return
-            "The Warden is a Crewmate Protective role that can fortify players to prevent them from being interacted with. "
+        return "护卫者是一名船员保护型角色，可以强化一名玩家，防止他人对其进行互动。"
             + MiscUtils.AppendOptionsText(GetType());
     }
     
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Fortify",
-            $"Fortify a player to prevent them from being interacted with. If anyone tries to interact with a fortified player, the ability will not work and both the Warden and fortified player will be alerted with a purple flash.",
+        new("强化",
+            $"为一名玩家强化，防止他人对其进行互动。如果有人尝试与被强化玩家互动，该能力将失效，且护卫者和被强化者都会收到紫色闪光提示。",
             TouCrewAssets.FortifySprite),
     ];
 }

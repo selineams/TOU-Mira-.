@@ -21,9 +21,9 @@ namespace TownOfUs.Roles.Crewmate;
 
 public sealed class ProsecutorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Prosecutor";
-    public string RoleDescription => "Exile Players Of Your Choosing";
-    public string RoleLongDescription => "Choose to exile anyone you want";
+    public string RoleName => "检察官";
+    public string RoleDescription => "流放你选择的玩家";
+    public string RoleLongDescription => "选择任何你想要流放的人";
     public Color RoleColor => TownOfUsColors.Prosecutor;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmatePower;
@@ -64,10 +64,10 @@ public sealed class ProsecutorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownO
         var text = ITownOfUsRole.SetNewTabText(this);
         if (PlayerControl.LocalPlayer.TryGetModifier<AllianceGameModifier>(out var allyMod) && !allyMod.GetsPunished)
         {
-            text.AppendLine(CultureInfo.InvariantCulture, $"<b>You may prosecute crew.</b>");
+            text.AppendLine(CultureInfo.InvariantCulture, $"<b>你可以流放船员。</b>");
         }
         var prosecutes = OptionGroupSingleton<ProsecutorOptions>.Instance.MaxProsecutions - ProsecutionsCompleted;
-        var newText = prosecutes == 1 ? $"1 Prosecution Remaining." : $"\n{prosecutes} Prosecutions Remaining.";
+        var newText = prosecutes == 1 ? $"剩余1次流放。" : $"\n剩余{prosecutes}次流放。";
         text.AppendLine(CultureInfo.InvariantCulture, $"{newText}");
         return text;
     }
@@ -153,14 +153,14 @@ public sealed class ProsecutorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownO
 
     public string GetAdvancedDescription()
     {
-        return "The Prosecutor is a Crewmate Power role that can Exile a player, applying 5 votes to a player of their choosing. They can also see who voted for who, even if they’re anonymous."
+        return "检察官是一名船员强力型角色，可以流放一名玩家，对其投出5票并无视其他所有票数。检察官还能看到所有人的投票情况，即使是匿名投票。"
             + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Prosecute (Meeting)",
-            "Exile any player of your choosing, throwing 5 votes on them and ignoring all other votes.",
+        new("流放（会议）",
+            "流放你选择的任意玩家，对其投出5票并无视其他所有票数。",
             TouRoleIcons.Prosecutor)
     ];
 }

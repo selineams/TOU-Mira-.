@@ -19,9 +19,9 @@ namespace TownOfUs.Roles.Neutral;
 
 public sealed class ArsonistRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Arsonist";
-    public string RoleDescription => "Douse Players And Ignite The Light";
-    public string RoleLongDescription => OptionGroupSingleton<ArsonistOptions>.Instance.LegacyArsonist ? "Douse players and ignite the closest one to kill all doused targets" : "Douse players and ignite to kill all nearby doused targets";
+    public string RoleName => "纵火狂";
+    public string RoleDescription => "浇油点火，焚尽一切";
+    public string RoleLongDescription => OptionGroupSingleton<ArsonistOptions>.Instance.LegacyArsonist ? "给玩家浇油并点燃最近的目标，焚烧所有被浇油的玩家" : "给玩家浇油并点燃，焚烧周围所有被浇油的玩家";
     public Color RoleColor => TownOfUsColors.Arsonist;
     public ModdedRoleTeams Team => ModdedRoleTeams.Custom;
     public RoleAlignment RoleAlignment => RoleAlignment.NeutralKilling;
@@ -62,7 +62,7 @@ public sealed class ArsonistRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfUs
 
         if (allDoused.Any())
         {
-            stringB.Append("\n<b>Players Doused:</b>");
+            stringB.Append("\n<b>已浇油玩家:</b>");
             foreach (var plr in allDoused)
             {
                 stringB.Append(CultureInfo.InvariantCulture, $"\n{Color.white.ToTextColor()}{plr.Data.PlayerName}</color>");
@@ -111,16 +111,16 @@ public sealed class ArsonistRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfUs
 
     public string GetAdvancedDescription()
     {
-        return "The Arsonist is a Neutral Killing role that wins by being the last killer alive. " + (OptionGroupSingleton<ArsonistOptions>.Instance.LegacyArsonist ? "They can douse players and ignite one of them to ignite all doused players on the map." : "They can douse players and ignite them when close.") + MiscUtils.AppendOptionsText(GetType());
+        return "纵火狂是一名中立击杀型角色，通过成为场上最后一名杀手获胜。" + (OptionGroupSingleton<ArsonistOptions>.Instance.LegacyArsonist ? "可以给玩家浇油并点燃其中一人，点燃后地图上所有被浇油的玩家都会被焚烧。" : "可以给玩家浇油并在靠近时点燃，焚烧周围所有被浇油的玩家。") + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Douse",
-            "Douse a player in gasoline",
+        new("浇油",
+            "给一名玩家浇汽油",
             TouNeutAssets.DouseButtonSprite),
-        new("Ignite",
-            OptionGroupSingleton<ArsonistOptions>.Instance.LegacyArsonist ? "Kill every doused player on the map as long as you ignite one player close by." : "Kill multiple doused players around you, given that they are within your radius.",
+        new("点燃",
+            OptionGroupSingleton<ArsonistOptions>.Instance.LegacyArsonist ? "只要点燃一名附近玩家，即可焚烧全图所有被浇油的玩家。" : "点燃你周围范围内所有被浇油的玩家。",
             TouNeutAssets.IgniteButtonSprite)
     ];
 }

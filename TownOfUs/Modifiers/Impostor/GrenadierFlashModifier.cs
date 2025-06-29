@@ -12,7 +12,7 @@ namespace TownOfUs.Modifiers.Impostor;
 
 public sealed class GrenadierFlashModifier(PlayerControl grenadier) : DisabledModifier, IDisposable
 {
-    public override string ModifierName => "Flashed";
+    public override string ModifierName => "致盲闪光";
     public override bool HideOnUi => true;
     public override float Duration => OptionGroupSingleton<GrenadierOptions>.Instance.GrenadeDuration + 0.5f;
     public override bool AutoStart => true;
@@ -35,7 +35,7 @@ public sealed class GrenadierFlashModifier(PlayerControl grenadier) : DisabledMo
         if (Player.AmOwner && !Grenadier.AmOwner)
         {
             var notif1 = Helpers.CreateAndShowNotification(
-                $"<b>{TownOfUsColors.ImpSoft.ToTextColor()}You were flashed by a Grenadier!</color></b>", Color.white, spr: TouRoleIcons.Grenadier.LoadAsset());
+                $"<b>{TownOfUsColors.ImpSoft.ToTextColor()}你被掷弹兵致盲闪光了！</color></b>", Color.white, spr: TouRoleIcons.Grenadier.LoadAsset());
 
             notif1.Text.SetOutlineThickness(0.35f);
             notif1.transform.localPosition = new Vector3(0f, 1f, -20f);

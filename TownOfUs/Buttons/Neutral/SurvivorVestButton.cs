@@ -15,7 +15,7 @@ namespace TownOfUs.Buttons.Neutral;
 // or make swooper function like this?
 public sealed class SurvivorVestButton : TownOfUsRoleButton<SurvivorRole>
 {
-    public override string Name => "Safeguard";
+    public override string Name => "防弹衣";
     public override string Keybind => Keybinds.SecondaryAction;
     public override Color TextOutlineColor => TownOfUsColors.Survivor;
     public override float Cooldown => OptionGroupSingleton<SurvivorOptions>.Instance.VestCooldown;

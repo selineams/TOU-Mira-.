@@ -19,7 +19,7 @@ namespace TownOfUs.Buttons.Neutral;
 
 public sealed class VampireBiteButton : TownOfUsRoleButton<VampireRole, PlayerControl>, IDiseaseableButton, IKillButton
 {
-    public override string Name => "Bite";
+    public override string Name => "咬";
     public override string Keybind => Keybinds.PrimaryAction;
     public override Color TextOutlineColor => TownOfUsColors.Vampire;
     public override float Cooldown => OptionGroupSingleton<VampireOptions>.Instance.BiteCooldown + MapCooldown;

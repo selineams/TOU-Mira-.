@@ -12,7 +12,7 @@ namespace TownOfUs.Buttons.Impostor;
 
 public sealed class EclipsalBlindButton : TownOfUsRoleButton<EclipsalRole>, IAftermathableButton
 {
-    public override string Name => "Blind";
+    public override string Name => "致盲";
     public override string Keybind => Keybinds.SecondaryAction;
     public override Color TextOutlineColor => TownOfUsColors.Impostor;
     public override float Cooldown => OptionGroupSingleton<EclipsalOptions>.Instance.BlindCooldown + MapCooldown;

@@ -74,7 +74,7 @@ public sealed class TraitorSelectionMinigame(IntPtr cppPtr) : Minigame(cppPtr)
 
         StatusText.font = HudManager.Instance.TaskPanel.taskText.font;
         StatusText.fontMaterial = HudManager.Instance.TaskPanel.taskText.fontMaterial;
-        StatusText.text = "Select a role.";
+        StatusText.text = "请选择一个职业。";
         StatusText.gameObject.SetActive(false);
     }
 
@@ -130,7 +130,7 @@ public sealed class TraitorSelectionMinigame(IntPtr cppPtr) : Minigame(cppPtr)
             z++;
         }
 
-        var randomCard = CreateCard("Random", "Random\nImpostor", TouRoleIcons.RandomImp.LoadAsset(), z, TownOfUsColors.Impostor);
+        var randomCard = CreateCard("随机", "随机内鬼", TouRoleIcons.RandomImp.LoadAsset(), z, TownOfUsColors.Impostor);
         randomCard.OnClick.RemoveAllListeners();
         randomCard.OnClick.AddListener((UnityAction)(() =>
         {

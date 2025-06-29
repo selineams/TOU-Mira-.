@@ -12,9 +12,9 @@ namespace TownOfUs.Modifiers.Game.Universal;
 
 public sealed class RadarModifier : UniversalGameModifier, IWikiDiscoverable
 {
-    public override string ModifierName => "Radar";
+    public override string ModifierName => "雷达";
     public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.Radar;
-    public override string GetDescription() => "You have an arrow pointing\n to the closest player.";
+    public override string GetDescription() => "你会获得一个指向最近玩家的箭头。";
     public override ModifierFaction FactionType => ModifierFaction.UniversalUtility;
     private ArrowBehaviour _arrow;
 
@@ -60,8 +60,7 @@ public sealed class RadarModifier : UniversalGameModifier, IWikiDiscoverable
     }
     public string GetAdvancedDescription()
     {
-        return
-            "Get an arrow to the closest player.";
+        return "获得一个指向最近玩家的箭头。";
     }
 
     public List<CustomButtonWikiDescription> Abilities { get; } = [];

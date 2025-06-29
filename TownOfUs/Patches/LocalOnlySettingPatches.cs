@@ -17,35 +17,35 @@ public static class LocalSettings
     private static SelectionBehaviour[] AllOptions = [
             new()
             {
-                Title = "Show Other Ghosts When Dead",
+                Title = "死亡后显示其他幽灵",
                 ObjName = "VisibleGhostsToggle",
                 OnClick = () => { return TownOfUsPlugin.DeadSeeGhosts.Value = !TownOfUsPlugin.DeadSeeGhosts.Value; },
                 DefaultValue = TownOfUsPlugin.DeadSeeGhosts.Value
             },
             new()
             {
-                Title = "Show Vents On Map",
+                Title = "地图上显示通风口",
                 ObjName = "ShowVentsToggle",
                 OnClick = () => { return TownOfUsPlugin.ShowVents.Value = !TownOfUsPlugin.ShowVents.Value; },
                 DefaultValue = TownOfUsPlugin.ShowVents.Value
             },
             new()
             {
-                Title = "Show Welcome Msg",
+                Title = "显示欢迎信息",
                 ObjName = "WelcomeMsgToggle",
                 OnClick = () => { return TownOfUsPlugin.ShowWelcomeMessage.Value = !TownOfUsPlugin.ShowWelcomeMessage.Value; },
                 DefaultValue = TownOfUsPlugin.ShowWelcomeMessage.Value
             },
             new()
             {
-                Title = "Show Summary Msg",
+                Title = "显示总结信息",
                 ObjName = "SummaryMsgToggle",
                 OnClick = () => { return TownOfUsPlugin.ShowSummaryMessage.Value = !TownOfUsPlugin.ShowSummaryMessage.Value; },
                 DefaultValue = TownOfUsPlugin.ShowSummaryMessage.Value
             },
             new()
             {
-                Title = "Colored Player Name",
+                Title = "彩色玩家名称",
                 ObjName = "ColoredPlayerNameToggle",
                 Enabled = Palette.CrewmateBlue,
                 //Disabled = new(0.4f, 0f, 0.6f, 1f),
@@ -55,7 +55,7 @@ public static class LocalSettings
             },
             new()
             {
-                Title = "Use Basic Crew Colors",
+                Title = "使用基础船员颜色",
                 ObjName = "BasicCrewColorsToggle",
                 Enabled = Palette.CrewmateBlue,
                 //Disabled = new(0.4f, 0f, 0.6f, 1f),
@@ -69,7 +69,7 @@ public static class LocalSettings
             },
             new()
             {
-                Title = "Show Shields On Hud",
+                Title = "HUD上显示护盾",
                 //Enabled = new(0f, 1f, 0.7f, 1f),
                 //Hover = new(0f, 0.4f, 0f, 1f),
                 ObjName = "ShieldsHudToggle",
@@ -78,7 +78,7 @@ public static class LocalSettings
             },
             new()
             {
-                Title = $"Button Scale Factor: {Math.Round(TownOfUsPlugin.ButtonUIFactor.Value, 2)}x",
+                Title = $"按钮缩放系数: {Math.Round(TownOfUsPlugin.ButtonUIFactor.Value, 2)}x",
                 ObjName = "ButtonScaleFloat",
                 Enabled = TownOfUsColors.Inquisitor,
                 Disabled = TownOfUsColors.Juggernaut,
@@ -96,7 +96,7 @@ public static class LocalSettings
                     if (optionsMenu != null)
                     {
                         var title = optionsMenu.transform.FindChild("ButtonScaleFloat");
-                        if (title != null && title.transform.GetChild(2).TryGetComponent<TextMeshPro>(out var txt)) txt.text = $"Button UI Scale Factor: {Math.Round(newVal, 2)}x";
+                        if (title != null && title.transform.GetChild(2).TryGetComponent<TextMeshPro>(out var txt)) txt.text = $"按钮UI缩放系数: {Math.Round(newVal, 2)}x";
                     }
                     return TownOfUsPlugin.ButtonUIFactor.Value < 1f;
                 },
@@ -104,21 +104,21 @@ public static class LocalSettings
             },
             new()
             {
-                Title = "Offset Buttons If You Can't Vent",
+                Title = "无法通风时偏移按钮",
                 ObjName = "OffsetButtons",
                 OnClick = () => { return TownOfUsPlugin.OffsetButtons.Value = !TownOfUsPlugin.OffsetButtons.Value; },
                 DefaultValue = TownOfUsPlugin.OffsetButtons.Value
             },
             new()
             {
-                Title = "Sort Guessing By Alignment",
+                Title = "按阵营排序猜测",
                 ObjName = "SortGuessingByAlignment",
                 OnClick = () => { return TownOfUsPlugin.SortGuessingByAlignment.Value = !TownOfUsPlugin.SortGuessingByAlignment.Value; },
                 DefaultValue = TownOfUsPlugin.SortGuessingByAlignment.Value
             },
             new()
             {
-                Title = "Button Cooldowns are in Decimal Under 10s",
+                Title = "按钮冷却低于10秒时显示小数",
                 ObjName = "PreciseCooldowns",
                 OnClick = () => { return TownOfUsPlugin.PreciseCooldowns.Value = !TownOfUsPlugin.PreciseCooldowns.Value; },
                 DefaultValue = TownOfUsPlugin.PreciseCooldowns.Value
@@ -215,7 +215,7 @@ public static class LocalSettings
         moreOptions.transform.localScale = new Vector3(0.66f, 1, 1);
 
         moreOptions.gameObject.SetActive(true);
-        moreOptions.Text.text = "Tou Client Options";
+        moreOptions.Text.text = "小镇mira 客户端选项";
         moreOptions.Text.transform.localScale = new Vector3(1 / 0.66f, 1, 1);
         var moreOptionsButton = moreOptions.GetComponent<PassiveButton>();
         moreOptionsButton.OnClick = new UnityEngine.UI.Button.ButtonClickedEvent();
@@ -257,7 +257,7 @@ public static class LocalSettings
         title.GetComponent<RectTransform>().localPosition = Vector3.up * 2.3f;
         title.gameObject.SetActive(true);
         title.gameObject.layer = LayerMask.NameToLayer("UI");
-        title.text = $"<size=80%>Town of Us Mira\n</size><size=60%>Client Options</size>\n";
+        title.text = $"<size=80%>我们的小镇 Mira\n</size><size=60%>客户端选项</size>\n";
         title.name = "TitleText";
     }
 

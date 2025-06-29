@@ -24,7 +24,7 @@ namespace TownOfUs.Modifiers.Game;
 [MiraIgnore]
 public abstract class AssassinModifier : ExcludedGameModifier
 {
-    public override string ModifierName => "Assassin";
+    public override string ModifierName => "刺客";
     public string LastGuessedItem { get; set; }
     public PlayerControl? LastAttemptedVictim { get; set; }
 
@@ -138,7 +138,7 @@ public abstract class AssassinModifier : ExcludedGameModifier
                 Coroutines.Start(MiscUtils.CoFlash(TownOfUsColors.Impostor));
 
                 var notif1 = Helpers.CreateAndShowNotification(
-                    $"<b>{TownOfUsColors.ImpSoft.ToTextColor()}Your Double Shot has prevented you from dying this meeting!</color></b>", Color.white, spr: TouModifierIcons.DoubleShot.LoadAsset());
+                    $"<b>{TownOfUsColors.ImpSoft.ToTextColor()}你的专业刺客技能让你在本次会议中免于死亡！</color></b>", Color.white, spr: TouModifierIcons.DoubleShot.LoadAsset());
 
                 notif1.Text.SetOutlineThickness(0.35f);
                 notif1.transform.localPosition = new Vector3(0f, 1f, -20f);

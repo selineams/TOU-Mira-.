@@ -7,7 +7,7 @@ namespace TownOfUs.Modifiers.Game;
 [MiraIgnore]
 public abstract class AllianceGameModifier : GameModifier
 {
-    public virtual string IntroInfo => $"Alliance: {ModifierName}";
+    public virtual string IntroInfo => $"联盟: {ModifierName}";
     public virtual string Symbol => "?";
     public virtual float IntroSize => 4f;
     public virtual int CustomAmount => GetAmountPerGame();

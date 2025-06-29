@@ -6,20 +6,20 @@ namespace TownOfUs.Options.Roles.Crewmate;
 
 public sealed class SnitchOptions : AbstractOptionGroup<SnitchRole>
 {
-    public override string GroupName => "Snitch";
+    public override string GroupName => "告密者";
 
-    [ModdedToggleOption("Snitch Reveals Neutral Killers")]
-    public bool SnitchNeutralRoles { get; set; } = false;
+    [ModdedToggleOption("告密者揭示中立杀手")]
+    public bool SnitchNeutralRoles { get; set; } = true;
 
-    [ModdedToggleOption("Snitch Sees Traitor")]
-    public bool SnitchSeesTraitor { get; set; } = true;
+    [ModdedToggleOption("告密者可见背叛者")]
+    public bool SnitchSeesTraitor { get; set; } = false;
 
-    [ModdedToggleOption("Snitch Sees Impostors In Meetings")]
+    [ModdedToggleOption("会议中可见伪装者")]
     public bool SnitchSeesImpostorsMeetings { get; set; } = true;
     
-    [ModdedToggleOption("Snitch Sees Revealed Players' Roles")]
-    public bool SnitchSeesRoles { get; set; } = false;
+    [ModdedToggleOption("可见被揭示玩家的角色")]
+    public bool SnitchSeesRoles { get; set; } = true;
 
-    [ModdedNumberOption("Tasks Remaining When Revealed", 1, 3, 1)]
+    [ModdedNumberOption("被揭示时剩余任务数", 1, 3, 1)]
     public float TaskRemainingWhenRevealed { get; set; } = 1;
 }

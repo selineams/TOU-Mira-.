@@ -9,9 +9,9 @@ namespace TownOfUs.Modifiers.Crewmate;
 
 public sealed class WardenFortifiedModifier(PlayerControl warden) : BaseShieldModifier
 {
-    public override string ModifierName => "Fortified";
+    public override string ModifierName => "强化";
     public override LoadableAsset<Sprite>? ModifierIcon => TouRoleIcons.Warden;
-    public override string ShieldDescription => "You are fortified by a Warden!\nNo one can interact with you.";
+    public override string ShieldDescription => "你被护卫者强化！\n任何人都无法与你互动。";
     public override bool HideOnUi
     {
         get

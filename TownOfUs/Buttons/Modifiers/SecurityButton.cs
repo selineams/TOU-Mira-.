@@ -13,7 +13,7 @@ namespace TownOfUs.Buttons.Modifiers;
 
 public sealed class SecurityButton : TownOfUsButton
 {
-    public override string Name => "Security";
+    public override string Name => "监控";
     public override string Keybind => Keybinds.ModifierAction;
     public override Color TextOutlineColor => TownOfUsColors.Operative;
     public override float Cooldown => OptionGroupSingleton<OperativeOptions>.Instance.DisplayCooldown + MapCooldown;

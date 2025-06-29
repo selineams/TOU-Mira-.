@@ -13,7 +13,7 @@ namespace TownOfUs.Buttons.Impostor;
 
 public sealed class WarlockKillButton : TownOfUsRoleButton<WarlockRole, PlayerControl>, IDiseaseableButton, IKillButton
 {
-    public override string Name => "Kill";
+    public override string Name => "充能击杀";
     public override string Keybind => Keybinds.PrimaryAction;
     public override Color TextOutlineColor => TownOfUsColors.Impostor;
     public override float Cooldown => PlayerControl.LocalPlayer.GetKillCooldown() + MapCooldown;

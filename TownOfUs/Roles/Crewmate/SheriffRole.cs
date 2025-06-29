@@ -17,9 +17,9 @@ namespace TownOfUs.Roles.Crewmate;
 
 public sealed class SheriffRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITouCrewRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Sheriff";
-    public string RoleDescription => "Shoot The <color=#FF0000FF>Impostor</color>";
-    public string RoleLongDescription => "Kill off the impostors but don't kill crewmates";
+    public string RoleName => "警长";
+    public string RoleDescription => "射杀<color=#FF0000FF>伪装者</color>";
+    public string RoleLongDescription => "击杀伪装者，但不要误杀船员";
     public Color RoleColor => TownOfUsColors.Sheriff;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmateKilling;
@@ -45,39 +45,39 @@ public sealed class SheriffRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITouCrewR
         
         if (CustomButtonSingleton<SheriffShootButton>.Instance.FailedShot)
         {
-            stringB.AppendLine(CultureInfo.InvariantCulture, $"<b>You can no longer shoot.</b>");
+            stringB.AppendLine(CultureInfo.InvariantCulture, $"<b>你已无法再开枪。</b>");
         }
         else switch (missType)
             {
                 case MisfireOptions.Both:
-                    stringB.AppendLine(CultureInfo.InvariantCulture, $"<b>Misfiring kills you and your target.</b>");
+                    stringB.AppendLine(CultureInfo.InvariantCulture, $"<b>误伤会导致你和目标同归于尽。</b>");
                     break;
                 case MisfireOptions.Sheriff:
-                    stringB.AppendLine(CultureInfo.InvariantCulture, $"<b>Misfiring will lead to suicide.</b>");
+                    stringB.AppendLine(CultureInfo.InvariantCulture, $"<b>误伤会导致自杀。</b>");
                     break;
                 case MisfireOptions.Target:
-                    stringB.AppendLine(CultureInfo.InvariantCulture, $"<b>Misfiring will lead to your target's death,\nat the cost of your ability.</b>");
+                    stringB.AppendLine(CultureInfo.InvariantCulture, $"<b>误伤会导致目标死亡，且你失去开枪能力。</b>");
                     break;
                 default:
-                    stringB.AppendLine(CultureInfo.InvariantCulture, $"<b>Misfiring will prevent you from shooting again.</b>");
+                    stringB.AppendLine(CultureInfo.InvariantCulture, $"<b>误伤后你将无法再开枪。</b>");
                     break;
             }
         if (PlayerControl.LocalPlayer.TryGetModifier<AllianceGameModifier>(out var allyMod) && !allyMod.GetsPunished)
         {
-            stringB.AppendLine(CultureInfo.InvariantCulture, $"<b>You may shoot without repercussions.</b>");
+            stringB.AppendLine(CultureInfo.InvariantCulture, $"<b>你可以无惩罚地开枪。</b>");
         }
 
         return stringB;
     }
     public string GetAdvancedDescription()
     {
-        return $"The Sheriff is a Crewmate Killing that can shoot a player to attempt to kill them. If Sheriff doesn't die to misfire, they will lose the ability to shoot." + MiscUtils.AppendOptionsText(GetType());
+        return $"警长是一名船员击杀型角色，可以射击玩家尝试击杀他们。如果警长因误伤未死亡，将失去开枪能力。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Shoot",
-            $"Shoot a player to kill them, misfiring if they aren't a Impostor or one of the other selected shootable factions",
+        new("射击",
+            $"射击一名玩家尝试击杀他们，如果目标不是伪装者或其他可射击阵营则会误伤。",
             TouCrewAssets.SheriffShootSprite)
     ];
 }

@@ -12,7 +12,7 @@ namespace TownOfUs.Buttons.Crewmate;
 
 public sealed class EngineerVentButton : TownOfUsRoleButton<EngineerTouRole, Vent>
 {
-    public override string Name => "Vent";
+    public override string Name => "钻洞";
     public override string Keybind => Keybinds.VentAction;
     public override Color TextOutlineColor => TownOfUsColors.Engineer;
     public override float Cooldown => OptionGroupSingleton<EngineerOptions>.Instance.VentCooldown + 0.001f + MapCooldown;

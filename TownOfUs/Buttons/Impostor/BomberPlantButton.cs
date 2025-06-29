@@ -9,7 +9,7 @@ namespace TownOfUs.Buttons.Impostor;
 
 public sealed class BomberPlantButton : TownOfUsRoleButton<BomberRole>, IAftermathableButton, IDiseaseableButton
 {
-    public override string Name => "Place";
+    public override string Name => "放置";
     public override string Keybind => Keybinds.SecondaryAction;
     public override Color TextOutlineColor => TownOfUsColors.Impostor;
     public override float Cooldown => PlayerControl.LocalPlayer.GetKillCooldown() + MapCooldown;

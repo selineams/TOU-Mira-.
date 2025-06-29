@@ -9,7 +9,7 @@ namespace TownOfUs.Modifiers.Neutral;
 
 public sealed class ArsonistDousedModifier(byte arsonistId) : BaseModifier
 {
-    public override string ModifierName => "Doused";
+    public override string ModifierName => "抹油";
     public override bool HideOnUi => true;
     public byte ArsonistId { get; } = arsonistId;
 

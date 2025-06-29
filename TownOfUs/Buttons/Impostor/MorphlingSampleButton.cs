@@ -11,7 +11,7 @@ namespace TownOfUs.Buttons.Impostor;
 
 public sealed class MorphlingSampleButton : TownOfUsRoleButton<MorphlingRole, PlayerControl>, IAftermathablePlayerButton
 {
-    public override string Name => "Sample";
+    public override string Name => "采样";
     public override string Keybind => Keybinds.SecondaryAction;
     public override Color TextOutlineColor => TownOfUsColors.Impostor;
     public override float Cooldown => OptionGroupSingleton<MorphlingOptions>.Instance.MorphlingCooldown;
@@ -30,7 +30,7 @@ public sealed class MorphlingSampleButton : TownOfUsRoleButton<MorphlingRole, Pl
         Role.Sampled = Target;
         
         var notif1 = Helpers.CreateAndShowNotification(
-            $"<b>{TownOfUsColors.ImpSoft.ToTextColor()}You have sampled {Target.Data.PlayerName}. The sample will be reset after this round.</b></color>", Color.white, spr: TouRoleIcons.Morphling.LoadAsset());
+            $"<b>{TownOfUsColors.ImpSoft.ToTextColor()}你采样了 {Target.Data.PlayerName}. 采样每轮会重置.</b></color>", Color.white, spr: TouRoleIcons.Morphling.LoadAsset());
         notif1.Text.SetOutlineThickness(0.35f);
             notif1.transform.localPosition = new Vector3(0f, 1f, -20f);
 

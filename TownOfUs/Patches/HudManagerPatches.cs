@@ -32,14 +32,14 @@ namespace TownOfUs.Patches;
 [HarmonyPatch]
 public static class HudManagerPatches
 {
-    public static GameObject ZoomButton; 
-    public static GameObject WikiButton;
-    public static GameObject RoleList;
+    public static GameObject ZoomButton;
+    private static GameObject WikiButton;
+    private static GameObject RoleList;
     public static GameObject TeamChatButton;
 
-    public static bool Zooming;
+    private static bool Zooming;
 
-    public static IEnumerator CoResizeUI()
+    private static IEnumerator CoResizeUI()
     {
         while (!HudManager.Instance) yield return null;
         yield return new WaitForSeconds(0.01f);
@@ -78,7 +78,7 @@ public static class HudManagerPatches
         }
     }
 
-    public static void AdjustCameraSize(float size)
+    private static void AdjustCameraSize(float size)
     {
         Camera.main!.orthographicSize = size;
         foreach (var cam in Camera.allCameras) cam.orthographicSize = Camera.main!.orthographicSize;
@@ -99,7 +99,7 @@ public static class HudManagerPatches
         ZoomButton.transform.Find("Active").GetComponent<SpriteRenderer>().sprite = Zooming ? TouAssets.ZoomPlusActive.LoadAsset() : TouAssets.ZoomMinusActive.LoadAsset();
     }
 
-    public static void ButtonClickZoom()
+    private static void ButtonClickZoom()
     {
         if (MeetingHud.Instance || ExileController.Instance)
         {
@@ -110,7 +110,7 @@ public static class HudManagerPatches
         AdjustCameraSize(!Zooming ? 12f : 3f);
     }
 
-    public static void ScrollZoom(bool zoomOut = false)
+    private static void ScrollZoom(bool zoomOut = false)
     {
         if (MeetingHud.Instance || ExileController.Instance)
         {
@@ -132,7 +132,7 @@ public static class HudManagerPatches
         AdjustCameraSize(3f);
     }
 
-    public static void CheckForScrollZoom()
+    private static void CheckForScrollZoom()
     {
         var scrollWheel = Input.GetAxis("Mouse ScrollWheel");
         var axisRaw = ConsoleJoystick.player.GetAxisRaw(55);
@@ -147,7 +147,7 @@ public static class HudManagerPatches
         }
     }
 
-    public static void UpdateTeamChat()
+    private static void UpdateTeamChat()
     {
         var genOpt = OptionGroupSingleton<GeneralOptions>.Instance;
 
@@ -174,7 +174,7 @@ public static class HudManagerPatches
         TeamChatButton.transform.Find("Selected").gameObject.SetActive(true);
     }
 
-    public static void UpdateCamouflageComms()
+    private static void UpdateCamouflageComms()
     {
         var genOpt = OptionGroupSingleton<GeneralOptions>.Instance;
 
@@ -216,7 +216,7 @@ public static class HudManagerPatches
         }
     }
 
-    public static void UpdateColorNameText()
+    private static void UpdateColorNameText()
     {
         if (MeetingHud.Instance)
         {
@@ -234,7 +234,7 @@ public static class HudManagerPatches
         }
     }
 
-    public static void UpdateRoleNameText()
+    private static void UpdateRoleNameText()
     {
         var genOpt = OptionGroupSingleton<GeneralOptions>.Instance;
         var taskOpt = OptionGroupSingleton<TaskTrackingOptions>.Instance;
@@ -284,7 +284,7 @@ public static class HudManagerPatches
                 {
                     color = role.TeamColor;
                     roleName = $"<size=80%>{color.ToTextColor()}{player.Data.Role.NiceName}</color></size>";
-                    if (!player.HasModifier<VampireBittenModifier>() && player.Data.Role is VampireRole) roleName += "<size=80%><color=#FFFFFF> (<color=#A22929>OG</color>)</color></size>";
+                    if (!player.HasModifier<VampireBittenModifier>() && player.Data.Role is VampireRole) roleName += "<size=80%><color=#FFFFFF> (<color=#A22929>始</color>)</color></size>";
 
                     var cachedMod = player.GetModifiers<BaseModifier>().FirstOrDefault(x => x is ICachedRole);
                     if (cachedMod is ICachedRole cache && player.Data.Role.GetType() != cache.CachedRole.GetType())
@@ -300,7 +300,7 @@ public static class HudManagerPatches
                         color = roleWhenAlive.TeamColor;
 
                         roleName = $"<size=80%>{color.ToTextColor()}{roleWhenAlive.NiceName}</color></size>";
-                        if (!player.HasModifier<VampireBittenModifier>() && roleWhenAlive is VampireRole) roleName += "<size=80%><color=#FFFFFF> (<color=#A22929>OG</color>)</color></size>";
+                        if (!player.HasModifier<VampireBittenModifier>() && roleWhenAlive is VampireRole) roleName += "<size=80%><color=#FFFFFF> (<color=#A22929>始</color>)</color></size>";
                     }
                 }
 
@@ -316,9 +316,9 @@ public static class HudManagerPatches
                     var accuracy = OptionGroupSingleton<OracleOptions>.Instance.RevealAccuracyPercentage;
                     var revealText = confess.RevealedFaction switch
                     {
-                        ModdedRoleTeams.Crewmate => $"\n<size=75%>{Palette.CrewmateBlue.ToTextColor()}({accuracy}% Crew) </color></size>",
-                        ModdedRoleTeams.Custom => $"\n<size=75%>{TownOfUsColors.Neutral.ToTextColor()}({accuracy}% Neut) </color></size>",
-                        ModdedRoleTeams.Impostor => $"\n<size=75%>{TownOfUsColors.ImpSoft.ToTextColor()}({accuracy}% Imp) </color></size>",
+                        ModdedRoleTeams.Crewmate => $"\n<size=75%>{Palette.CrewmateBlue.ToTextColor()}({accuracy}% 船员) </color></size>",
+                        ModdedRoleTeams.Custom => $"\n<size=75%>{TownOfUsColors.Neutral.ToTextColor()}({accuracy}% 中立) </color></size>",
+                        ModdedRoleTeams.Impostor => $"\n<size=75%>{TownOfUsColors.ImpSoft.ToTextColor()}({accuracy}% 内鬼) </color></size>",
                         _ => string.Empty,
                     };
 
@@ -347,7 +347,7 @@ public static class HudManagerPatches
                         dash = " - ";
                     }
 
-                    roleName = $"{roleName}<size=80%>{dash}Disconnected</size>";
+                    roleName = $"{roleName}<size=80%>{dash}掉线</size>";
                 }
 
                 if (!string.IsNullOrEmpty(roleName))
@@ -396,7 +396,7 @@ public static class HudManagerPatches
                 {
                     color = role.TeamColor;
                     roleName = $"<size=80%>{color.ToTextColor()}{player.Data.Role.NiceName}</color></size>";
-                    if (!player.HasModifier<VampireBittenModifier>() && player.Data.Role is VampireRole) roleName += "<size=80%><color=#FFFFFF> (<color=#A22929>OG</color>)</color></size>";
+                    if (!player.HasModifier<VampireBittenModifier>() && player.Data.Role is VampireRole) roleName += "<size=80%><color=#FFFFFF> (<color=#A22929>始</color>)</color></size>";
 
                     var cachedMod = player.GetModifiers<BaseModifier>().FirstOrDefault(x => x is ICachedRole);
                     if (cachedMod is ICachedRole cache && player.Data.Role.GetType() != cache.CachedRole.GetType())
@@ -447,7 +447,7 @@ public static class HudManagerPatches
         }
     }
 
-    public static void UpdateGhostRoles(HudManager instance)
+    private static void UpdateGhostRoles(HudManager instance)
     {
         foreach (var phantom in CustomRoleUtils.GetActiveRolesOfType<PhantomTouRole>())
         {
@@ -462,7 +462,7 @@ public static class HudManagerPatches
         }
     }
 
-    public static string GetRoleForSlot(int slotValue)
+    private static string GetRoleForSlot(int slotValue)
     {
         var roleListText = RoleOptions.OptionStrings.ToList();
         if (slotValue >= 0 && slotValue < roleListText.Count)
@@ -475,7 +475,7 @@ public static class HudManagerPatches
         }
     }
 
-    public static void UpdateRoleList(HudManager instance)
+    private static void UpdateRoleList(HudManager instance)
     {
         if (!LobbyBehaviour.Instance)
         {
@@ -529,15 +529,15 @@ public static class HudManagerPatches
                     };
 
                     rolelistBuilder.AppendLine(GetRoleForSlot(slotValue));
-                    objText.text = $"<color=#FFD700>Set Role List:</color>\n{rolelistBuilder}";
+                    objText.text = $"<color=#FFD700>职业列表设置：</color>\n{rolelistBuilder}";
                 }
             }
             else
             {
-                rolelistBuilder.AppendLine(System.Globalization.CultureInfo.InvariantCulture, $"<color=#999999>Neutral</color> Benigns: {list.MinNeutralBenign.Value} Min, {list.MaxNeutralBenign.Value} Max");
-                rolelistBuilder.AppendLine(System.Globalization.CultureInfo.InvariantCulture, $"<color=#999999>Neutral</color> Evils: {list.MinNeutralEvil.Value} Min, {list.MaxNeutralEvil.Value} Max");
-                rolelistBuilder.AppendLine(System.Globalization.CultureInfo.InvariantCulture, $"<color=#999999>Neutral</color> Killers: {list.MinNeutralKiller.Value} Min, {list.MaxNeutralKiller.Value} Max");
-                objText.text = $"<color=#FFD700>Neutral Faction List:</color>\n{rolelistBuilder}";
+                rolelistBuilder.AppendLine(System.Globalization.CultureInfo.InvariantCulture, $"<color=#999999>中立</color> 善良: {list.MinNeutralBenign.Value} 最少, {list.MaxNeutralBenign.Value} 最多");
+                rolelistBuilder.AppendLine(System.Globalization.CultureInfo.InvariantCulture, $"<color=#999999>中立</color> 邪恶: {list.MinNeutralEvil.Value} 最少, {list.MaxNeutralEvil.Value} 最多");
+                rolelistBuilder.AppendLine(System.Globalization.CultureInfo.InvariantCulture, $"<color=#999999>中立</color> 凶手: {list.MinNeutralKiller.Value} 最少, {list.MaxNeutralKiller.Value} 最多");
+                objText.text = $"<color=#FFD700>中立阵营列表：</color>\n{rolelistBuilder}";
             }
 
             objText.alignment = TextAlignmentOptions.TopLeft;
@@ -548,7 +548,7 @@ public static class HudManagerPatches
         }
     }
 
-    public static void CreateZoomButton(HudManager instance)
+    private static void CreateZoomButton(HudManager instance)
     {
         var isChatButtonVisible = HudManager.Instance.Chat.isActiveAndEnabled;
 
@@ -576,7 +576,7 @@ public static class HudManagerPatches
         }
     }
 
-    public static void CreateTeamChatButton(HudManager instance)
+    private static void CreateTeamChatButton(HudManager instance)
     {
         if (TeamChatButton) return;
 
@@ -590,7 +590,7 @@ public static class HudManagerPatches
         TeamChatButton.transform.Find("Selected").GetComponent<SpriteRenderer>().sprite = TouAssets.TeamChatSelected.LoadAsset();
     }
 
-    public static void CreateWikiButton(HudManager instance)
+    private static void CreateWikiButton(HudManager instance)
     {
         var isChatButtonVisible = HudManager.Instance.Chat.isActiveAndEnabled;
 

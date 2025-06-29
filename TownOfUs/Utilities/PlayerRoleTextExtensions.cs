@@ -132,7 +132,7 @@ public static class PlayerRoleTextExtensions
                                                        MayorRole.MayorVisibilityFlag(player)) ||
                                                       (PlayerControl.LocalPlayer.HasDied() && genOpt.TheDeadKnow &&
                                                        !hidden)))
-            name += "<color=#FFFFFF> (<color=#669966>Egotist</color>)</color>";
+            name += "<color=#FFFFFF> (<color=#669966>营己徒</color>)</color>";
 
         return name;
     }

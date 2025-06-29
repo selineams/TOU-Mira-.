@@ -13,7 +13,7 @@ namespace TownOfUs.Buttons.Modifiers;
 
 public sealed class ScientistButton : TownOfUsButton
 {
-    public override string Name => "Vitals";
+    public override string Name => "心跳仪";
     public override string Keybind => Keybinds.ModifierAction;
     public override Color TextOutlineColor => TownOfUsColors.Scientist;
     public override float Cooldown => OptionGroupSingleton<ScientistOptions>.Instance.DisplayCooldown + MapCooldown;

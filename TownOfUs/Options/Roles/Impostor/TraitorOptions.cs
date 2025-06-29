@@ -7,14 +7,14 @@ namespace TownOfUs.Options.Roles.Impostor;
 
 public sealed class TraitorOptions : AbstractOptionGroup<TraitorRole>
 {
-    public override string GroupName => "Traitor";
+    public override string GroupName => "背叛者";
 
-    [ModdedNumberOption("Minimum People Alive When Traitor Can Spawn", 3f, 15f, 1f, MiraNumberSuffixes.None, "0")]
-    public float LatestSpawn { get; set; } = 5f;
+    [ModdedNumberOption("背叛者可生成时最少存活人数", 3f, 15f, 1f, MiraNumberSuffixes.None, "0")]
+    public float LatestSpawn { get; set; } = 7f;
 
-    [ModdedToggleOption("Traitor Won't Spawn If NK Is Alive")]
+    [ModdedToggleOption("有中立杀手存活时不生成背叛者")]
     public bool NeutralKillingStopsTraitor { get; set; } = false;
 
-    [ModdedToggleOption("Disable Existing Impostor Roles")]
+    [ModdedToggleOption("禁用本场游戏伪装者职业")]
     public bool RemoveExistingRoles { get; set; } = false;
 }

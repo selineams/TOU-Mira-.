@@ -10,7 +10,7 @@ namespace TownOfUs.Buttons.Crewmate;
 
 public sealed class MedicShieldButton : TownOfUsRoleButton<MedicRole, PlayerControl>
 {
-    public override string Name => "Shield";
+    public override string Name => "上盾";
     public override string Keybind => Keybinds.SecondaryAction;
     public override Color TextOutlineColor => TownOfUsColors.Medic;
     public override float Cooldown => 0.001f + MapCooldown;

@@ -9,28 +9,28 @@ namespace TownOfUs.Options.Modifiers.Impostor;
 
 public sealed class TelepathOptions : AbstractOptionGroup<TelepathModifier>
 {
-    public override string GroupName => "Telepath";
+    public override string GroupName => "通感者";
     public override Color GroupColor => Palette.ImpostorRoleHeaderRed;
     public override uint GroupPriority => 42;
 
-    [ModdedToggleOption("Know Where Teammate Kills")]
+    [ModdedToggleOption("知晓队友击杀位置")]
     public bool KnowKillLocation { get; set; } = true;
-    [ModdedToggleOption("Know When Teammate Dies")]
+    [ModdedToggleOption("知晓队友死亡时间")]
     public bool KnowDeath { get; set; } = true;
 
-    public ModdedToggleOption KnowDeathLocation { get; } = new ModdedToggleOption("Know Where Teammate Dies", true)
+    public ModdedToggleOption KnowDeathLocation { get; } = new ModdedToggleOption("知晓队友死亡位置", true)
     {
         Visible = () => OptionGroupSingleton<TelepathOptions>.Instance.KnowDeath,
     };
 
-    public ModdedNumberOption TelepathArrowDuration { get; } = new ModdedNumberOption("Dead Body Arrow Duration", 2.5f, 0f, 5f, 0.5f, MiraNumberSuffixes.Seconds, "0.00")
+    public ModdedNumberOption TelepathArrowDuration { get; } = new ModdedNumberOption("尸体箭头持续时间", 5f, 0f, 5f, 0.5f, MiraNumberSuffixes.Seconds, "0.00")
     {
         Visible = () => OptionGroupSingleton<TelepathOptions>.Instance.KnowKillLocation || (OptionGroupSingleton<TelepathOptions>.Instance.KnowDeath && OptionGroupSingleton<TelepathOptions>.Instance.KnowDeathLocation),
     };
 
-    [ModdedToggleOption("Know When Teammate Guesses Successfully")]
+    [ModdedToggleOption("知晓队友猜测成功")]
     public bool KnowCorrectGuess { get; set; } = true;
 
-    [ModdedToggleOption("Know When Teammate Fails To Guess")]
+    [ModdedToggleOption("知晓队友猜测失败")]
     public bool KnowFailedGuess { get; set; } = true;
 }

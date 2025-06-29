@@ -13,7 +13,7 @@ namespace TownOfUs.Modifiers.Neutral;
 
 public sealed class GlitchHackedModifier(byte glitchId) : TimedModifier
 {
-    public override string ModifierName => "Hacked";
+    public override string ModifierName => "黑入";
     public override float Duration => OptionGroupSingleton<GlitchOptions>.Instance.HackDuration;
     public override bool AutoStart => false;
     public override bool HideOnUi => ShouldHideHacked;

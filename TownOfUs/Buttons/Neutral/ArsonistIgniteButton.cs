@@ -18,7 +18,7 @@ namespace TownOfUs.Buttons.Neutral;
 
 public sealed class ArsonistIgniteButton : TownOfUsRoleButton<ArsonistRole>
 {
-    public override string Name => "Ignite";
+    public override string Name => "点火";
     public override string Keybind => Keybinds.PrimaryAction;
     public override Color TextOutlineColor => TownOfUsColors.Arsonist;
     public override float Cooldown => OptionGroupSingleton<ArsonistOptions>.Instance.DouseCooldown + MapCooldown;

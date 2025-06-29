@@ -6,8 +6,8 @@ namespace TownOfUs.Options.Roles.Crewmate;
 
 public sealed class SwapperOptions : AbstractOptionGroup<SwapperRole>
 {
-    public override string GroupName => "Swapper";
+    public override string GroupName => "换票师";
 
-    [ModdedToggleOption("Swapper Can Call Button")]
-    public bool CanButton { get; set; } = true;
+    [ModdedToggleOption("换票师可召开会议")]
+    public bool CanButton { get; set; } = false;
 }

@@ -25,9 +25,9 @@ namespace TownOfUs.Roles.Neutral;
 
 public sealed class DoomsayerRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable, ICrewVariant
 {
-    public string RoleName => "Doomsayer";
-    public string RoleDescription => "Guess People's Roles To Win!";
-    public string RoleLongDescription => $"Win by guessing the roles of {(int)OptionGroupSingleton<DoomsayerOptions>.Instance.DoomsayerGuessesToWin} players";
+    public string RoleName => "末日预言者";
+    public string RoleDescription => "猜中他人身份即可获胜！";
+    public string RoleLongDescription => $"通过猜中 {(int)OptionGroupSingleton<DoomsayerOptions>.Instance.DoomsayerGuessesToWin} 名玩家的身份获胜";
     public RoleBehaviour CrewVariant => RoleManager.Instance.GetRole((RoleTypes)RoleId.Get<VigilanteRole>());
     public Color RoleColor => TownOfUsColors.Doomsayer;
     public ModdedRoleTeams Team => ModdedRoleTeams.Custom;
@@ -111,7 +111,7 @@ public sealed class DoomsayerRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfU
 
     private void GenerateReport()
     {
-        Logger<TownOfUsPlugin>.Info($"Generating Doomsayer report");
+        Logger<TownOfUsPlugin>.Info($"生成末日报告");
 
         var reportBuilder = new StringBuilder();
 
@@ -146,28 +146,28 @@ public sealed class DoomsayerRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfU
             switch (hintType)
             {
                 case DoomableType.Perception:
-                    reportBuilder.AppendLine(TownOfUsPlugin.Culture, $"You observe that {player.PlayerName} has an altered perception of reality\n");
+                    reportBuilder.AppendLine(TownOfUsPlugin.Culture, $"你观察到{player.PlayerName}对现实有不同的感知\n");
                     break;
                 case DoomableType.Insight:
-                    reportBuilder.AppendLine(TownOfUsPlugin.Culture, $"You observe that {player.PlayerName} has an insight for private information\n");
+                    reportBuilder.AppendLine(TownOfUsPlugin.Culture, $"你观察到{player.PlayerName}对隐私信息有洞察力\n");
                     break;
                 case DoomableType.Death:
-                    reportBuilder.AppendLine(TownOfUsPlugin.Culture, $"You observe that {player.PlayerName} has an unusual obsession with dead bodies\n");
+                    reportBuilder.AppendLine(TownOfUsPlugin.Culture, $"你观察到{player.PlayerName}对尸体有异常的执着\n");
                     break;
                 case DoomableType.Hunter:
-                    reportBuilder.AppendLine(TownOfUsPlugin.Culture, $"You observe that {player.PlayerName} is well trained in hunting down prey\n");
+                    reportBuilder.AppendLine(TownOfUsPlugin.Culture, $"你观察到{player.PlayerName}擅长追猎猎物\n");
                     break;
                 case DoomableType.Fearmonger:
-                    reportBuilder.AppendLine(TownOfUsPlugin.Culture, $"You observe that {player.PlayerName} spreads fear amonst the group\n");
+                    reportBuilder.AppendLine(TownOfUsPlugin.Culture, $"你观察到{player.PlayerName}在队伍中散播恐惧\n");
                     break;
                 case DoomableType.Protective:
-                    reportBuilder.AppendLine(TownOfUsPlugin.Culture, $"You observe that {player.PlayerName} hides to guard themself or others\n");
+                    reportBuilder.AppendLine(TownOfUsPlugin.Culture, $"你观察到{player.PlayerName}会隐藏自己或保护他人\n");
                     break;
                 case DoomableType.Trickster:
-                    reportBuilder.AppendLine(TownOfUsPlugin.Culture, $"You observe that {player.PlayerName} has a trick up their sleeve\n");
+                    reportBuilder.AppendLine(TownOfUsPlugin.Culture, $"你观察到{player.PlayerName}暗藏诡计\n");
                     break;
                 case DoomableType.Relentless:
-                    reportBuilder.AppendLine(TownOfUsPlugin.Culture, $"You observe that {player.PlayerName} is capable of performing relentless attacks\n");
+                    reportBuilder.AppendLine(TownOfUsPlugin.Culture, $"你观察到{player.PlayerName}能够发动无情的攻击\n");
                     break;
             }
             var roles = MiscUtils.AllRoles.Where(x => x is IDoomable doomRole && doomRole.DoomHintType == hintType && x is not IUnguessable).OrderBy(x => x.NiceName).ToList();
@@ -192,7 +192,7 @@ public sealed class DoomsayerRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfU
 
         if (HudManager.Instance && report.Length > 0)
         {
-            var title = $"<color=#{TownOfUsColors.Doomsayer.ToHtmlStringRGBA()}>Doomsayer Report</color>";
+            var title = $"<color=#{TownOfUsColors.Doomsayer.ToHtmlStringRGBA()}>末日报告</color>";
             MiscUtils.AddFakeChat(Player.Data, title, report, false, true);
         }
     }
@@ -285,7 +285,7 @@ public sealed class DoomsayerRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfU
 
             if (IncorrectGuesses > 0 && opts.DoomsayerGuessAllAtOnce)
             {
-                var text = (NumberOfGuesses - AllVictims.Count) == 1 ? $"<b>Only one guess was incorrect!</b>" : $"<b>{NumberOfGuesses - AllVictims.Count} guesses were incorrect.</b>";
+                var text = (NumberOfGuesses - AllVictims.Count) == 1 ? $"<b>只有一次猜测错误！</b>" : $"<b>{NumberOfGuesses - AllVictims.Count}次猜测错误。</b>";
                 var notif1 = Helpers.CreateAndShowNotification(
                     text, Color.white, spr: TouRoleIcons.Doomsayer.LoadAsset());
 
@@ -351,13 +351,13 @@ public sealed class DoomsayerRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfU
 
     public string GetAdvancedDescription()
     {
-        return $"The Doomsayer is a Neutral Evil role that wins by guessing {(int)OptionGroupSingleton<DoomsayerOptions>.Instance.DoomsayerGuessesToWin} players' roles." + (OptionGroupSingleton<DoomsayerOptions>.Instance.CantObserve ? string.Empty : " They may observe players to get a hint of what their roles are the following meeting.") + MiscUtils.AppendOptionsText(GetType());
+        return $"末日预言家是一名中立邪恶型角色，通过猜中{(int)OptionGroupSingleton<DoomsayerOptions>.Instance.DoomsayerGuessesToWin}名玩家的身份获胜。" + (OptionGroupSingleton<DoomsayerOptions>.Instance.CantObserve ? string.Empty : "可在会议前观察玩家，获得其身份线索。") + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Observe",
-            "Observe a player, gaining a hint in the next meeting what their role could be.",
+        new("洞察",
+            "洞察一名玩家，在下次会议获得其身份线索。",
             TouNeutAssets.Observe)
     ];
 }

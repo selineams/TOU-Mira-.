@@ -8,19 +8,19 @@ namespace TownOfUs.Options.Modifiers.Universal;
 
 public sealed class SatelliteOptions : AbstractOptionGroup<SatelliteModifier>
 {
-    public override string GroupName => "Satellite";
+    public override string GroupName => "卫星";
     public override uint GroupPriority => 27;
     public override Color GroupColor => TownOfUsColors.Satellite;
 
-    [ModdedNumberOption("Button Cooldown", 5f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
+    [ModdedNumberOption("按钮冷却", 5f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
     public float Cooldown { get; set; } = 15f;
 
-    [ModdedNumberOption("Max Uses", 1f, 15f, 1f, MiraNumberSuffixes.None, "0")]
+    [ModdedNumberOption("最大可用次数", 1f, 15f, 1f, MiraNumberSuffixes.None, "0")]
     public float MaxNumCast { get; set; } = 5f;
 
-    [ModdedToggleOption("One Usage Per Round")]
+    [ModdedToggleOption("每回合限用一次")]
     public bool OneUsePerRound { get; set; } = true;
     
-    [ModdedToggleOption("Allow Usage in First Round")]
+    [ModdedToggleOption("首回合可用")]
     public bool FirstRoundUse { get; set; } = true;
 }

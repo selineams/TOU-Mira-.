@@ -19,9 +19,9 @@ namespace TownOfUs.Roles.Crewmate;
 
 public sealed class HunterRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITouCrewRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Hunter";
-    public string RoleDescription => "Stalk The <color=#FF0000FF>Impostor</color>";
-    public string RoleLongDescription => "Stalk player interactions and kill impostors, but not Crewmates";
+    public string RoleName => "巡猎者";
+    public string RoleDescription => "盯梢<color=#FF0000FF>伪装者</color>";
+    public string RoleLongDescription => "盯梢玩家异常的行为并击杀坏人，但不要错杀船员";
     public Color RoleColor => TownOfUsColors.Hunter;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmateKilling;
@@ -87,9 +87,9 @@ public sealed class HunterRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITouCrewRo
     {
         var stringB = ITownOfUsRole.SetNewTabText(this);
         var stalkedPlayer = ModifierUtils.GetPlayersWithModifier<HunterStalkedModifier>(x => x.Hunter == PlayerControl.LocalPlayer).FirstOrDefault();
-        var stalked = (stalkedPlayer != null && !stalkedPlayer.HasDied()) ? stalkedPlayer.Data.PlayerName : "Nobody";
-        stringB.AppendLine(CultureInfo.InvariantCulture, $"Stalking: <b>{stalked}</b>");
-        if (CaughtPlayers.Count != 0) stringB.AppendLine(CultureInfo.InvariantCulture, $"<b>Caught Players:</b>");
+        var stalked = (stalkedPlayer != null && !stalkedPlayer.HasDied()) ? stalkedPlayer.Data.PlayerName : "无人";
+        stringB.AppendLine(CultureInfo.InvariantCulture, $"盯梢: <b>{stalked}</b>");
+        if (CaughtPlayers.Count != 0) stringB.AppendLine(CultureInfo.InvariantCulture, $"<b>被抓包的玩家:</b>");
         foreach (var player in CaughtPlayers)
         {
             var newText = $"<b><size=80%>{player.Data.PlayerName}</size></b>";
@@ -102,16 +102,16 @@ public sealed class HunterRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITouCrewRo
     public string GetAdvancedDescription()
     {
         return
-            "The Hunter is a Crewmate Killing role that can stalk players during the round. "
-                + "If a stalked player uses an ability, they can be killed by the Hunter at any point in the game, even Crew."
+            "巡猎者是一名船员击杀型角色，可以在回合中盯梢玩家。"
+                + "如果被盯梢的玩家使用技能，巡猎者可以在游戏中随时击杀他们（包括船员）。 "
                + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Stalk",
-            $"Choose a target to stalk. You can stalk {OptionGroupSingleton<HunterOptions>.Instance.StalkUses} players. " +
-            $"If they use any ability while stalked, they’re added to your hitlist and can be killed.",
+        new("盯梢",
+            $"选择一个目标进行盯梢。你可以盯梢{OptionGroupSingleton<HunterOptions>.Instance.StalkUses} 名玩家。 " +
+            $"如果他们在被盯梢期间使用技能，将被加入你的击杀名单并可以被击杀。",
             TouCrewAssets.StalkButtonSprite),
     ];
 

@@ -11,7 +11,7 @@ namespace TownOfUs.Modifiers.Crewmate;
 
 public sealed class ToBecomeTraitorModifier : ExcludedGameModifier, IAssignableTargets
 {
-    public override string ModifierName => "Possible Traitor";
+    public override string ModifierName => "潜在背叛者";
     public override bool HideOnUi => true;
     public override int GetAmountPerGame() => 0;
     public override int GetAssignmentChance() => 0;

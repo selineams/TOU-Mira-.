@@ -11,7 +11,7 @@ namespace TownOfUs.Modifiers.Neutral;
 public sealed class GlitchMimicModifier(PlayerControl target) : ConcealedModifier, IVisualAppearance
 {
     public override float Duration => OptionGroupSingleton<GlitchOptions>.Instance.MimicDuration;
-    public override string ModifierName => "Mimic";
+    public override string ModifierName => "变形";
     public override bool HideOnUi => true;
     public override bool AutoStart => true;
     public bool VisualPriority => true;

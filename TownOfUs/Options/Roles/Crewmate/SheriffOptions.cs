@@ -7,23 +7,23 @@ namespace TownOfUs.Options.Roles.Crewmate;
 
 public sealed class SheriffOptions : AbstractOptionGroup<SheriffRole>
 {
-    public override string GroupName => "Sheriff";
+    public override string GroupName => "警长";
 
-    [ModdedNumberOption("Kill Cooldown", 10f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
+    [ModdedNumberOption("警长击杀冷却", 10f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
     public float KillCooldown { get; set; } = 25f;
 
-    [ModdedToggleOption("Can Self Report")]
+    [ModdedToggleOption("警长可自报尸体")]
     public bool SheriffBodyReport { get; set; } = false;
-    [ModdedToggleOption("Allow Shooting in First Round")]
-    public bool FirstRoundUse { get; set; } = false;
+    [ModdedToggleOption("警长首回合可开枪")]
+    public bool FirstRoundUse { get; set; } = true;
 
-    [ModdedToggleOption("Can Shoot Neutral Evil Roles")]
+    [ModdedToggleOption("警长可射击中立邪恶职业")]
     public bool ShootNeutralEvil { get; set; } = true;
 
-    [ModdedToggleOption("Can Shoot Neutral Killing Roles")]
+    [ModdedToggleOption("警长可射击中立杀手职业")]
     public bool ShootNeutralKiller { get; set; } = true;
 
-    [ModdedEnumOption("Misfire Kills", typeof(MisfireOptions), ["Sheriff", "Target", "Sheriff & Target", "No One"])]
+    [ModdedEnumOption("警长误杀后死亡者", typeof(MisfireOptions), ["警长", "目标", "警长和目标", "无"])]
     public MisfireOptions MisfireType { get; set; } = MisfireOptions.Sheriff;
 
 }

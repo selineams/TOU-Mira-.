@@ -27,21 +27,21 @@ public static class TelepathEvents
             if (victim.IsImpostor() && source == victim && options.KnowFailedGuess && MeetingHud.Instance && victim.TryGetModifier<ImpostorAssassinModifier>(out var assassin) && assassin.LastAttemptedVictim)
             {
                 Coroutines.Start(MiscUtils.CoFlash(TownOfUsColors.ImpSoft, alpha: 0.4f));
-                var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.ImpSoft.ToTextColor()}Your teammate, {victim.Data.PlayerName}, attempted to shoot {assassin.LastAttemptedVictim!.Data.PlayerName} as {assassin.LastGuessedItem}, but failed!</b></color>", Color.white, spr: TouModifierIcons.Telepath.LoadAsset());
+                var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.ImpSoft.ToTextColor()}你的队友{victim.Data.PlayerName}尝试以{assassin.LastGuessedItem}身份射击{assassin.LastAttemptedVictim!.Data.PlayerName}，但失败了！</b></color>", Color.white, spr: TouModifierIcons.Telepath.LoadAsset());
                 notif1.Text.SetOutlineThickness(0.35f);
                 notif1.transform.localPosition = new Vector3(0f, 1f, -20f);
             }
             else if (source.IsImpostor() && source != victim && options.KnowCorrectGuess && MeetingHud.Instance)
             {
                 Coroutines.Start(MiscUtils.CoFlash(TownOfUsColors.ImpSoft, alpha: 0.05f));
-                var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.ImpSoft.ToTextColor()}Your teammate, {source.Data.PlayerName}, shot {victim.Data.PlayerName} as {victim.GetRoleWhenAlive().TeamColor.ToTextColor()}{victim.GetRoleWhenAlive().NiceName}</color>!</b></color>", Color.white, spr: TouModifierIcons.Telepath.LoadAsset());
+                var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.ImpSoft.ToTextColor()}你的队友{source.Data.PlayerName}以{victim.GetRoleWhenAlive().TeamColor.ToTextColor()}{victim.GetRoleWhenAlive().NiceName}</color>身份射杀了{victim.Data.PlayerName}！</b></color>", Color.white, spr: TouModifierIcons.Telepath.LoadAsset());
                 notif1.Text.SetOutlineThickness(0.35f);
                 notif1.transform.localPosition = new Vector3(0f, 1f, -20f);
             }
             else if (source.IsImpostor() && source != victim)
             {
                 Coroutines.Start(MiscUtils.CoFlash(TownOfUsColors.ImpSoft, alpha: 0.05f));
-                var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.ImpSoft.ToTextColor()}Your teammate, {source.Data.PlayerName}, has killed.</b></color>", Color.white, spr: TouModifierIcons.Telepath.LoadAsset());
+                var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.ImpSoft.ToTextColor()}你的队友{source.Data.PlayerName}进行了击杀。</b></color>", Color.white, spr: TouModifierIcons.Telepath.LoadAsset());
                 notif1.Text.SetOutlineThickness(0.35f);
                 notif1.transform.localPosition = new Vector3(0f, 1f, -20f);
                 if (options.KnowKillLocation) victim?.AddModifier<TelepathDeathNotifierModifier>(PlayerControl.LocalPlayer);
@@ -49,7 +49,7 @@ public static class TelepathEvents
             else if (victim.IsImpostor() && options.KnowDeath)
             {
                 Coroutines.Start(MiscUtils.CoFlash(TownOfUsColors.ImpSoft, alpha: 0.4f));
-                var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.ImpSoft.ToTextColor()}Your teammate, {victim.Data.PlayerName}, has been murdered!.</b></color>", Color.white, spr: TouModifierIcons.Telepath.LoadAsset());
+                var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.ImpSoft.ToTextColor()}你的队友{victim.Data.PlayerName}被杀害了！</b></color>", Color.white, spr: TouModifierIcons.Telepath.LoadAsset());
                 notif1.Text.SetOutlineThickness(0.35f);
                 notif1.transform.localPosition = new Vector3(0f, 1f, -20f);
                 if (options.KnowDeathLocation) victim?.AddModifier<TelepathDeathNotifierModifier>(PlayerControl.LocalPlayer);

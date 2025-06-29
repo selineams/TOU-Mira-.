@@ -12,7 +12,7 @@ namespace TownOfUs.Buttons.Crewmate;
 
 public sealed class PlumberBlockButton : TownOfUsRoleButton<PlumberRole, Vent>
 {
-    public override string Name => "Block";
+    public override string Name => "封锁";
     public override string Keybind => Keybinds.PrimaryAction;
     public override Color TextOutlineColor => TownOfUsColors.Plumber;
     public override float Cooldown => OptionGroupSingleton<PlumberOptions>.Instance.BlockCooldown + MapCooldown;
@@ -47,7 +47,7 @@ public sealed class PlumberBlockButton : TownOfUsRoleButton<PlumberRole, Vent>
             return;
         }
 
-        var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.Plumber.ToTextColor()}This vent will be blocked at the beginning of the next round.</b></color>", Color.white, new Vector3(0f, 1f, -20f), spr: TouRoleIcons.Plumber.LoadAsset());
+        var notif1 = Helpers.CreateAndShowNotification($"<b>{TownOfUsColors.Plumber.ToTextColor()}该通风口将在下回合开始时被封锁。</b></color>", Color.white, new Vector3(0f, 1f, -20f), spr: TouRoleIcons.Plumber.LoadAsset());
         notif1.Text.SetOutlineThickness(0.35f);
 
         PlumberRole.RpcPlumberBlockVent(PlayerControl.LocalPlayer, Target.Id);

@@ -9,8 +9,8 @@ namespace TownOfUs.Modifiers;
 [MiraIgnore]
 public abstract class DisabledModifier : TimedModifier
 {
-    public override string ModifierName => "Disabled Modifier";
-    public override string GetDescription() => "You are disabled!";
+    public override string ModifierName => "禁用修饰";
+    public override string GetDescription() => "你已被禁用！";
     public virtual bool CanBeInteractedWith => true;
     public virtual bool IsConsideredAlive => true;
     public override float Duration => 1f;

@@ -7,16 +7,16 @@ namespace TownOfUs.Options.Roles.Impostor;
 
 public sealed class JanitorOptions : AbstractOptionGroup<JanitorRole>
 {
-    public override string GroupName => "Janitor";
+    public override string GroupName => "清理者";
 
-    [ModdedNumberOption("Clean Uses Per Game", 0f, 15f, 5f, MiraNumberSuffixes.None, "0", zeroInfinity: true)]
-    public float MaxClean { get; set; } = 0f;
-    [ModdedNumberOption("Clean Cooldown", 10f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
-    public float CleanCooldown { get; set; } = 40f;
-    [ModdedNumberOption("Clean Delay", 0f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
-    public float CleanDelay { get; set; } = 2.5f;
-    [ModdedToggleOption("Reset Kill & Clean Cooldowns Together")]
+    [ModdedNumberOption("每局可用清理次数", 0f, 15f, 5f, MiraNumberSuffixes.None, "0", zeroInfinity: true)]
+    public float MaxClean { get; set; } = 15f;
+    [ModdedNumberOption("清理冷却", 10f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
+    public float CleanCooldown { get; set; } = 10f;
+    [ModdedNumberOption("清理延迟", 0f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
+    public float CleanDelay { get; set; } = 0f;
+    [ModdedToggleOption("击杀与清理冷却同步重置")]
     public bool ResetCooldowns { get; set; } = false;
-    [ModdedToggleOption("Janitor Can Kill With Teammate")]
+    [ModdedToggleOption("清理者可与队友一起击杀")]
     public bool JanitorKill { get; set; } = true;
 }

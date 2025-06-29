@@ -34,18 +34,18 @@ public static class DoomsayerEvents
             {
                 PlayerControl.LocalPlayer.RpcPlayerExile();
                 var notif1 = Helpers.CreateAndShowNotification(
-                    $"<b>You have successfully won as the {TownOfUsColors.Doomsayer.ToTextColor()}Doomsayer</color>, as you have guessed enough players successfully!</b>", Color.white, spr: TouRoleIcons.Doomsayer.LoadAsset());
+                    $"<b>你以{TownOfUsColors.Doomsayer.ToTextColor()}末日预言家</color>的身份成功获胜，因为你已成功猜中足够的玩家！</b>", Color.white, spr: TouRoleIcons.Doomsayer.LoadAsset());
 
                 notif1.Text.SetOutlineThickness(0.35f);
-                    notif1.transform.localPosition = new Vector3(0f, 1f, -20f);
+                notif1.transform.localPosition = new Vector3(0f, 1f, -20f);
             }
             else
             {
                 var notif1 = Helpers.CreateAndShowNotification(
-                    $"<b>The {TownOfUsColors.Doomsayer.ToTextColor()}Doomsayer</color>, {doom.Player.Data.PlayerName}, has successfully won, as they have guessed enough players!</b>", Color.white, spr: TouRoleIcons.Doomsayer.LoadAsset());
+                    $"<b>{TownOfUsColors.Doomsayer.ToTextColor()}末日预言家</color>，{doom.Player.Data.PlayerName}，因成功猜中足够的玩家而获胜！</b>", Color.white, spr: TouRoleIcons.Doomsayer.LoadAsset());
 
                 notif1.Text.SetOutlineThickness(0.35f);
-                    notif1.transform.localPosition = new Vector3(0f, 1f, -20f);
+                notif1.transform.localPosition = new Vector3(0f, 1f, -20f);
             }
         }
     }

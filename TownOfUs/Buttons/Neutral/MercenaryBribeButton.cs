@@ -11,7 +11,7 @@ namespace TownOfUs.Buttons.Neutral;
 
 public sealed class MercenaryBribeButton : TownOfUsRoleButton<MercenaryRole, PlayerControl>
 {
-    public override string Name => "Bribe";
+    public override string Name => "贿赂";
     public override string Keybind => Keybinds.PrimaryAction;
     public override Color TextOutlineColor => TownOfUsColors.Mercenary;
     public override float Cooldown => 0.001f + MapCooldown;
@@ -28,7 +28,7 @@ public sealed class MercenaryBribeButton : TownOfUsRoleButton<MercenaryRole, Pla
         }
 
         Target.RpcAddModifier<MercenaryBribedModifier>(PlayerControl.LocalPlayer);
-        var notif1 = Helpers.CreateAndShowNotification($"<b>If {Target.Data.PlayerName} wins, you will win as well.</b>", Color.white, new Vector3(0f, 1f, -20f), spr: TouRoleIcons.Mercenary.LoadAsset());
+        var notif1 = Helpers.CreateAndShowNotification($"<b>如果{Target.Data.PlayerName}获胜，你也将获胜。</b>", Color.white, new Vector3(0f, 1f, -20f), spr: TouRoleIcons.Mercenary.LoadAsset());
         notif1.Text.SetOutlineThickness(0.35f);
 
         Role.Gold -= MercenaryRole.BrideCost;

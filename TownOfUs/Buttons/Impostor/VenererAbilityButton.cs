@@ -40,7 +40,7 @@ public sealed class VenererAbilityButton : TownOfUsRoleButton<VenererRole>, IAft
         if (ability != VenererAbility.None && PlayerControl.LocalPlayer.Data.Role is VenererRole)
         {
             var notif1 = Helpers.CreateAndShowNotification(
-                $"<b>{TownOfUsColors.ImpSoft.ToTextColor()}You have unlocked the {ability.ToString()} ability for getting a kill. {(EffectActive ? "You must wait until your current ability is over." : string.Empty)}</color></b>",
+                $"<b>{TownOfUsColors.ImpSoft.ToTextColor()}你因击杀解锁了{ability.ToString()}技能。{(EffectActive ? "你必须等当前技能结束后才能使用新技能。" : string.Empty)}</color></b>",
                 Color.white, spr: TouRoleIcons.Venerer.LoadAsset());
 
             notif1.Text.SetOutlineThickness(0.35f);
@@ -69,13 +69,13 @@ public sealed class VenererAbilityButton : TownOfUsRoleButton<VenererRole>, IAft
         switch (ActiveAbility)
         {
             case VenererAbility.Camouflage:
-                SetAbility("Camouflage", TouImpAssets.CamouflageSprite.LoadAsset());
+                SetAbility("伪装", TouImpAssets.CamouflageSprite.LoadAsset());
                 break;
             case VenererAbility.Sprint:
-                SetAbility("Sprint", TouImpAssets.SprintSprite.LoadAsset());
+                SetAbility("疾跑", TouImpAssets.SprintSprite.LoadAsset());
                 break;
             case VenererAbility.Freeze:
-                SetAbility("Freeze", TouImpAssets.FreezeSprite.LoadAsset());
+                SetAbility("冻结", TouImpAssets.FreezeSprite.LoadAsset());
                 break;
         }
 

@@ -20,9 +20,9 @@ namespace TownOfUs.Roles.Crewmate;
 
 public sealed class PlumberRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Plumber";
-    public string RoleDescription => "Get The Rats Out Of The Sewers";
-    public string RoleLongDescription => "Flush the vent system to rid of venters, and\nbarricade vents to block them the next round";
+    public string RoleName => "水管工";
+    public string RoleDescription => "把老鼠赶出下水道";
+    public string RoleLongDescription => "冲洗通风口驱逐潜伏者，\n并在下一回合封锁通风口阻止其使用";
     public Color RoleColor => TownOfUsColors.Plumber;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmateSupport;
@@ -198,18 +198,17 @@ public sealed class PlumberRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUs
     }
     public string GetAdvancedDescription()
     {
-        return
-            "The Plumber is a Crewmate Support role that can place Barricades on vents and Flush anyone out of vents."
+        return "水管工是一名船员支援型角色，可以在通风口上设置路障，并将所有潜伏者从通风口中冲出来。"
                + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Flush",
-            $"Flushing the vents makes every vent open and close, kicking out anyone who is actively in a vent. The Plumber also gets an arrow pointing to every flushed player for one second.",
+        new("冲洗",
+            $"冲洗通风口会让所有通风口开关一次，将所有正在通风口中的玩家踢出。水管工还会获得指向每个被冲出的玩家的箭头，持续一秒。",
             TouCrewAssets.FlushSprite),
-        new("Barricade",
-            $"Barricading a vent places a barricade on the vent selected for the next round, preventing players from using it.",
+        new("路障",
+            $"在选定的通风口设置路障，下回合阻止玩家使用该通风口。",
             TouCrewAssets.BarricadeSprite),
     ];
 }

@@ -10,7 +10,7 @@ namespace TownOfUs.Roles.Neutral;
 
 public class NeutralGhostRole(IntPtr cppPtr) : RoleBehaviour(cppPtr), ITownOfUsRole
 {
-    public virtual string RoleName => (Player != null) ? Player.GetRoleWhenAlive().NiceName : "Neutral Ghost";
+    public virtual string RoleName => (Player != null) ? Player.GetRoleWhenAlive().NiceName : "中立幽灵";
     public virtual string RoleDescription => (Player != null) ? Player.GetRoleWhenAlive().Blurb : string.Empty;
     public virtual string RoleLongDescription => (Player != null) ? Player.GetRoleWhenAlive().BlurbLong : string.Empty;
     public virtual Color RoleColor => (Player != null) ? Player.GetRoleWhenAlive().TeamColor : TownOfUsColors.Neutral;
@@ -30,12 +30,12 @@ public class NeutralGhostRole(IntPtr cppPtr) : RoleBehaviour(cppPtr), ITownOfUsR
         if (Player.GetRoleWhenAlive() is ITownOfUsRole touRole)
         {
             stringB = ITownOfUsRole.SetDeadTabText(touRole);
-            if (touRole.MetWinCon) stringB.Append($"<b>You have already won.</b>");
-            else stringB.Append($"<b>You are dead.</b>");
+            if (touRole.MetWinCon) stringB.Append($"<b>你已经获胜。</b>");
+            else stringB.Append($"<b>你已死亡。</b>");
         }
         else
         {
-            stringB.Append($"<b>You are dead.</b>");
+            stringB.Append($"<b>你已死亡。</b>");
         }
         return stringB;
     }

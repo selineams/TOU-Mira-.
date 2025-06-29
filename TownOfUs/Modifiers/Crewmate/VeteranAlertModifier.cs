@@ -10,7 +10,7 @@ namespace TownOfUs.Modifiers.Crewmate;
 public sealed class VeteranAlertModifier : TimedModifier
 {
     public override float Duration => OptionGroupSingleton<VeteranOptions>.Instance.AlertDuration;
-    public override string ModifierName => "Alerted";
+    public override string ModifierName => "警戒";
     public override bool HideOnUi => true;
 
     public override void OnActivate()

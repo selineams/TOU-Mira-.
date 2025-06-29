@@ -9,8 +9,8 @@ namespace TownOfUs.Modifiers.Game.Impostor;
 
 public sealed class SaboteurModifier : TouGameModifier, IWikiDiscoverable
 {
-    public override string ModifierName => "Saboteur";
-    public override string GetDescription() => "You have reduced sabotage cooldowns";
+    public override string ModifierName => "破坏者";
+    public override string GetDescription() => "你的破坏技能冷却减少";
     public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.Saboteur;
     public override ModifierFaction FactionType => ModifierFaction.ImpostorPassive;
 
@@ -25,9 +25,7 @@ public sealed class SaboteurModifier : TouGameModifier, IWikiDiscoverable
     }
     public string GetAdvancedDescription()
     {
-        return
-            "You have a reduced cooldown when sabotaging."
-               + MiscUtils.AppendOptionsText(GetType());
+        return "你破坏时冷却减少。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     public List<CustomButtonWikiDescription> Abilities { get; } = [];

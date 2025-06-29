@@ -21,9 +21,9 @@ namespace TownOfUs.Roles.Impostor;
 
 public sealed class JanitorRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable, ICrewVariant
 {
-    public string RoleName => "Janitor";
-    public string RoleDescription => "Sanitize The Ship";
-    public string RoleLongDescription => "Clean bodies to hide kills" + (OptionGroupSingleton<JanitorOptions>.Instance.CleanDelay == 0 ? string.Empty : "\n<b>You must stay next to the body while cleaning.</b>");
+    public string RoleName => "清理者";
+    public string RoleDescription => "清理飞船";
+    public string RoleLongDescription => "清理尸体以隐藏击杀" + (OptionGroupSingleton<JanitorOptions>.Instance.CleanDelay == 0 ? string.Empty : "\n<b>清理时必须站在尸体旁。</b>");
     public RoleBehaviour CrewVariant => RoleManager.Instance.GetRole((RoleTypes)RoleId.Get<DetectiveRole>());
     public Color RoleColor => TownOfUsColors.Impostor;
     public ModdedRoleTeams Team => ModdedRoleTeams.Impostor;
@@ -70,13 +70,13 @@ public sealed class JanitorRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITownOfUs
 
     public string GetAdvancedDescription()
     {
-        return "The Janitor is an Impostor Support role that can clean dead bodies." + MiscUtils.AppendOptionsText(GetType());
+        return "清理者是一名伪装者辅助型角色，可以清理尸体。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Clean",
-            "Clean a dead body, making it disapear and making it unreportable.",
+        new("清理",
+            "清理一具尸体，使其消失并无法被举报。",
             TouImpAssets.CleanButtonSprite)
     ];
 }

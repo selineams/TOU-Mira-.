@@ -5,15 +5,15 @@ namespace TownOfUs.Options;
 
 public sealed class TaskTrackingOptions : AbstractOptionGroup
 {
-    public override string GroupName => "Task Tracking";
+    public override string GroupName => "任务追踪";
     public override uint GroupPriority => 4;
 
-    [ModdedToggleOption("See Tasks During Round")]
-    public bool ShowTaskRound { get; set; } = true;
+    [ModdedToggleOption("回合中显示任务进度")]
+    public bool ShowTaskRound { get; set; } = false;
 
-    [ModdedToggleOption("See Tasks During Meetings")]
+    [ModdedToggleOption("会议中显示任务进度")]
     public bool ShowTaskInMeetings { get; set; } = true;
 
-    [ModdedToggleOption("See Tasks When Dead")]
+    [ModdedToggleOption("死亡后显示任务进度")]
     public bool ShowTaskDead { get; set; } = true;
 }

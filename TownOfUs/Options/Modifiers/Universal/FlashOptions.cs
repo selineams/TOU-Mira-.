@@ -8,10 +8,10 @@ namespace TownOfUs.Options.Modifiers.Universal;
 
 public sealed class FlashOptions : AbstractOptionGroup<FlashModifier>
 {
-    public override string GroupName => "Flash";
+    public override string GroupName => "闪电侠";
     public override uint GroupPriority => 24;
     public override Color GroupColor => TownOfUsColors.Flash;
 
-    [ModdedNumberOption("Flash Speed", 1.05f, 2.5f, 0.05f, MiraNumberSuffixes.Multiplier, "0.00")]
-    public float FlashSpeed { get; set; } = 1.75f;
+    [ModdedNumberOption("闪电侠速度", 1.05f, 2.5f, 0.05f, MiraNumberSuffixes.Multiplier, "0.00")]
+    public float FlashSpeed { get; set; } = 2f;
 }

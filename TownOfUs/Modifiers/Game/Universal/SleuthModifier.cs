@@ -9,9 +9,9 @@ namespace TownOfUs.Modifiers.Game.Universal;
 
 public sealed class SleuthModifier : UniversalGameModifier, IWikiDiscoverable
 {
-    public override string ModifierName => "Sleuth";
+    public override string ModifierName => "掘墓者";
     public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.Sleuth;
-    public override string GetDescription() => "Know the roles of bodies you report.";
+    public override string GetDescription() => "你可以看到你报告的尸体的角色。";
     public override ModifierFaction FactionType => ModifierFaction.UniversalPassive;
     public List<byte> Reported { get; set; } = [];
 
@@ -30,8 +30,7 @@ public sealed class SleuthModifier : UniversalGameModifier, IWikiDiscoverable
     }
     public string GetAdvancedDescription()
     {
-        return
-            "You will see the roles of bodies you report.";
+        return "你报告的尸体会显示其角色信息。";
     }
 
     public List<CustomButtonWikiDescription> Abilities { get; } = [];

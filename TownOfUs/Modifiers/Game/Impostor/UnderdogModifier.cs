@@ -12,8 +12,8 @@ namespace TownOfUs.Modifiers.Game.Impostor;
 
 public sealed class UnderdogModifier : TouGameModifier, IWikiDiscoverable
 {
-    public override string ModifierName => "Underdog";
-    public override string GetDescription() => "When you're alone your kill cooldown is shortened";
+    public override string ModifierName => "潜伏者";
+    public override string GetDescription() => "当你独自一人时，击杀冷却会缩短";
     public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.Underdog;
     public override ModifierFaction FactionType => ModifierFaction.ImpostorPassive;
 
@@ -54,9 +54,7 @@ public sealed class UnderdogModifier : TouGameModifier, IWikiDiscoverable
     }
     public string GetAdvancedDescription()
     {
-        return
-            "Your kill cooldown is lower if you're solo or your teammate is dead."
-               + MiscUtils.AppendOptionsText(GetType());
+        return "当你单独行动或队友死亡时，击杀冷却会降低。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     public List<CustomButtonWikiDescription> Abilities { get; } = [];

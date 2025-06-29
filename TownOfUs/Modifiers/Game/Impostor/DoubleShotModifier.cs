@@ -10,8 +10,8 @@ namespace TownOfUs.Modifiers.Game.Impostor;
 
 public sealed class DoubleShotModifier : TouGameModifier, IWikiDiscoverable
 {
-    public override string ModifierName => "Double Shot";
-    public override string GetDescription() => "You have an extra chance when assassinating";
+    public override string ModifierName => "专业刺客";
+    public override string GetDescription() => "刺杀失败时可再获得一次机会";
     public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.DoubleShot;
     public override ModifierFaction FactionType => ModifierFaction.KillerUtility;
 
@@ -34,8 +34,7 @@ public sealed class DoubleShotModifier : TouGameModifier, IWikiDiscoverable
     }
     public string GetAdvancedDescription()
     {
-        return
-            "You get a second chance when you fail to shoot.";
+        return "刺杀失败时可再获得一次机会。";
     }
 
     public List<CustomButtonWikiDescription> Abilities { get; } = [];

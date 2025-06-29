@@ -15,9 +15,9 @@ namespace TownOfUs.Roles.Neutral;
 
 public sealed class SoulCollectorRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable, ICrewVariant
 {
-    public string RoleName => "Soul Collector";
-    public string RoleDescription => "Reap The Souls From Your Crewmates";
-    public string RoleLongDescription => "Reap the souls of others, leaving behind a lasting image";
+    public string RoleName => "噬魂兽";
+    public string RoleDescription => "收割你队友的灵魂";
+    public string RoleLongDescription => "收割他人的灵魂，留下一个无魂的幻象";
     public RoleBehaviour CrewVariant => RoleManager.Instance.GetRole((RoleTypes)RoleId.Get<MediumRole>());
     public Color RoleColor => TownOfUsColors.SoulCollector;
     public ModdedRoleTeams Team => ModdedRoleTeams.Custom;
@@ -82,15 +82,13 @@ public sealed class SoulCollectorRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITow
     }
     public string GetAdvancedDescription()
     {
-        return
-            "The Soul Collector is a Neutral Killing role that takes the soul of players. Instead of leaving a body behind, they leave behind an soul-less decoy that looks identical to the reaped player, standing still."
-               + MiscUtils.AppendOptionsText(GetType());
+        return "噬魂兽是一名中立击杀型角色，可以收割玩家的灵魂。被收割后不会留下尸体，而是留下一个与被收割者外观相同、静止不动的假人。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Reap",
-            $"Reaping acts like a kill button, but instead of making a dead body, makes a fake player in its place, appearing alive.",
+        new("收割",
+            $"收割类似于击杀按钮，但不会留下尸体，而是在原地生成一个看起来还活着的假人。",
             TouNeutAssets.ReapSprite),
     ];
 }

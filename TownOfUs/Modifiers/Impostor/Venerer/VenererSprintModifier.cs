@@ -8,7 +8,7 @@ namespace TownOfUs.Modifiers.Impostor.Venerer;
 
 public sealed class VenererSprintModifier : TimedModifier, IVenererModifier
 {
-    public override string ModifierName => "Sprint";
+    public override string ModifierName => "冲刺";
     public override bool AutoStart => true;
     public override float Duration => OptionGroupSingleton<VenererOptions>.Instance.AbilityDuration;
     public override void OnActivate()

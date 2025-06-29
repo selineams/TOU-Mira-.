@@ -13,9 +13,9 @@ namespace TownOfUs.Modifiers.Game.Crewmate;
 
 public sealed class BaitModifier : TouGameModifier, IWikiDiscoverable
 {
-    public override string ModifierName => "Bait";
+    public override string ModifierName => "诱饵";
     public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.Bait;
-    public override string GetDescription() => "Force your killer to self-report.";
+    public override string GetDescription() => "让你的击杀者强制自报尸体。";
     public override ModifierFaction FactionType => ModifierFaction.CrewmatePostmortem;
 
     private static float MinDelay => OptionGroupSingleton<BaitOptions>.Instance.MinDelay;
@@ -41,7 +41,7 @@ public sealed class BaitModifier : TouGameModifier, IWikiDiscoverable
             killer.CmdReportDeadBody(target.Data);
 
             var notif1 = Helpers.CreateAndShowNotification(
-                $"<b>{TownOfUsColors.Bait.ToTextColor()}{target.Data.PlayerName} was a Bait, causing you to self report.</color></b>", Color.white, spr: TouModifierIcons.Bait.LoadAsset());
+                $"<b>{TownOfUsColors.Bait.ToTextColor()}{target.Data.PlayerName}是诱饵，导致你强制自报尸体。</color></b>", Color.white, spr: TouModifierIcons.Bait.LoadAsset());
 
             notif1.Text.SetOutlineThickness(0.35f);
             notif1.transform.localPosition = new Vector3(0f, 1f, -20f);
@@ -49,9 +49,7 @@ public sealed class BaitModifier : TouGameModifier, IWikiDiscoverable
     }
     public string GetAdvancedDescription()
     {
-        return
-            "After you die, your killer will self-report, reporting your body."
-               + MiscUtils.AppendOptionsText(GetType());
+        return "你死后，击杀你的玩家会强制自报你的尸体。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     public List<CustomButtonWikiDescription> Abilities { get; } = [];

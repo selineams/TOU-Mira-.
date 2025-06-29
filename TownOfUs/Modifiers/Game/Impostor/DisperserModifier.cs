@@ -16,8 +16,8 @@ namespace TownOfUs.Modifiers.Game.Impostor;
 
 public sealed class DisperserModifier : TouGameModifier, IWikiDiscoverable
 {
-    public override string ModifierName => "Disperser";
-    public override string GetDescription() => "Separate the Crew.";
+    public override string ModifierName => "分散者";
+    public override string GetDescription() => "将船员分散开。";
     public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.Disperser;
     public override ModifierFaction FactionType => ModifierFaction.ImpostorUtility;
 
@@ -37,7 +37,7 @@ public sealed class DisperserModifier : TouGameModifier, IWikiDiscoverable
         DispersePlayersToCoordinates(coordinates);
 
         var notif1 = Helpers.CreateAndShowNotification(
-            $"<b>{TownOfUsColors.ImpSoft.ToTextColor()}Everyone has been dispersed to a vent!</color></b>", Color.white, spr: TouModifierIcons.Disperser.LoadAsset());
+            $"<b>{TownOfUsColors.ImpSoft.ToTextColor()}所有人已被分散到通风口！</color></b>", Color.white, spr: TouModifierIcons.Disperser.LoadAsset());
 
         notif1.Text.SetOutlineThickness(0.35f);
         notif1.transform.localPosition = new Vector3(0f, 1f, -20f);
@@ -103,14 +103,13 @@ public sealed class DisperserModifier : TouGameModifier, IWikiDiscoverable
     }
     public string GetAdvancedDescription()
     {
-        return
-            "Disperse everyone on the map to a random vent, given that they are not Immovable. You cannot have any other button modifiers with Disperser.";
+        return "将所有玩家分散到随机通风口（不可分散磐石）。拥有分散者时不能有其他按钮类修饰。";
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Disperse",
-            $"You can disperse players on the map to any vents, which you can do once per game.",
+        new("分散",
+            $"你可以将玩家分散到地图上的任意通风口，每局限用一次。",
             TouAssets.DisperseSprite),
     ];
 }

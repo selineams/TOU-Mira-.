@@ -9,9 +9,9 @@ namespace TownOfUs.Roles.Impostor;
 
 public sealed class EclipsalRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Eclipsal";
-    public string RoleDescription => "Block Out The Light";
-    public string RoleLongDescription => "Make crewmates unable to see, slowly returning their vision to normal.";
+    public string RoleName => "蚀影者";
+    public string RoleDescription => "遮蔽光线";
+    public string RoleLongDescription => "让船员无法视物，视野会逐渐恢复正常。";
     public Color RoleColor => TownOfUsColors.Impostor;
     public ModdedRoleTeams Team => ModdedRoleTeams.Impostor;
     public RoleAlignment RoleAlignment => RoleAlignment.ImpostorConcealing;
@@ -28,15 +28,13 @@ public sealed class EclipsalRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITownOfU
     }
     public string GetAdvancedDescription()
     {
-        return
-            "The Eclipsal is an Impostor Concealing role that can hinder the vision of all crewmates and neutrals alike, given that they are near the Eclipsal."
-               + MiscUtils.AppendOptionsText(GetType());
+        return "蚀影者是一名伪装者隐蔽型角色，可以让所有靠近自己的船员和中立者视野受限。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Blind",
-            $"Blinding players causes their fog of war to overtake their screen, only letting them see the map and prevents reporting. After a while, they will regain their vision and have vision like normal.",
+        new("致盲",
+            $"致盲玩家会让他们的战争迷雾遮蔽整个屏幕，只能看到地图且无法举报。过一段时间后，他们的视野会恢复正常。",
             TouImpAssets.BlindSprite),
     ];
 }

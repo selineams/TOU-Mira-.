@@ -20,9 +20,9 @@ namespace TownOfUs.Roles.Neutral;
 
 public sealed class JesterRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable, ICrewVariant
 {
-    public string RoleName => "Jester";
-    public string RoleDescription => "Get voted out!";
-    public string RoleLongDescription => "Be as suspicious as possible, and get voted out!";
+    public string RoleName => "小丑";
+    public string RoleDescription => "被投票放逐获胜！";
+    public string RoleLongDescription => "尽量表现得可疑，让自己被投票放逐！";
     public RoleBehaviour CrewVariant => RoleManager.Instance.GetRole((RoleTypes)RoleId.Get<SwapperRole>());
     public Color RoleColor => TownOfUsColors.Jester;
     public ModdedRoleTeams Team => ModdedRoleTeams.Custom;
@@ -53,7 +53,7 @@ public sealed class JesterRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfUsRo
 
     public string GetAdvancedDescription()
     {
-        return "The Jester is a Neutral Evil role that wins by getting themselves ejected." + MiscUtils.AppendOptionsText(GetType());
+        return "小丑是一名中立邪恶型角色，通过让自己被放逐来获胜。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     public override void Initialize(PlayerControl player)

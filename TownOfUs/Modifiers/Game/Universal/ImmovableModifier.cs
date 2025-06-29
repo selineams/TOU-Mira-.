@@ -10,9 +10,9 @@ namespace TownOfUs.Modifiers.Game.Universal;
 
 public sealed class ImmovableModifier : UniversalGameModifier, IWikiDiscoverable
 {
-    public override string ModifierName => "Immovable";
+    public override string ModifierName => "磐石";
     public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.Immovable;
-    public override string GetDescription() => "You are unable to be moved via abilities and meetings.";
+    public override string GetDescription() => "你不会被技能或会议移动。";
     public override int GetAssignmentChance() => (int)OptionGroupSingleton<UniversalModifierOptions>.Instance.ImmovableChance;
     public override int GetAmountPerGame() => (int)OptionGroupSingleton<UniversalModifierOptions>.Instance.ImmovableAmount;
     public override ModifierFaction FactionType => ModifierFaction.UniversalPassive;
@@ -48,8 +48,7 @@ public sealed class ImmovableModifier : UniversalGameModifier, IWikiDiscoverable
     }
     public string GetAdvancedDescription()
     {
-        return
-            "You cannot be teleported to the meeting area, and you cannot get dispersed or teleported.";
+        return "你不会被传送到会议区，也不会被分散或传送。";
     }
 
     public List<CustomButtonWikiDescription> Abilities { get; } = [];

@@ -39,41 +39,41 @@ public sealed class BodyReport
         var reportNameDuration = OptionGroupSingleton<MedicOptions>.Instance.MedicReportNameDuration;
 
         if (br.KillAge > reportColorDuration * 1000)
-            return $"Body Report: The corpse is too old to gain information from. (Killed {Math.Round(br.KillAge / 1000)}s ago)";
+            return $"尸体报告：尸体太久远，无法获得信息。（死亡时间：{Math.Round(br.KillAge / 1000)}秒前）";
 
         if (br.Killer?.PlayerId == br.Body?.PlayerId)
-            return $"Body Report: The kill appears to have been a suicide! (Killed {Math.Round(br.KillAge / 1000)}s ago)";
+            return $"尸体报告：此死亡为自杀！（死亡时间：{Math.Round(br.KillAge / 1000)}秒前）";
 
         if (br.KillAge < reportNameDuration * 1000)
-            return $"Body Report: The killer appears to be {br.Killer?.Data.PlayerName}! (Killed {Math.Round(br.KillAge / 1000)}s ago)";
+            return $"尸体报告：凶手似乎是{br.Killer?.Data.PlayerName}！（死亡时间：{Math.Round(br.KillAge / 1000)}秒前）";
 
         var typeOfColor = MedicRole.GetColorTypeForPlayer(br.Killer!);
 
-        return $"Body Report: The killer appears to be a {typeOfColor} color. (Killed {Math.Round(br.KillAge / 1000)}s ago)";
+        return $"尸体报告：凶手似乎是{typeOfColor}颜色。（死亡时间：{Math.Round(br.KillAge / 1000)}秒前）";
     }
 
     public static string ParseDetectiveReport(BodyReport br)
     {
         if (br.KillAge > OptionGroupSingleton<DetectiveOptions>.Instance.DetectiveFactionDuration * 1000)
-            return $"Body Report: The corpse is too old to gain information from. (Killed {Math.Round(br.KillAge / 1000)}s ago)";
+            return $"尸体报告：尸体太久远，无法获得信息。（死亡时间：{Math.Round(br.KillAge / 1000)}秒前）";
 
         if (br.Killer!.PlayerId == br.Body!.PlayerId)
-            return $"Body Report: The kill appears to have been a suicide! (Killed {Math.Round(br.KillAge / 1000)}s ago)";
+            return $"尸体报告：此死亡为自杀！（死亡时间：{Math.Round(br.KillAge / 1000)}秒前）";
         // if the killer died, they would still appear correctly here
         var role = br.Killer.GetRoleWhenAlive();
         if (br.Killer.HasModifier<TraitorCacheModifier>()) role = RoleManager.Instance.GetRole((RoleTypes)RoleId.Get<TraitorRole>());
 
-        var prefix = "a";
-        if (role.NiceName.StartsWithVowel()) prefix = "an";
+        var prefix = "";
+        if (role.NiceName.StartsWithVowel()) prefix = "";
         if (br.KillAge < OptionGroupSingleton<DetectiveOptions>.Instance.DetectiveRoleDuration * 1000)
-            return $"Body Report: The killer appears to be {prefix} {role.NiceName}! (Killed {Math.Round(br.KillAge / 1000)}s ago)";
+            return $"尸体报告：凶手似乎是{role.NiceName}！（死亡时间：{Math.Round(br.KillAge / 1000)}秒前）";
 
         if (br.Killer.IsNeutral())
-            return $"Body Report: The killer appears to be a Neutral Role! (Killed {Math.Round(br.KillAge / 1000)}s ago)";
+            return $"尸体报告：凶手似乎是中立职业！（死亡时间：{Math.Round(br.KillAge / 1000)}秒前）";
         else if (br.Killer.IsCrewmate())
-            return $"Body Report: The killer appears to be a Crewmate! (Killed {Math.Round(br.KillAge / 1000)}s ago)";
+            return $"尸体报告：凶手似乎是船员！（死亡时间：{Math.Round(br.KillAge / 1000)}秒前）";
         else
-            return $"Body Report: The killer appears to be an Impostor! (Killed {Math.Round(br.KillAge / 1000)}s ago)";
+            return $"尸体报告：凶手似乎是伪装者！（死亡时间：{Math.Round(br.KillAge / 1000)}秒前）";
     }
 }
 

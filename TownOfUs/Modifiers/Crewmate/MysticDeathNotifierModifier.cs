@@ -10,7 +10,7 @@ namespace TownOfUs.Modifiers.Crewmate;
 
 public sealed class MysticDeathNotifierModifier(PlayerControl mystic) : TimedModifier
 {
-    public override string ModifierName => "Death Notifier";
+    public override string ModifierName => "灵媒亡灵提示";
     public override float Duration => OptionGroupSingleton<MysticOptions>.Instance.MysticArrowDuration;
     public override bool HideOnUi => true;
 

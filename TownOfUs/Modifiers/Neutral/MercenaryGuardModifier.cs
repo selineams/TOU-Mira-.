@@ -6,7 +6,7 @@ namespace TownOfUs.Modifiers.Neutral;
 
 public sealed class MercenaryGuardModifier(PlayerControl mercenary) : BaseModifier
 {
-    public override string ModifierName => "Mercenary Guard";
+    public override string ModifierName => "雇佣兵防护";
     public override bool HideOnUi => true;
     public PlayerControl Mercenary { get; } = mercenary;
 

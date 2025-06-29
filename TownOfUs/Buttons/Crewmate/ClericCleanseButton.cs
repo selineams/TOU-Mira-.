@@ -13,7 +13,7 @@ namespace TownOfUs.Buttons.Crewmate;
 
 public sealed class ClericCleanseButton : TownOfUsRoleButton<ClericRole, PlayerControl>
 {
-    public override string Name => "Cleanse";
+    public override string Name => "净化";
     public override string Keybind => Keybinds.PrimaryAction;
     public override Color TextOutlineColor => TownOfUsColors.Cleric;
     public override float Cooldown => OptionGroupSingleton<ClericOptions>.Instance.CleanseCooldown + MapCooldown;

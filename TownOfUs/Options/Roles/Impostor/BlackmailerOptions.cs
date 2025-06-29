@@ -7,21 +7,21 @@ namespace TownOfUs.Options.Roles.Impostor;
 
 public sealed class BlackmailerOptions : AbstractOptionGroup<BlackmailerRole>
 {
-    public override string GroupName => "Blackmailer";
+    public override string GroupName => "勒索者";
 
-    [ModdedNumberOption("Number Of Blackmail Uses Per Game", 0f, 15f, 5f, MiraNumberSuffixes.None, "0", zeroInfinity: true)]
-    public float MaxBlackmails { get; set; } = 0f;
+    [ModdedNumberOption("每局可用勒索次数", 0f, 15f, 5f, MiraNumberSuffixes.None, "0", zeroInfinity: true)]
+    public float MaxBlackmails { get; set; } = 15f;
 
-    [ModdedNumberOption("Blackmail Cooldown", 1f, 30f, suffixType: MiraNumberSuffixes.Seconds)]
-    public float BlackmailCooldown { get; set; } = 20f;
+    [ModdedNumberOption("勒索冷却", 1f, 30f, suffixType: MiraNumberSuffixes.Seconds)]
+    public float BlackmailCooldown { get; set; } = 5f;
 
-    [ModdedNumberOption("Max Players Alive Until Voting", 1f, 15f)]
-    public float MaxAliveForVoting { get; set; } = 10f;
-    [ModdedToggleOption("Blackmail Same Person Twice In A Row")]
-    public bool BlackmailInARow { get; set; } = false;
+    [ModdedNumberOption("允许被勒索人投票的最大存活人数", 1f, 15f)]
+    public float MaxAliveForVoting { get; set; } = 5f;
+    [ModdedToggleOption("可连续勒索同一人")]
+    public bool BlackmailInARow { get; set; } = true;
 
-    [ModdedToggleOption("Only Target Sees Blackmail")]
+    [ModdedToggleOption("仅目标可见勒索提示")]
     public bool OnlyTargetSeesBlackmail { get; set; } = false;
-    [ModdedToggleOption("Blackmailer Can Kill With Teammate")]
+    [ModdedToggleOption("勒索者可与队友一起击杀")]
     public bool BlackmailerKill { get; set; } = true;
 }

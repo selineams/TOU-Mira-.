@@ -7,19 +7,19 @@ namespace TownOfUs.Options.Roles.Crewmate;
 
 public sealed class MediumOptions : AbstractOptionGroup<MediumRole>
 {
-    public override string GroupName => "Medium";
+    public override string GroupName => "招魂师";
 
-    [ModdedNumberOption("Mediate Cooldown", 0, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
-    public float MediateCooldown { get; set; } = 10;
+    [ModdedNumberOption("招魂冷却", 0, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
+    public float MediateCooldown { get; set; } = 5;
 
-    [ModdedToggleOption("Reveal Appearance of Mediate Target")]
+    [ModdedToggleOption("显示招魂对象外观")]
     public bool RevealMediateAppearance { get; set; } = true;
 
-    [ModdedEnumOption("Arrow Visibility", typeof(MediumVisibility), ["Medium", "Mediated", "Medium + Mediated", "Neither"])]
+    [ModdedEnumOption("箭头可见性", typeof(MediumVisibility), ["招魂师", "被招魂者", "招魂师+被招魂者", "都不可见"])]
     public MediumVisibility ArrowVisibility { get; set; } = MediumVisibility.Both;
 
-    [ModdedEnumOption("Who is Revealed", typeof(MediateRevealedTargets), ["Oldest Dead", "Newest Dead", "Random Dead", "All Dead"])]
-    public MediateRevealedTargets WhoIsRevealed { get; set; } = MediateRevealedTargets.OldestDead;
+    [ModdedEnumOption("被揭示者", typeof(MediateRevealedTargets), ["最早死亡者", "最新死亡者", "随机死亡者", "全部死亡者"])]
+    public MediateRevealedTargets WhoIsRevealed { get; set; } = MediateRevealedTargets.AllDead;
 }
 
 public enum MediateRevealedTargets

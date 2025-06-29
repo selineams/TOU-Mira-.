@@ -11,7 +11,7 @@ namespace TownOfUs.Modifiers.Impostor;
 
 public sealed class DragModifier(byte bodyId) : BaseModifier
 {
-    public override string ModifierName => "Drag";
+    public override string ModifierName => "拖";
     public override bool HideOnUi => true;
 
     public byte BodyId { get; } = bodyId;

@@ -17,9 +17,9 @@ namespace TownOfUs.Roles.Impostor;
 
 public sealed class BlackmailerRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Blackmailer";
-    public string RoleDescription => "Silence Crewmates During Meetings";
-    public string RoleLongDescription => "Silence a crewmate for the next meeting";
+    public string RoleName => "勒索者";
+    public string RoleDescription => "在会议中让船员沉默";
+    public string RoleLongDescription => "让一名船员在下次会议中无法发言";
     public Color RoleColor => TownOfUsColors.Impostor;
     public ModdedRoleTeams Team => ModdedRoleTeams.Impostor;
     public RoleAlignment RoleAlignment => RoleAlignment.ImpostorSupport;
@@ -57,15 +57,15 @@ public sealed class BlackmailerRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITown
 
     public string GetAdvancedDescription()
     {
-        return $"The Blackmailer is an Impostor Support role that can stop a player from speaking (marked with <color=#2A1119>M</color>) in the next meeting" + MiscUtils.AppendOptionsText(GetType());
+        return $"勒索者是一名伪装者辅助型角色，可以让一名玩家在下次会议中无法发言（以<color=#2A1119>M</color>标记）。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities => [
-        new("Blackmail",
-            "Silence a player for the next meeting. They will be unable to speak." +
-            "They also will not be able to vote until less or equal amount of people are alive than the blackmailer settings allow." +
-            "The blackmail will be visible to other players only if the setting is toggled",
+        new("勒索",
+            "让一名玩家在下次会议中无法发言。" +
+            "他们将无法说话，且在存活人数大于等于设定值前无法投票。" +
+            "是否公开勒索状态可由设置决定。",
             TouImpAssets.BlackmailSprite),
     ];
 }

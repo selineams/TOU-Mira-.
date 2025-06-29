@@ -15,7 +15,7 @@ public interface IWikiDiscoverable
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities => [];
     
-    public string SecondTabName => "Abilities";
+    public string SecondTabName => "技能";
 }
 
 public record struct CustomButtonWikiDescription(string name, string description, LoadableAsset<Sprite> icon);

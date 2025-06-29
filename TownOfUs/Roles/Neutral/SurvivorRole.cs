@@ -15,9 +15,9 @@ namespace TownOfUs.Roles.Neutral;
 
 public sealed class SurvivorRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Survivor";
-    public string RoleDescription => "Do Whatever It Takes To Live";
-    public string RoleLongDescription => "Stay alive to win with any faction remaining";
+    public string RoleName => "幸存者";
+    public string RoleDescription => "不择手段活下去";
+    public string RoleLongDescription => "活到最后即可与任意阵营一同获胜";
     public Color RoleColor => TownOfUsColors.Survivor;
     public ModdedRoleTeams Team => ModdedRoleTeams.Custom;
     public RoleAlignment RoleAlignment => RoleAlignment.NeutralBenign;
@@ -31,8 +31,8 @@ public sealed class SurvivorRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfUs
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Vest",
-            "Put on a Vest protecting you from attacks.",
+        new("防弹衣",
+            "穿上防弹衣保护自己免受攻击。",
             TouNeutAssets.VestSprite)
     ];
 
@@ -44,7 +44,7 @@ public sealed class SurvivorRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfUs
 
     public string GetAdvancedDescription()
     {
-        return "The Survivor is a Neutral Benign role that just needs to survive till the end of the game." + MiscUtils.AppendOptionsText(GetType());
+        return "幸存者是一名中立善良型角色，只需要活到游戏结束即可获胜。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     public override void Initialize(PlayerControl player)

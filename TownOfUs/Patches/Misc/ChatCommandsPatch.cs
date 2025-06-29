@@ -27,13 +27,13 @@ public static class ChatPatches
         if (text.Replace(" ", string.Empty).StartsWith("/", StringComparison.OrdinalIgnoreCase)
             && text.Replace(" ", string.Empty).Contains("summary", StringComparison.OrdinalIgnoreCase))
         {
-            var title = $"<color=#8BFDFD>System</color>";
-            var msg = "No game summary to show!";
+            var title = $"<color=#8BFDFD>系统</color>";
+            var msg = "没有可显示的游戏总结！";
             if (GameHistory.EndGameSummary != string.Empty)
             {
                 var factionText = string.Empty;
-                if (GameHistory.WinningFaction != string.Empty) factionText = $"<size=80%>Winning Team: {GameHistory.WinningFaction}</size>\n";
-                title = $"<color=#8BFDFD>System</color>\n<size=62%>{factionText}{GameHistory.EndGameSummary}</size>";
+                if (GameHistory.WinningFaction != string.Empty) factionText = $"<size=80%>获胜阵营: {GameHistory.WinningFaction}</size>\n";
+                title = $"<color=#8BFDFD>系统</color>\n<size=62%>{factionText}{GameHistory.EndGameSummary}</size>";
                 msg = string.Empty;
             }
             MiscUtils.AddFakeChat(PlayerControl.LocalPlayer.Data, title, msg);
@@ -46,13 +46,12 @@ public static class ChatPatches
         }
         else if (text.Replace(" ", string.Empty).StartsWith("/nerfme", StringComparison.OrdinalIgnoreCase))
         {
-
-            var title = $"<color=#8BFDFD>System</color>";
-            var msg = "You cannot Nerf yourself outside of the lobby!";
+            var title = $"<color=#8BFDFD>系统</color>";
+            var msg = "你不能在大厅外削弱自己！";
             if (LobbyBehaviour.Instance)
             {
                 VisionPatch.NerfMe = !VisionPatch.NerfMe;
-                msg = $"Toggled Nerf Status To {VisionPatch.NerfMe}!";
+                msg = $"切换削弱状态为 {VisionPatch.NerfMe}!";
             }
             MiscUtils.AddFakeChat(PlayerControl.LocalPlayer.Data, title, msg);
             
@@ -64,7 +63,7 @@ public static class ChatPatches
         }
         else if (text.Replace(" ", string.Empty).StartsWith("/setname", StringComparison.OrdinalIgnoreCase))
         {
-            var title = $"<color=#8BFDFD>System</color>";
+            var title = $"<color=#8BFDFD>系统</color>";
                 if (text.StartsWith("/setname ", StringComparison.OrdinalIgnoreCase))
                     textRegular = textRegular[9..];
                 else if (text.StartsWith("/setname", StringComparison.OrdinalIgnoreCase))
@@ -73,18 +72,18 @@ public static class ChatPatches
                     textRegular = textRegular[10..];
                 else if (text.StartsWith("/ setname", StringComparison.OrdinalIgnoreCase))
                     textRegular = textRegular[9..];
-            var msg = "You cannot change your name outside of the lobby!";
+            var msg = "你不能在大厅外更改名字！";
             if (LobbyBehaviour.Instance)
             {
                 if (textRegular.Length < 2)
                 {
-                    msg = $"The player name must be at least 2 characters long!";
+                    msg = $"玩家名至少需要2个字符！";
                 }
                 else
                 {
                     // This is done to prevent the player from being kicked for changing their name as they're not the host
                     PlayerControl.LocalPlayer.CmdCheckName(textRegular);
-                    msg = $"Changed player name for the next match to: {textRegular}";
+                    msg = $"下局玩家名已更改为: {textRegular}";
                 }
             }
             MiscUtils.AddFakeChat(PlayerControl.LocalPlayer.Data, title, msg);
@@ -95,10 +94,9 @@ public static class ChatPatches
             __instance.UpdateChatMode();
             return false;
         }
-        // if this could be added it would be pretty useful - Atony
         else if (text.Replace(" ", string.Empty).StartsWith("/sethost", StringComparison.OrdinalIgnoreCase))
         {
-            var title = $"<color=#8BFDFD>System</color>";
+            var title = $"<color=#8BFDFD>系统</color>";
                 if (text.StartsWith("/sethost ", StringComparison.OrdinalIgnoreCase))
                     textRegular = textRegular[9..];
                 else if (text.StartsWith("/sethost", StringComparison.OrdinalIgnoreCase))
@@ -107,24 +105,24 @@ public static class ChatPatches
                     textRegular = textRegular[10..];
                 else if (text.StartsWith("/ sethost", StringComparison.OrdinalIgnoreCase))
                     textRegular = textRegular[9..];
-            var msg = "You are not the current host!";
+            var msg = "你不是当前房主！";
             if (PlayerControl.LocalPlayer.IsHost())
             {
                 var playerCon = PlayerControl.AllPlayerControls.ToArray().FirstOrDefault(x => string.Equals(x.Data.PlayerName, textRegular, StringComparison.OrdinalIgnoreCase));
                 var player = AmongUsClient.Instance.allClients.ToArray().FirstOrDefault(x => string.Equals(x.PlayerName, textRegular, StringComparison.OrdinalIgnoreCase));
                 if (LobbyBehaviour.Instance && player != null && playerCon != null)
                 {
-                    msg = $"{textRegular} is now the host!\n" +
-                    $"<size=75%>This command is <b>experimental</b>. If a player joins after this point, the command must be run again from the original host to restore permissions. The new host may also NOT change server visibility.</size>";
+                    msg = $"{textRegular} 现在是房主！\n" +
+                    $"<size=75%>此命令为<b>实验性</b>。如果有玩家之后加入，必须由原房主再次运行此命令以恢复权限。新房主也无法更改服务器可见性。</size>";
                     RpcChangeHost(PlayerControl.LocalPlayer, player.Id, playerCon);
                 }
                 else if (LobbyBehaviour.Instance)
                 {
-                    msg = $"Could not find the specified player! ({textRegular})";
+                    msg = $"未找到指定玩家！({textRegular})";
                 }
                 else
                 {
-                    msg = "You cannot change who the host is outside of the lobby!";
+                    msg = "你不能在大厅外更改房主！";
                 }
             }
             MiscUtils.AddFakeChat(PlayerControl.LocalPlayer.Data, title, msg);
@@ -137,15 +135,15 @@ public static class ChatPatches
         }
         else if (text.Replace(" ", string.Empty).StartsWith("/help", StringComparison.OrdinalIgnoreCase))
         {
-            var title = $"<color=#8BFDFD>System</color>";
+            var title = $"<color=#8BFDFD>系统</color>";
             List<string> randomNames = ["Atony", "Alchlc", "angxlwtf", "Digi", "donners", "K3ndo", "MyDragonBreath", "Pietro", "twix", "xerm", "XtraCube", "Zeo", "Slushie"];
-            var msg = "<size=75%>Chat Commands:\n" +
-                "/help - Shows this message\n" +
-                $"/jail - If you are the <b><color=#{Color.gray.ToHtmlStringRGBA()}>Jailor</color></b>, you can send a message to your Jail target by typing something like <b>/jail Hello!</b>\n" +
-                "/nerfme - Cuts your vision in half\n" +
-                $"/sethost - Changes the host to be another player, will reset and break if someone connects afterwards. Run the command again to fix it.\n" +
-                $"/setname - Change your name to whatever text follows the command (like /setname {randomNames.Random()}) for the next match.\n" +
-                "/summary - Shows the previous end game summary\n</size>";
+            var msg = "<size=75%>聊天命令:\n" +
+                "/help - 显示本帮助信息\n" +
+                $"/jail - 如果你是<b><color=#{Color.gray.ToHtmlStringRGBA()}>典狱长</color></b>，你可以通过输入<b>/jail 内容</b>给你的囚犯发送消息\n" +
+                "/nerfme - 将你的视野减半\n" +
+                $"/sethost - 更改房主为其他玩家，若有玩家之后加入需由原房主再次运行。\n" +
+                $"/setname - 更改你的名字为命令后跟随的内容（如 /setname {randomNames.Random()}），下局生效。\n" +
+                "/summary - 显示上一局游戏总结\n</size>";
             
             MiscUtils.AddFakeChat(PlayerControl.LocalPlayer.Data, title, msg);
 
@@ -157,9 +155,9 @@ public static class ChatPatches
         }
         else if (text.Replace(" ", string.Empty).StartsWith("/jail", StringComparison.OrdinalIgnoreCase))
         {
-            var title = $"<color=#8BFDFD>System</color>";
+            var title = $"<color=#8BFDFD>系统</color>";
             
-            MiscUtils.AddFakeChat(PlayerControl.LocalPlayer.Data, title, "The mod no longer supports /jail chat. Use the red in-game chat button instead.");
+            MiscUtils.AddFakeChat(PlayerControl.LocalPlayer.Data, title, "该mod已不再支持/jail聊天，请使用游戏内红色聊天按钮。");
 
             __instance.freeChatField.Clear();
             __instance.quickChatMenu.Clear();
@@ -169,9 +167,9 @@ public static class ChatPatches
         }
         else if (text.Replace(" ", string.Empty).StartsWith("/", StringComparison.OrdinalIgnoreCase))
         {
-            var title = $"<color=#8BFDFD>System</color>";
+            var title = $"<color=#8BFDFD>系统</color>";
             
-            MiscUtils.AddFakeChat(PlayerControl.LocalPlayer.Data, title, "Invalid command. If you need information on chat commands, type /help. If you are trying to know what a role or modifier does, check out the in-game wiki by pressing the globe icon on the top right of your screen.");
+            MiscUtils.AddFakeChat(PlayerControl.LocalPlayer.Data, title, "无效命令。如需聊天命令信息，请输入/help。如需了解职业或特性的作用，请点击右上角地球按钮查看游戏内百科。");
 
             __instance.freeChatField.Clear();
             __instance.quickChatMenu.Clear();
@@ -186,7 +184,7 @@ public static class ChatPatches
             if (PlayerControl.LocalPlayer.Data.Role is JailorRole)
             {
                 TeamChatPatches.RpcSendJailorChat(PlayerControl.LocalPlayer, textRegular);
-                MiscUtils.AddTeamChat(PlayerControl.LocalPlayer.Data, $"<color=#{TownOfUsColors.Jailor.ToHtmlStringRGBA()}>{PlayerControl.LocalPlayer.Data.PlayerName} (Jailor)</color>", textRegular, onLeft: false);
+                MiscUtils.AddTeamChat(PlayerControl.LocalPlayer.Data, $"<color=#{TownOfUsColors.Jailor.ToHtmlStringRGBA()}>{PlayerControl.LocalPlayer.Data.PlayerName} (狱警)</color>", textRegular, onLeft: false);
 
                 __instance.freeChatField.Clear();
                 __instance.quickChatMenu.Clear();
@@ -198,7 +196,7 @@ public static class ChatPatches
             else if (PlayerControl.LocalPlayer.IsJailed())
             {
                 TeamChatPatches.RpcSendJaileeChat(PlayerControl.LocalPlayer, textRegular);
-                MiscUtils.AddTeamChat(PlayerControl.LocalPlayer.Data, $"<color=#{TownOfUsColors.Jailor.ToHtmlStringRGBA()}>{PlayerControl.LocalPlayer.Data.PlayerName} (Jailed)</color>", textRegular, onLeft: false);
+                MiscUtils.AddTeamChat(PlayerControl.LocalPlayer.Data, $"<color=#{TownOfUsColors.Jailor.ToHtmlStringRGBA()}>{PlayerControl.LocalPlayer.Data.PlayerName} (被囚禁)</color>", textRegular, onLeft: false);
 
                 __instance.freeChatField.Clear();
                 __instance.quickChatMenu.Clear();
@@ -210,7 +208,7 @@ public static class ChatPatches
             else if (PlayerControl.LocalPlayer.Data.Role is VampireRole && genOpt.VampireChat)
             {
                 TeamChatPatches.RpcSendVampTeamChat(PlayerControl.LocalPlayer, textRegular);
-                MiscUtils.AddTeamChat(PlayerControl.LocalPlayer.Data, $"<color=#{TownOfUsColors.Vampire.ToHtmlStringRGBA()}>{PlayerControl.LocalPlayer.Data.PlayerName} (Vampire Chat)</color>", textRegular, onLeft: false);
+                MiscUtils.AddTeamChat(PlayerControl.LocalPlayer.Data, $"<color=#{TownOfUsColors.Vampire.ToHtmlStringRGBA()}>{PlayerControl.LocalPlayer.Data.PlayerName} (吸血鬼聊天)</color>", textRegular, onLeft: false);
 
                 __instance.freeChatField.Clear();
                 __instance.quickChatMenu.Clear();
@@ -222,7 +220,7 @@ public static class ChatPatches
             else if (PlayerControl.LocalPlayer.IsImpostor() && genOpt is { FFAImpostorMode: false, ImpostorChat.Value: true })
             {
                 TeamChatPatches.RpcSendImpTeamChat(PlayerControl.LocalPlayer, textRegular);
-                MiscUtils.AddTeamChat(PlayerControl.LocalPlayer.Data, $"<color=#{TownOfUsColors.ImpSoft.ToHtmlStringRGBA()}>{PlayerControl.LocalPlayer.Data.PlayerName} (Impostor Chat)</color>", textRegular, onLeft: false);
+                MiscUtils.AddTeamChat(PlayerControl.LocalPlayer.Data, $"<color=#{TownOfUsColors.ImpSoft.ToHtmlStringRGBA()}>{PlayerControl.LocalPlayer.Data.PlayerName} (内鬼聊天)</color>", textRegular, onLeft: false);
 
                 __instance.freeChatField.Clear();
                 __instance.quickChatMenu.Clear();
@@ -241,12 +239,12 @@ public static class ChatPatches
     {
         if (!host.IsHost())
         {
-            Logger<TownOfUsPlugin>.Error($"{host.Data.PlayerName} is not the host!");
+            Logger<TownOfUsPlugin>.Error($"{host.Data.PlayerName} 不是房主");
             return;
         }
         else if (id == -1)
         {
-            Logger<TownOfUsPlugin>.Error($"Invalid client id: {id}");
+            Logger<TownOfUsPlugin>.Error($"无效的客户端ID: {id}");
             return;
         }
         AmongUsClient.Instance.HostId = id;

@@ -8,7 +8,7 @@ namespace TownOfUs.Options.Modifiers.Crewmate;
 
 public sealed class OperativeOptions : AbstractOptionGroup<OperativeModifier>
 {
-    public override string GroupName => "Operative";
+    public override string GroupName => "监控员";
     public override uint GroupPriority => 35;
     public override Color GroupColor => new(0.8f, 0.33f, 0.37f, 1f);
     // THESE BREAK THE CAMERA MINIGAME!!
@@ -19,21 +19,21 @@ public sealed class OperativeOptions : AbstractOptionGroup<OperativeModifier>
         [ModdedToggleOption("Move While Using Fungle Binoculars")]
         public bool MoveOnFungle { get; set; } = false;
      */
-    [ModdedToggleOption("Move While Using Mira Doorlog")]
+    [ModdedToggleOption("使用Mira门禁时可移动")]
     public bool MoveOnMira { get; set; } = true;
 
-    [ModdedNumberOption("Starting Charge", 0f, 30f, 2.5f, MiraNumberSuffixes.Seconds)]
-    public float StartingCharge { get; set; } = 20f;
+    [ModdedNumberOption("初始电量", 0f, 30f, 2.5f, MiraNumberSuffixes.Seconds)]
+    public float StartingCharge { get; set; } = 30f;
 
-    [ModdedNumberOption("Battery Charged Each Round", 0f, 30f, 2.5f, MiraNumberSuffixes.Seconds)]
-    public float RoundCharge { get; set; } = 10f;
+    [ModdedNumberOption("每回合充电量", 0f, 30f, 2.5f, MiraNumberSuffixes.Seconds)]
+    public float RoundCharge { get; set; } = 15f;
 
-    [ModdedNumberOption("Battery Charged Per Task", 0f, 30f, 2.5f, MiraNumberSuffixes.Seconds)]
-    public float TaskCharge { get; set; } = 7.5f;
+    [ModdedNumberOption("每任务充电量", 0f, 30f, 2.5f, MiraNumberSuffixes.Seconds)]
+    public float TaskCharge { get; set; } = 15f;
 
-    [ModdedNumberOption("Security Display Cooldown", 0f, 30f, 5f, MiraNumberSuffixes.Seconds)]
-    public float DisplayCooldown { get; set; } = 15f;
+    [ModdedNumberOption("监控显示冷却", 0f, 30f, 5f, MiraNumberSuffixes.Seconds)]
+    public float DisplayCooldown { get; set; } = 5f;
     
-    [ModdedNumberOption("Max Security Display Duration", 0f, 30f, 5f, MiraNumberSuffixes.Seconds, zeroInfinity: true)]
-    public float DisplayDuration { get; set; } = 15f;
+    [ModdedNumberOption("最大监控显示时长", 0f, 30f, 5f, MiraNumberSuffixes.Seconds, zeroInfinity: true)]
+    public float DisplayDuration { get; set; } = 30f;
 }

@@ -24,9 +24,9 @@ namespace TownOfUs.Roles.Crewmate;
 
 public sealed class VigilanteRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITouCrewRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Vigilante";
-    public string RoleDescription => "Kill Impostors If You Can Guess Their Roles";
-    public string RoleLongDescription => "Guess the roles of impostors mid-meeting to kill them!";
+    public string RoleName => "侠客";
+    public string RoleDescription => "猜中身份即可击杀伪装者";
+    public string RoleLongDescription => "在会议中猜测伪装者的身份并击杀他们！";
     public Color RoleColor => TownOfUsColors.Vigilante;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmateKilling;
@@ -146,8 +146,7 @@ public sealed class VigilanteRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITouCre
                 Coroutines.Start(MiscUtils.CoFlash(TownOfUsColors.Impostor));
 
                 var notif1 = Helpers.CreateAndShowNotification(
-                    $"<b>{TownOfUsColors.Vigilante.ToTextColor()}Your Multi Shot has prevented you from dying this meeting! You have {SafeShotsLeft} safe shot(s) left!</color></b>", Color.white, spr: TouRoleIcons.Vigilante.LoadAsset());
-
+                    $"<b>{TownOfUsColors.Vigilante.ToTextColor()}你的安全射击失败，本轮你没有死亡，你还剩余{SafeShotsLeft}次安全射击</color></b>", Color.white, spr: TouRoleIcons.Vigilante.LoadAsset());
                 notif1.Text.SetOutlineThickness(0.35f);
                 notif1.transform.localPosition = new Vector3(0f, 1f, -20f);
 
@@ -261,11 +260,11 @@ public sealed class VigilanteRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITouCre
         var stringB = ITownOfUsRole.SetNewTabText(this);
         if (PlayerControl.LocalPlayer.TryGetModifier<AllianceGameModifier>(out var allyMod) && !allyMod.GetsPunished)
         {
-            stringB.AppendLine(CultureInfo.InvariantCulture, $"You can also guess Crewmates.");
+            stringB.AppendLine(CultureInfo.InvariantCulture, $"你也可以猜测船员身份。");
         }
         if ((int)OptionGroupSingleton<VigilanteOptions>.Instance.MultiShots > 0)
         {
-            var newText = SafeShotsLeft == 0 ? $"You have no more safe shots left." : $"{SafeShotsLeft} safe shot(s) left.";
+            var newText = SafeShotsLeft == 0 ? $"你已没有安全射击次数。" : $"剩余{SafeShotsLeft}次安全射击。";
             stringB.AppendLine(CultureInfo.InvariantCulture, $"{newText}");
         }
 
@@ -274,9 +273,7 @@ public sealed class VigilanteRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITouCre
 
     public string GetAdvancedDescription()
     {
-        return
-            "The Vigilante is a Crewmate Killing role that can guess players roles in meetings. " +
-            "If they guess correctly, the other player will die. If not, they will die. "
+        return "侠客是一名船员击杀型角色，可以在会议中猜测玩家身份。如果猜对，对方死亡；猜错则自己死亡。"
             + MiscUtils.AppendOptionsText(GetType());
     }
 }

@@ -6,23 +6,23 @@ namespace TownOfUs.Options;
 
 public sealed class BetterMapOptions : AbstractOptionGroup
 {
-    public override string GroupName => "Better Polus";
+    public override string GroupName => "优化Polus地图";
     public override uint GroupPriority => 5;
     public override Func<bool> GroupVisible => () =>
         (GameOptionsManager.Instance.currentGameOptions.MapId == (int)ShipStatus.MapType.Pb) || (OptionGroupSingleton<TownOfUsMapOptions>.Instance.RandomMaps && OptionGroupSingleton<TownOfUsMapOptions>.Instance.PolusChance > 0);
 
-    [ModdedToggleOption("Better Polus Vent Network")]
+    [ModdedToggleOption("优化Polus通风网络")]
     public bool BPVentNetwork { get; set; } = false;
 
-    [ModdedToggleOption("Polus: Vitals Moved To Lab")]
+    [ModdedToggleOption("Polus：生命体征移至实验室")]
     public bool BPVitalsInLab { get; set; } = false;
 
-    [ModdedToggleOption("Polus: Cold Temp Moved To Death Valley")]
+    [ModdedToggleOption("Polus：低温移至死亡谷")]
     public bool BPTempInDeathValley { get; set; } = false;
 
-    [ModdedToggleOption("Polus: Reboot Wifi And Chart Course Swapped")]
+    [ModdedToggleOption("Polus：重启WiFi与航线任务互换")]
     public bool BPSwapWifiAndChart { get; set; } = false;
     
-    [ModdedToggleOption("Airship: Airship Doors Are Polus Doors")]
+    [ModdedToggleOption("飞艇：飞艇门为Polus门样式")]
     public bool AirshipPolusDoors { get; set; } = false;
 }

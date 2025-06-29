@@ -9,7 +9,7 @@ namespace TownOfUs.Modifiers;
 [MiraIgnore]
 public abstract class ArrowDeadBodyModifier(DeadBody deadBody, Color color, float updateInterval) : BaseModifier
 {
-    public override string ModifierName => "DeadBody Arrow";
+    public override string ModifierName => "尸体箭头";
     public override bool Unique => false;
     public override bool HideOnUi => true;
     public DeadBody DeadBody { get; set; } = deadBody;
@@ -22,7 +22,7 @@ public abstract class ArrowDeadBodyModifier(DeadBody deadBody, Color color, floa
     //{
     //    var player = MiscUtils.PlayerById(DeadBody.ParentId);
 
-    //    return ModifierName + $"\nOwner: {Player.Data.PlayerName}\nTarget: {player.Data.PlayerName}</color>";
+    //    return ModifierName + $"\n拥有者: {Player.Data.PlayerName}\n目标: {player.Data.PlayerName}</color>";
     //}
 
     public override void OnActivate()

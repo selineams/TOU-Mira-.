@@ -15,9 +15,9 @@ namespace TownOfUs.Roles.Crewmate;
 
 public sealed class TrapperRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Trapper";
-    public string RoleDescription => "Catch Killers In The Act";
-    public string RoleLongDescription => "Place traps around the map, revealing roles within them";
+    public string RoleName => "陷阱师";
+    public string RoleDescription => "当场抓住杀手";
+    public string RoleLongDescription => "在地图上放置陷阱，揭示其中玩家的身份";
     public Color RoleColor => TownOfUsColors.Trapper;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmateInvestigative;
@@ -56,15 +56,15 @@ public sealed class TrapperRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUs
         if (!Player.AmOwner) return;
 
         var minAmountOfPlayersInTrap = OptionGroupSingleton<TrapperOptions>.Instance.MinAmountOfPlayersInTrap;
-        var msg = "No players entered any of your traps";
+        var msg = "没有玩家进入你的陷阱";
 
         if (TrappedPlayers.Count < minAmountOfPlayersInTrap)
         {
-            msg = "Not enough players triggered your traps";
+            msg = "触发你陷阱的玩家数量不足";
         }
         else if (TrappedPlayers.Count != 0)
         {
-            var message = new StringBuilder("Roles caught in your trap:\n");
+            var message = new StringBuilder("被你陷阱捕获的身份：\n");
 
             TrappedPlayers.Shuffle();
 
@@ -83,7 +83,7 @@ public sealed class TrapperRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUs
             msg = finalMessage;
         }
 
-        var title = $"<color=#{TownOfUsColors.Trapper.ToHtmlStringRGBA()}>Trapper Report</color>";
+        var title = $"<color=#{TownOfUsColors.Trapper.ToHtmlStringRGBA()}>陷阱师报告</color>";
         MiscUtils.AddFakeChat(Player.Data, title, msg, false, true);
     }
 
@@ -95,16 +95,16 @@ public sealed class TrapperRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUs
 
     public string GetAdvancedDescription()
     {
-        return "The Trapper is a Crewmate Investigative role that can place traps around the map. " +
-               "If someone stays in it for enough time and enough players go through, " +
-               "they will get a list of their roles in the next meeting in random order." +
+        return "陷阱师是一名船员调查型角色，可以在地图上放置陷阱。 " +
+               "如果有足够多的玩家进入并停留足够时间， " +
+               "下一次会议时你会获得这些玩家的身份列表（顺序随机）。" +
                MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Trap",
-            "Places a trap. Depending on settings they may stay the entire game or reset after meetings.",
+        new("放置陷阱",
+            "放置一个陷阱。根据设置，陷阱可能会持续整局游戏或在会议后重置。",
             TouCrewAssets.TrapSprite)
     ];
 }

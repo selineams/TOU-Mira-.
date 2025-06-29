@@ -15,9 +15,9 @@ namespace TownOfUs.Roles.Neutral;
 
 public sealed class GlitchRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable, ICrewVariant
 {
-    public string RoleName => "Glitch";
-    public string RoleDescription => "Murder, Mimic, Hack... Data Lost";
-    public string RoleLongDescription => "Murder everyone to win with your abilities!";
+    public string RoleName => "混沌";
+    public string RoleDescription => "谋杀、模仿、黑入……数据丢失";
+    public string RoleLongDescription => "用你的能力杀光所有人以获胜！";
     public RoleBehaviour CrewVariant => RoleManager.Instance.GetRole((RoleTypes)RoleId.Get<SheriffRole>());
     public Color RoleColor => TownOfUsColors.Glitch;
     public ModdedRoleTeams Team => ModdedRoleTeams.Custom;
@@ -83,16 +83,16 @@ public sealed class GlitchRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfUsRo
 
     public string GetAdvancedDescription()
     {
-        return "The Glitch is a Neutral Killing role that wins by being the last killer alive. They can Mimic into another player or they can hack a player." + MiscUtils.AppendOptionsText(GetType());
+        return "混沌是一名中立击杀型角色，通过成为场上最后一名杀手获胜。可以模仿其他玩家的外观，也可以黑入使其失去能力。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Mimic",
-            "Mimic the appearance of another player, taking on their whole look.",
+        new("模仿",
+            "模仿另一名玩家的外观，完全变成对方的样子。",
             TouNeutAssets.MimicSprite),
-        new("Hack",
-            "Disable a player's abilities.",
+        new("黑入",
+            "使一名玩家暂时失去能力。",
             TouNeutAssets.HackSprite) 
     ];
 }

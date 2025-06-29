@@ -7,13 +7,13 @@ namespace TownOfUs.Options.Roles.Crewmate;
 
 public sealed class JailorOptions : AbstractOptionGroup<JailorRole>
 {
-    public override string GroupName => "Jailor";
+    public override string GroupName => "典狱长";
 
-    [ModdedNumberOption("Jail Cooldown", 1f, 30f, 1f, MiraNumberSuffixes.Seconds)]
+    [ModdedNumberOption("监禁冷却", 1f, 30f, 1f, MiraNumberSuffixes.Seconds)]
     public float JailCooldown { get; set; } = 20f;
 
-    [ModdedNumberOption("Max Number Of Executes", 1f, 5f, 1f, MiraNumberSuffixes.None, "0")]
+    [ModdedNumberOption("最大处决次数", 1f, 5f, 1f, MiraNumberSuffixes.None, "0")]
     public float MaxExecutes { get; set; } = 3f;
-    [ModdedToggleOption("Jail Same Person Twice In A Row")]
+    [ModdedToggleOption("可连续监禁同一人")]
     public bool JailInARow { get; set; } = false;
 }

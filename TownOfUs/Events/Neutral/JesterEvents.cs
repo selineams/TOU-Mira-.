@@ -32,15 +32,15 @@ public static class JesterEvents
             if (jest.AmOwner)
             {
                 var notif1 = Helpers.CreateAndShowNotification(
-                    $"<b>You have successfully won as the {TownOfUsColors.Jester.ToTextColor()}Jester</color>, by getting voted out!</b>", Color.white, spr: TouRoleIcons.Jester.LoadAsset());
+                    $"<b>你以{TownOfUsColors.Jester.ToTextColor()}小丑</color>的身份成功获胜，因为你被投票放逐了！</b>", Color.white, spr: TouRoleIcons.Jester.LoadAsset());
 
                 notif1.Text.SetOutlineThickness(0.35f);
-                    notif1.transform.localPosition = new Vector3(0f, 1f, -20f);
+                notif1.transform.localPosition = new Vector3(0f, 1f, -20f);
             }
             else
             {
                 var notif1 = Helpers.CreateAndShowNotification(
-                    $"<b>The {TownOfUsColors.Jester.ToTextColor()}Jester</color>, {jest.Data.PlayerName}, has successfully won, as they were voted out!</b>", Color.white, spr: TouRoleIcons.Jester.LoadAsset());
+                    $"<b>{TownOfUsColors.Jester.ToTextColor()}小丑</color>，{jest.Data.PlayerName}，因被投票放逐而成功获胜！</b>", Color.white, spr: TouRoleIcons.Jester.LoadAsset());
 
                 notif1.Text.SetOutlineThickness(0.35f);
                     notif1.transform.localPosition = new Vector3(0f, 1f, -20f);

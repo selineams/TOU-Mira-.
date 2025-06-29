@@ -20,9 +20,9 @@ namespace TownOfUs.Roles.Impostor;
 
 public sealed class MinerRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable, ICrewVariant
 {
-    public string RoleName => "Miner";
-    public string RoleDescription => "From The Top, Make It Drop, That's A Vent";
-    public string RoleLongDescription => "Place interconnected vents around the map";
+    public string RoleName => "管道工";
+    public string RoleDescription => "随处造管道，随处潜行";
+    public string RoleLongDescription => "在地图上放置互通的管道";
     public RoleBehaviour CrewVariant => RoleManager.Instance.GetRole((RoleTypes)RoleId.Get<EngineerTouRole>());
     public Color RoleColor => TownOfUsColors.Impostor;
     public ModdedRoleTeams Team => ModdedRoleTeams.Impostor;
@@ -43,8 +43,8 @@ public sealed class MinerRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITownOfUsRo
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Mine",
-            "Place a vent where you are standing. These vents won't connect to already existing vents on the map but with each other.",
+        new("布管",
+            "在当前位置放置一个管道。这些管道不会与地图上已有管道相连，只会彼此互通。",
             TouImpAssets.MineSprite)
     ];
 
@@ -61,7 +61,7 @@ public sealed class MinerRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITownOfUsRo
 
     public string GetAdvancedDescription()
     {
-        return "The Miner is an Impostor Support role that can create vents." + MiscUtils.AppendOptionsText(GetType());
+        return "管道工是一名伪装者辅助型角色，可以制造管道。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     [MethodRpc((uint)TownOfUsRpc.PlaceVent)]

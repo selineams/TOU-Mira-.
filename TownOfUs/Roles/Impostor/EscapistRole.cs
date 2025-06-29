@@ -21,9 +21,9 @@ namespace TownOfUs.Roles.Impostor;
 
 public sealed class EscapistRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable, ICrewVariant
 {
-    public string RoleName => "Escapist";
-    public string RoleDescription => "Get Away From Kills With Ease";
-    public string RoleLongDescription => "Teleport to get away from the scene of the crime";
+    public string RoleName => "逃逸者";
+    public string RoleDescription => "轻松脱离击杀现场";
+    public string RoleLongDescription => "传送离开犯罪现场";
     public RoleBehaviour CrewVariant => RoleManager.Instance.GetRole((RoleTypes)RoleId.Get<TransporterRole>());
     public Color RoleColor => TownOfUsColors.Impostor;
     public ModdedRoleTeams Team => ModdedRoleTeams.Impostor;
@@ -95,17 +95,17 @@ public sealed class EscapistRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITownOfU
 
     public string GetAdvancedDescription()
     {
-        return "The Escapist is an Impostor Concealing role that can mark a location and then recall (teleport) to that location."
+        return "逃逸者是一名伪装者隐蔽型角色，可以标记一个位置并随后传送（回溯）到该位置。"
             + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Mark",
-            "Mark a location for later use.",
+        new("标记",
+            "标记一个位置以备后用。",
             TouImpAssets.MarkSprite),
-        new("Recall",
-            "Recall to the marked location.",
+        new("回溯",
+            "回溯到已标记的位置。",
             TouImpAssets.RecallSprite)
     ];
 }

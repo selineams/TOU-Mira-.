@@ -24,7 +24,7 @@ namespace TownOfUs.Roles.Neutral;
 
 public sealed class ExecutionerRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable, IAssignableTargets, ICrewVariant
 {
-    public string RoleName => "Executioner";
+    public string RoleName => "行刑者";
     public string RoleDescription => TargetString();
     public string RoleLongDescription => TargetString();
     public RoleBehaviour CrewVariant => RoleManager.Instance.GetRole((RoleTypes)RoleId.Get<SnitchRole>());
@@ -55,7 +55,7 @@ public sealed class ExecutionerRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownO
 
     public string GetAdvancedDescription()
     {
-        return $"The Executioner is a Neutral Evil role that wins by getting their target (signified by <color=#643B1FFF>X</color>) ejected in a meeting." + MiscUtils.AppendOptionsText(GetType());
+        return $"行刑者是一名中立邪恶型角色，只要让带有<color=#643B1FFF>X</color>标记的目标在会议中被放逐即可获胜。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     public override void Initialize(PlayerControl player)
@@ -143,10 +143,10 @@ public sealed class ExecutionerRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownO
     {
         if (!Target)
         {
-            return "Get your target voted out to win.";
+            return "让你的目标被投票放逐即可获胜。";
         }
 
-        return $"Get {Target?.Data.PlayerName} voted out to win.";
+        return $"让{Target?.Data.PlayerName}被投票放逐即可获胜。";
     }
 
     public void CheckTargetEjection(PlayerControl exiled)

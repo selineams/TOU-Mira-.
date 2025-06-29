@@ -17,9 +17,9 @@ namespace TownOfUs.Roles.Crewmate;
 
 public sealed class AurialRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Aurial";
-    public string RoleDescription => "Sense Disturbances In Your Aura.";
-    public string RoleLongDescription => "Any player abilities used within your aura you will sense";
+    public string RoleName => "灵气探";
+    public string RoleDescription => "感知你灵气中的扰动。";
+    public string RoleLongDescription => "你能感知灵气范围内任何玩家使用技能的行为。";
     public Color RoleColor => TownOfUsColors.Aurial;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmateInvestigative;
@@ -124,6 +124,6 @@ public sealed class AurialRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsR
 
     public string GetAdvancedDescription()
     {
-        return "The Aurial is a Crewmate Investigative role that will be alerted whenever a player near them uses one of their abilities." + MiscUtils.AppendOptionsText(GetType());
+        return "灵气探是一名船员调查型角色，附近有玩家使用技能时会收到提示。" + MiscUtils.AppendOptionsText(GetType());
     }
 }

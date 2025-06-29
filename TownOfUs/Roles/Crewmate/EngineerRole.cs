@@ -20,9 +20,9 @@ namespace TownOfUs.Roles.Crewmate;
 
 public sealed class EngineerTouRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Engineer";
-    public string RoleDescription => "Maintain Important Systems On The Ship";
-    public string RoleLongDescription => "Vent around and fix sabotages remotely";
+    public string RoleName => "工程师";
+    public string RoleDescription => "维护飞船重要系统";
+    public string RoleLongDescription => "可在飞船中使用通风管并远程修复破坏";
     public Color RoleColor => TownOfUsColors.Engineer;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmateSupport;
@@ -213,14 +213,13 @@ public sealed class EngineerTouRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITown
     
     public string GetAdvancedDescription()
     {
-        return "The Engineer is a Crewmate Support role that can vent and fix sabotages remotely."
-               + MiscUtils.AppendOptionsText(GetType());
+        return "工程师是一名船员支援型角色，可以使用通风管并远程修复破坏。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Fix",
-            $"It doesn't matter where you are on the map, you can use your fix button to instantly fix the active sabotage. You can do this {OptionGroupSingleton<EngineerOptions>.Instance.MaxFixes} times per game.",
+        new("修复",
+            $"无论你在地图的哪个位置，都可以使用修复按钮立即修复当前的破坏。每局游戏可用 {OptionGroupSingleton<EngineerOptions>.Instance.MaxFixes} 次。",
             TouCrewAssets.FixButtonSprite),
     ];
 }

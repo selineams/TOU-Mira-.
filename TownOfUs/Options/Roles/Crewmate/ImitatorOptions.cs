@@ -6,11 +6,11 @@ namespace TownOfUs.Options.Roles.Crewmate;
 
 public sealed class ImitatorOptions : AbstractOptionGroup<ImitatorRole>
 {
-    public override string GroupName => "Imitator";
+    public override string GroupName => "效颦者";
 
-    [ModdedToggleOption("Imitate Specific Neutrals As Similar Crew Roles")]
+    [ModdedToggleOption("模仿特定中立为类似船员角色")]
     public bool ImitateNeutrals { get; set; } = true;
 
-    [ModdedToggleOption("Imitate Specific Impostors As Similar Crew Roles")]
+    [ModdedToggleOption("模仿特定内鬼为类似船员角色")]
     public bool ImitateImpostors { get; set; } = true;
 }

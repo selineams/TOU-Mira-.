@@ -23,9 +23,9 @@ namespace TownOfUs.Roles.Neutral;
 
 public sealed class PlaguebearerRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable, ICrewVariant
 {
-    public string RoleName => "Plaguebearer";
-    public string RoleDescription => "Infect Everyone To Become <color=#4D4D4DFF>Pestilence</color>";
-    public string RoleLongDescription => "Infect everyone to become <color=#4D4D4DFF>Pestilence</color>";
+    public string RoleName => "瘟疫之源";
+    public string RoleDescription => "感染所有人以成为<color=#4D4D4DFF>万疫之神</color>";
+    public string RoleLongDescription => "感染所有人以成为<color=#4D4D4DFF>万疫之神</color>";
     public RoleBehaviour CrewVariant => RoleManager.Instance.GetRole((RoleTypes)RoleId.Get<AurialRole>());
     public Color RoleColor => TownOfUsColors.Plaguebearer;
     public ModdedRoleTeams Team => ModdedRoleTeams.Custom;
@@ -69,7 +69,7 @@ public sealed class PlaguebearerRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITown
 
         if (allInfected.Any())
         {
-            stringB.Append("\n<b>Players Infected:</b>");
+            stringB.Append("\n<b>已感染玩家:</b>");
             foreach (var plr in allInfected)
             {
                 stringB.Append(TownOfUsPlugin.Culture, $"\n{Color.white.ToTextColor()}{plr.Data.PlayerName}</color>");
@@ -77,7 +77,7 @@ public sealed class PlaguebearerRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITown
         }
 
         var notInfected = PlayerControl.AllPlayerControls.ToArray().Where(x => !x.HasDied() && x != Player && !x.HasModifier<PlaguebearerInfectedModifier>());
-        stringB.Append(TownOfUsPlugin.Culture, $"\n\n<b>Players Left To Infect: {notInfected.Count()}</b>");
+        stringB.Append(TownOfUsPlugin.Culture, $"\n\n<b>剩余未感染玩家: {notInfected.Count()}</b>");
 
         return stringB;
     }
@@ -152,13 +152,13 @@ public sealed class PlaguebearerRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITown
 
     public string GetAdvancedDescription()
     {
-        return "The Plaguebearer is a Neutral Killing role that needs to infect all other players to turn into the Pestilence." + MiscUtils.AppendOptionsText(GetType());
+        return "瘟疫之源是一名中立击杀型角色，需要感染所有其他玩家后变为万疫之神。" + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Infect",
-            "Infect a player, causing them to be infected. When a infected player or dead body interacts or get interacted with the infection will spread to all non-infected players.",
+        new("感染",
+            "感染一名玩家，使其被感染。当被感染的玩家或尸体与其他未感染玩家互动时，感染会继续传播。",
             TouNeutAssets.InfectSprite)    
     ];
 }

@@ -10,9 +10,9 @@ namespace TownOfUs.Modifiers.Game.Universal;
 
 public sealed class MiniModifier : UniversalGameModifier, IWikiDiscoverable, IVisualAppearance
 {
-    public override string ModifierName => "Mini";
+    public override string ModifierName => "迷你";
     public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.Mini;
-    public override string GetDescription() => $"You are smaller than the average player, moving {Math.Round(OptionGroupSingleton<MiniOptions>.Instance.MiniSpeed, 2)}x faster.";
+    public override string GetDescription() => $"你比普通玩家更小，移动速度比普通玩家快{Math.Round(OptionGroupSingleton<MiniOptions>.Instance.MiniSpeed, 2)}倍。";
     public override ModifierFaction FactionType => ModifierFaction.UniversalVisibility;
 
     public override int GetAssignmentChance() =>
@@ -38,8 +38,7 @@ public sealed class MiniModifier : UniversalGameModifier, IWikiDiscoverable, IVi
     }
     public string GetAdvancedDescription()
     {
-        return
-            $"You are smaller than regular players, and you also move {Math.Round(OptionGroupSingleton<MiniOptions>.Instance.MiniSpeed, 2)}x faster than regular players.";
+        return $"你比普通玩家更小，移动速度也比普通玩家快{Math.Round(OptionGroupSingleton<MiniOptions>.Instance.MiniSpeed, 2)}倍。";
     }
 
     public List<CustomButtonWikiDescription> Abilities { get; } = [];

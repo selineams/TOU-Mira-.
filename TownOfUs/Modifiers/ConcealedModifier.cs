@@ -7,8 +7,8 @@ namespace TownOfUs.Modifiers;
 [MiraIgnore]
 public abstract class ConcealedModifier : TimedModifier
 {
-    public override string ModifierName => "Concealed Modifier";
-    public override string GetDescription() => "You are concealed!";
+    public override string ModifierName => "隐匿修饰";
+    public override string GetDescription() => "你已隐匿！";
     public override float Duration => 1f;
     public override bool AutoStart => false;
     public override bool HideOnUi => true;

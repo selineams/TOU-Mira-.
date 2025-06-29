@@ -11,7 +11,7 @@ namespace TownOfUs.Buttons.Crewmate;
 
 public sealed class PoliticianCampaignButton : TownOfUsRoleButton<PoliticianRole, PlayerControl>
 {
-    public override string Name => "Campaign";
+    public override string Name => "游说拉票";
     public override string Keybind => Keybinds.SecondaryAction;
     public override float Cooldown => OptionGroupSingleton<PoliticianOptions>.Instance.CampaignCooldown + MapCooldown;
     public override Color TextOutlineColor => TownOfUsColors.Politician;

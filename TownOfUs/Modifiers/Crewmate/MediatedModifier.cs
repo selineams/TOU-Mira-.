@@ -15,7 +15,7 @@ namespace TownOfUs.Modifiers.Crewmate;
 
 public sealed class MediatedModifier(byte mediumId) : BaseModifier
 {
-    public override string ModifierName => "Mediated";
+    public override string ModifierName => "被招魂";
     public override bool HideOnUi => true;
     public byte MediumId { get; } = mediumId;
 

@@ -18,10 +18,10 @@ namespace TownOfUs.Roles.Neutral;
 
 public sealed class PestilenceRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable, IUnguessable, ICrewVariant
 {
-    public string RoleName => "Pestilence";
-    public string RoleDescription => "Horseman Of The Apocalypse!";
-    public string RoleLongDescription => "Kill everyone in your path that interacts with you!";
-    public string YouAreText => "You are";
+    public string RoleName => "万疫之神";
+    public string RoleDescription => "天启四骑士之一！";
+    public string RoleLongDescription => "击杀所有与自己互动的玩家！";
+    public string YouAreText => "你是";
     public RoleBehaviour CrewVariant => RoleManager.Instance.GetRole((RoleTypes)RoleId.Get<AurialRole>());
     public Color RoleColor => TownOfUsColors.Pestilence;
     public ModdedRoleTeams Team => ModdedRoleTeams.Custom;
@@ -93,11 +93,11 @@ public sealed class PestilenceRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOf
     {
         var alignment = RoleAlignment.ToDisplayString();
 
-        alignment = alignment.Replace("Neutral", "<color=#8A8A8AFF>Neutral");
+        alignment = alignment.Replace("中立", "<color=#8A8A8AFF>中立");
 
         var stringB = new StringBuilder();
-        stringB.AppendLine(CultureInfo.InvariantCulture, $"{RoleColor.ToTextColor()}You are<b> {RoleName},\n<size=80%>Horseman of the Apocalypse.</size></b></color>");
-        stringB.AppendLine(CultureInfo.InvariantCulture, $"<size=60%>Alignment: <b>{alignment}</color></b></size>");
+        stringB.AppendLine(CultureInfo.InvariantCulture, $"{RoleColor.ToTextColor()}你是<b> {RoleName},\n<size=80%>天启四骑士之一。</size></b></color>");
+        stringB.AppendLine(CultureInfo.InvariantCulture, $"<size=60%>阵营: <b>{alignment}</color></b></size>");
         stringB.Append("<size=70%>");
         stringB.AppendLine(CultureInfo.InvariantCulture, $"{RoleLongDescription}");
 
@@ -106,6 +106,6 @@ public sealed class PestilenceRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOf
 
     public string GetAdvancedDescription()
     {
-        return "The Pestillence is a Neutral Killing role that can kill and is invincible to everything but being exiled or guessing incorrectly. They win by being the last killer alive." + MiscUtils.AppendOptionsText(GetType());
+        return "万疫之神是一名中立击杀型角色，可以击杀并且除被放逐或猜错外无敌。通过成为场上最后一名杀手获胜。" + MiscUtils.AppendOptionsText(GetType());
     }
 }

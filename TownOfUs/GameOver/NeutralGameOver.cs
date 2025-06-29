@@ -42,7 +42,7 @@ public sealed class NeutralGameOver : CustomGameOver
         endGameManager.BackgroundBar.material.SetColor(ShaderID.Color, _roleColor);
 
         var text = Object.Instantiate(endGameManager.WinText);
-        text.text = $"{_roleName} Wins!";
+        text.text = $"{_roleName}胜利！";
         text.color = _roleColor;
         GameHistory.WinningFaction = $"<color=#{_roleColor.ToHtmlStringRGBA()}>{_roleName}</color>";
 

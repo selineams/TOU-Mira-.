@@ -14,9 +14,9 @@ namespace TownOfUs.Roles.Crewmate;
 
 public sealed class MediumRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
 {
-    public string RoleName => "Medium";
-    public string RoleDescription => "Watch The Spooky Ghosts";
-    public string RoleLongDescription => "Follow ghosts to get clues from them";
+    public string RoleName => "招魂师";
+    public string RoleDescription => "观察幽灵的动向";
+    public string RoleLongDescription => "跟随幽灵以获取线索";
     public Color RoleColor => TownOfUsColors.Medium;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmateSupport;
@@ -59,14 +59,14 @@ public sealed class MediumRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsR
 
     public string GetAdvancedDescription()
     {
-        return "The Medium is a Crewmate Support role who can Mediate to see one ghost per use. Both the Medium and Ghost then have an arrow showing them where each other are at all times."
+        return "招魂师是一名船员支援型角色，可以招魂，每次可看到一名幽灵。招魂师和幽灵会互相显示箭头，随时指示对方的位置。"
             + MiscUtils.AppendOptionsText(GetType());
     }
 
     [HideFromIl2Cpp]
     public List<CustomButtonWikiDescription> Abilities { get; } = [
-        new("Mediate",
-            "Communicate with the dead, which may lead you to the killers.",
+        new("招魂",
+            "与死者交流，可能会获得指向凶手的线索。",
             TouCrewAssets.MediateSprite)    
     ];
 }

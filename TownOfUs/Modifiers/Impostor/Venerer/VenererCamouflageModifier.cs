@@ -9,7 +9,7 @@ namespace TownOfUs.Modifiers.Impostor.Venerer;
 
 public sealed class VenererCamouflageModifier : ConcealedModifier, IVenererModifier, IVisualAppearance
 {
-    public override string ModifierName => "Camouflaged";
+    public override string ModifierName => "隐蔽";
     public override float Duration => OptionGroupSingleton<VenererOptions>.Instance.AbilityDuration;
     public override bool AutoStart => true;
     public bool VisualPriority => true;

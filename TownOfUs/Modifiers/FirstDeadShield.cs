@@ -11,7 +11,7 @@ namespace TownOfUs.Modifiers;
 
 public sealed class FirstDeadShield : ExcludedGameModifier, IAnimated
 {
-    public override string ModifierName => "First Death Shield";
+    public override string ModifierName => "首死护盾";
     public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.FirstRoundShield;
 
     public override int GetAmountPerGame() => FirstDeadPatch.PlayerName != null && OptionGroupSingleton<GeneralOptions>.Instance.FirstDeathShield ? 1 : 0;
@@ -22,7 +22,7 @@ public sealed class FirstDeadShield : ExcludedGameModifier, IAnimated
     public override bool HideOnUi => !TownOfUsPlugin.ShowShieldHud.Value;
     public override string GetDescription()
     {
-        return !HideOnUi ? "You have protection because you died first last game" : string.Empty;
+        return !HideOnUi ? "你因上一局第一个死亡获得了保护" : string.Empty;
     }
     public bool IsVisible { get; set; } = true;
 

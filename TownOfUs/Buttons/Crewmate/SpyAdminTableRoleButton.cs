@@ -12,7 +12,7 @@ namespace TownOfUs.Buttons.Crewmate;
 
 public sealed class SpyAdminTableRoleButton : TownOfUsRoleButton<SpyRole>
 {
-    public override string Name => "Admin";
+    public override string Name => "管理地图";
     public override string Keybind => Keybinds.SecondaryAction;
     public override Color TextOutlineColor => TownOfUsColors.Spy;
     public override float Cooldown => OptionGroupSingleton<SpyOptions>.Instance.DisplayCooldown.Value + MapCooldown;

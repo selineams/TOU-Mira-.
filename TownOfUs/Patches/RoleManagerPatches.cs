@@ -100,7 +100,7 @@ public static class TouRoleManagerPatches
         var neCount = Random.RandomRange((int)OptionGroupSingleton<RoleOptions>.Instance.MinNeutralEvil.Value, (int)OptionGroupSingleton<RoleOptions>.Instance.MaxNeutralEvil.Value + 1);
         var nkCount = Random.RandomRange((int)OptionGroupSingleton<RoleOptions>.Instance.MinNeutralKiller.Value, (int)OptionGroupSingleton<RoleOptions>.Instance.MaxNeutralKiller.Value + 1);
 
-        var factions = new List<string> { "Benign", "Evil", "Killing" };
+        var factions = new List<string> { "友好型", "邪恶型", "击杀型" };
 
         // Crew must always start out outnumbering neutrals, so subtract roles until that can be guaranteed.
         while (Math.Ceiling((double)crewmates.Count / 2) <= nbCount + neCount + nkCount)
@@ -113,21 +113,21 @@ public static class TouRoleManagerPatches
             factions.Shuffle();
             switch (factions[0])
             {
-                case "Benign":
+                case "友好型":
                     if (nbCount > 0 && (canSubtractBenign || canSubtractNone))
                     {
                         nbCount -= 1;
                         break;
                     }
-                    goto case "Evil";
-                case "Evil":
+                    goto case "邪恶型";
+                case "邪恶型":
                     if (neCount > 0 && (canSubtractEvil || canSubtractNone))
                     {
                         neCount -= 1;
                         break;
                     }
-                    goto case "Killing";
-                case "Killing":
+                    goto case "击杀型";
+                case "击杀型":
                     if (nkCount > 0 && (canSubtractKilling || canSubtractNone))
                     {
                         nkCount -= 1;

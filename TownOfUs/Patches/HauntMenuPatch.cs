@@ -39,7 +39,7 @@ namespace TownOfUs.Patches
             __instance.FilterText.text = string.Empty;
 
             var modifiers = target.GetModifiers<GameModifier>().Where(x => x is not ExcludedGameModifier).OrderBy(x => x.ModifierName).ToList();
-            __instance.FilterText.text = $"<color=#FFFFFF><size=100%>(No Modifiers)</size></color>";
+            __instance.FilterText.text = $"<color=#FFFFFF><size=100%>(无附加特性)</size></color>";
             if (modifiers.Count != 0)
             {
                 var modifierTextBuilder = new StringBuilder($"<color=#FFFFFF><size=100%>(");
@@ -69,17 +69,17 @@ namespace TownOfUs.Patches
             {
                 if (role.IsNeutral())
                 {
-                    name = "Neutral";
+                    name = "中立";
                     rColor = Color.gray;
                 }
                 else if (role.IsCrewmate())
                 {
-                    name = "Crewmate";
+                    name = "船员";
                     rColor = Palette.CrewmateBlue;
                 }
                 else
                 {
-                    name = "Impostor";
+                    name = "内鬼";
                     rColor = Palette.ImpostorRed;
                 }
             }
